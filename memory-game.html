@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="generator" content="Codeply" />
+  <title>WHSKD Student Portal</title>
+  <base target="_self">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/css/bootstrap.min.css" />
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" />
+
+  <link rel="stylesheet" href="css/student-styles.css" />
+  <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+</head>
+
+<body data-spy="scroll" data-target=".sidenav" class="d-flex flex-column" id="navTop">
+  <!-- <nav class="navbar navbar-light bg-black navbar-expand fixed-top"> -->
+  <nav class="navbar navbar-light navbar-expand fixed-top" style="background-color: #f8f9fa">
+    <div class="container-fluid">
+      <a data-bs-toggle="collapse" href="#" data-bs-target="#fullmenu" role="button" class="d-lg-none d-inline me-3">
+        <i class="mdi mdi-view-sequential"></i>
+      </a>
+      <a class="navbar-brand text-primary " href="./"><img src="images/site_logo.png" height="60px" alt=""></a>
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item">
+          <a href="#modalLogin" data-bs-toggle="modal" class="nav-link">
+            <i class="mdi mdi-24px mdi-account-outline text-dark" ></i>
+          </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+  <div class="container-fluid px-0 flex-grow-1">
+    <div class="row g-0 flex-nowrap navbar-expand-lg">
+      <div class="col-xl-2 col-lg-3 col-auto text-white sidebar bg-black min-vh-100" style="color: #f8f9fa">
+        <div class="row g-0 flex-nowrap sticky-top sticky-top-side">
+          <div class="col-lg-9 col-auto">
+            <div id="fullmenu" class="navbar-collapse collapse flex-column align-items-start h-auto sidenav">
+              <a class="nav-link py-3" href="#navTop">Games</a>
+
+
+            </div>
+          </div>
+          <div class="col text-center">
+            <div class="sidenav">
+              <a class="nav-link py-2" href="#navTop"><i class="ms-auto mdi mdi-alarm-light-outline"></i></a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+      <main class="col px-4 px-lg-5 pt-5">
+
+        <!-- MEMORY GAME HTML START -->
+        <section>
+          <h1 id="level-title">Press Any Key to Start</h1>
+          <div class="container">
+            <div class="row">
+
+              <!-- <div type="button" id="green" class="btn green">
+                <!-- <img src="memory-game-images/moon.png" alt="" width="200px"> -->
+              <!-- </div> -->
+
+              <!-- <div type="button" id="red" class="btn red">
+
+              </div> -->
+              <!-- ASTEROID -->
+              <div class="flip-card" id="asteroid">
+                <div class="flip-card-inner" id="asteroid-inner">
+                  <div class="flip-card-front">
+                    <img src="memory-game-images/asteroid.png" alt="Avatar" style="width:200px;height:200px;">
+                  </div>
+                  <div class="flip-card-back">
+                    <br>
+                    <br>
+                    <h3>Asteroid</h3>
+
+                  </div>
+                </div>
+              </div>
+              <!-- ASTEROID -->
+              <!-- STARS -->
+              <div class="flip-card" id="stars">
+                <div class="flip-card-inner" id="stars-inner">
+                  <div class="flip-card-front">
+                    <img src="memory-game-images/stars.png" alt="Avatar" style="width:200px;height:200px;">
+                  </div>
+                  <div class="flip-card-back">
+                    <br>
+                    <br>
+                    <h3>Stars</h3>
+
+                  </div>
+                </div>
+              </div>
+              <!-- STARS -->
+
+              <!-- OBSERVATORY -->
+              <div class="flip-card" id="observatory">
+                <div class="flip-card-inner" id="observatory-inner">
+                  <div class="flip-card-front">
+                    <img src="memory-game-images/observatory.png" alt="Avatar" style="width:200px;height:200px;">
+                  </div>
+                  <div class="flip-card-back">
+                    <br>
+                    <br>
+                    <h3>Observatory</h3>
+
+                  </div>
+                </div>
+              </div>
+              <!-- OBSERVATORY -->
+              <!-- TELESCOPE -->
+              <div class="flip-card" id="telescope">
+                <div class="flip-card-inner" id="telescope-inner">
+                  <div class="flip-card-front">
+                    <img src="memory-game-images/telescope.png" alt="Avatar" style="width:200px;height:200px;">
+                  </div>
+                  <div class="flip-card-back">
+                    <br>
+                    <br>
+                    <h3>Telescope</h3>
+
+                  </div>
+                </div>
+              </div>
+              <!-- TELESCOPE -->
+            </div>
+
+            <div class="row">
+
+              <!-- <div type="button" id="yellow" class="btn yellow">
+
+              </div>
+              <div type="button" id="blue" class="btn blue">
+
+              </div> -->
+
+              <!-- MOON -->
+              <div class="flip-card" id="moon">
+                <div class="flip-card-inner" id="moon-inner">
+                  <div class="flip-card-front">
+                    <img src="memory-game-images/moon.png" alt="Avatar" style="width:200px;height:200px;">
+                  </div>
+                  <div class="flip-card-back">
+                    <br>
+                    <br>
+                    <h3>Moon</h3>
+
+                  </div>
+                </div>
+              </div>
+              <!-- END OF MOON -->
+
+              <!-- GALAXY -->
+              <div class="flip-card" id="galaxy">
+                <div class="flip-card-inner" id="galaxy-inner">
+                  <div class="flip-card-front">
+                    <img src="memory-game-images/galaxy.png" alt="Avatar" style="width:200px;height:200px;">
+                  </div>
+                  <div class="flip-card-back">
+                    <br>
+                    <br>
+                    <h3>Galaxy</h3>
+
+                  </div>
+                </div>
+              </div>
+              <!-- GALAXY -->
+              <!-- Spacecraft -->
+              <div class="flip-card" id="spacecraft">
+                <div class="flip-card-inner" id="spacecraft-inner">
+                  <div class="flip-card-front">
+                    <img src="memory-game-images/spacecraft.png" alt="Avatar" style="width:200px;height:200px;">
+                  </div>
+                  <div class="flip-card-back">
+                    <br>
+                    <br>
+                    <h3>Spacecraft</h3>
+
+                  </div>
+                </div>
+              </div>
+              <!-- Spacecraft -->
+              <!-- UNIVERSE -->
+              <div class="flip-card" id="universe">
+                <div class="flip-card-inner" id="universe-inner">
+                  <div class="flip-card-front">
+                    <img src="memory-game-images/universe.png" alt="Avatar" style="width:200px;height:200px;">
+                  </div>
+                  <div class="flip-card-back">
+                    <br>
+                    <br>
+                    <h3>Universe</h3>
+
+                  </div>
+                </div>
+              </div>
+              <!-- UNIVERSE -->
+
+            </div>
+            <div class="row">
+              <!-- METEORITE -->
+              <div class="flip-card" id="meteorite">
+                <div class="flip-card-inner" id="meteorite-inner">
+                  <div class="flip-card-front">
+                    <img src="memory-game-images/meteorite.png" alt="Avatar" style="width:200px;height:200px;">
+                  </div>
+                  <div class="flip-card-back">
+                    <br>
+                    <br>
+                    <h3>Meteorite</h3>
+
+                  </div>
+                </div>
+              </div>
+
+              <!-- METEORITE -->
+
+              <!-- SOLAR SYSTEM -->
+              <div class="flip-card" id="solar-system">
+                <div class="flip-card-inner" id="solar-system-inner">
+                  <div class="flip-card-front">
+                    <img src="memory-game-images/solar-system.png" alt="Avatar" style="width:200px;height:200px;">
+                  </div>
+                  <div class="flip-card-back">
+
+                    <br>
+                    <br>
+                    <h3>Solar System</h3>
+
+                  </div>
+                </div>
+              </div>
+              <!-- SOLAR SYSTEM -->
+
+              <!-- COMET -->
+              <div class="flip-card" id="comet">
+                <div class="flip-card-inner" id="comet-inner">
+                  <div class="flip-card-front">
+                    <img src="memory-game-images/comet.png" alt="Avatar" style="width:200px;height:200px;">
+                  </div>
+                  <div class="flip-card-back">
+
+                    <br>
+                    <br>
+                    <h3>Comet</h3>
+
+                  </div>
+                </div>
+              </div>
+              <!-- COMET -->
+              <!-- ASTRONAUT -->
+              <div class="flip-card" id="astronaut">
+                <div class="flip-card-inner" id="astronaut-inner">
+                  <div class="flip-card-front">
+                    <img src="memory-game-images/astronaut.png" alt="Avatar" style="width:200px;height:200px;">
+                  </div>
+                  <div class="flip-card-back">
+                    <br>
+                    <br>
+                    <h3>Astronaut</h3>
+
+                  </div>
+                </div>
+              </div>
+              <!-- ASTRONAUT -->
+
+            </div>
+          </div>
+
+    </div>
+    </section>
+
+
+
+    <!-- MEMORY GAME HTML END -->
+
+    </main>
+  </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+
+  <script src="js/student-script.js"></script>
+</body>
+
+</html>

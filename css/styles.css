@@ -1,0 +1,49 @@
+
+body {
+    overflow-x: hidden;
+    padding-top: 55px;
+    /* background-color: #f6f6f6;
+    background-color: #232930; */
+
+    /* background-color: blue; */
+    background-color: white;
+}
+
+.bg-black {
+  /* side bar background color */
+    background-color: #70cbd0;
+
+}
+
+
+.sticky-top-side {
+    top: 100px;
+}
+
+.navbar .mdi {
+  color: #70cbd0;
+  font-size: 26px;
+}
+
+.sidebar .mdi {
+    font-size: 26px;
+    /* colors the sidebar link icons */
+    color: white;
+}
+
+.sidenav .nav-link {
+    width: 100%;
+    /* colors the sidebar text */
+    color: white;
+
+}
+
+.sidenav .nav-link.active {
+    background-color: #f8f9fa;
+}
+
+
+
+.bg-light {
+    background-color: rgba(200,200,200,0.1) !important;
+}
