@@ -1,0 +1,22 @@
+{
+  "name": "whs-dashboard",
+  "version": "1.0.0",
+  "description": "School Online Directory and Database",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevinstewartsmith/whskd_dashboard.git"
+  },
+  "author": "Kevin Smith",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kevinstewartsmith/whskd_dashboard/issues"
+  },
+  "homepage": "https://github.com/kevinstewartsmith/whskd_dashboard#readme",
+  "dependencies": {
+    "express": "^4.17.3"
+  }
+}
