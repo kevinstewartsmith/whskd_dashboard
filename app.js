@@ -7,6 +7,18 @@ app.use(express.static("public"));
 
 //What happens when the user goes to the homepage
 app.get("/", function(req, res) {
+   res.sendFile(__dirname + "/index.html");
+   // res.sendFile(__dirname + "/memory-game.html");
+
+})
+
+app.get("/teacher", function(req, res) {
+   res.sendFile(__dirname + "/teacher-dashboard.html");
+   // res.sendFile(__dirname + "/memory-game.html");
+
+})
+
+app.get("/headmaster", function(req, res) {
    res.sendFile(__dirname + "/headmaster-dashboard.html");
    // res.sendFile(__dirname + "/memory-game.html");
 
