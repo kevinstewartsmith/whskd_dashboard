@@ -1,15 +1,17 @@
 //Requires node.js and express
 const express = require("express");
-
+const bodyParser = require("body-parser");
 //Makes an express app
 const app = express();
 app.use(express.static("public"));
+app.set('view engine', 'ejs');
+app.use(bodyParser.urlencoded({extended: true}));
 
 //What happens when the user goes to the homepage
 app.get("/", function(req, res) {
    res.sendFile(__dirname + "/index.html");
    // res.sendFile(__dirname + "/memory-game.html");
-
+   res.render("index")
 })
 
 app.get("/teacher", function(req, res) {
