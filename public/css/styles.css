@@ -51,3 +51,19 @@ body {
 .text-green {
   color: #70cbd0;
 }
+
+.daily-report-textarea {
+  height:100%;
+  width:100%;
+  background-color: transparent;
+  overflow: hidden;
+  display: inline;
+  resize: none;
+  border-color:transparent;
+}
+
+.daily-report-form {
+  height:100%;
+  width: 100%;
+  display: inline;
+}

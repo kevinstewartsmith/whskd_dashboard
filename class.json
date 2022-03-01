@@ -1,0 +1,173 @@
+{class_name: "",
+ regular_teacher: "",
+ todays_teacher: "",
+ class_times: [{day:"", period: 0},{day: "", period: 1}]
+ class_type: ["G2", "G3"]
+}
+
+{_id: 1,
+class_name: "Music",
+ regular_teacher: "KYJ",
+ class_times: [{day:"M", period: 1},{day: "F", period: 1}],
+ class_type: ["G1", "G2"]
+}
+
+{_id: 2,
+ class_name: "Art",
+ regular_teacher: "Z",
+ class_times: [{day:"M", period: 1},{day: "W", period: 3}],
+ class_type: ["G3"]
+}
+
+{_id: 3,
+ class_name: "Science",
+ regular_teacher: "CA",
+ class_times: [{day:"M", period: 1},{day: "T", period: 6}],
+ class_type: ["G4"]
+}
+
+
+
+db.classes.find({"class_times.day" :"M","regular_teacher":"KYJ"})
+db.classes.find({"class_times.day" :"M","regular_teacher":"CA"})
+
+
+[{_id: 1,
+class_name: "Music",
+ regular_teacher: "KYJ",
+ class_times: [{day:"M", period: 1},{day: "F", period: 1}],
+ class_type: ["G1", "G2"]
+},{_id: 2,
+ class_name: "Art",
+ regular_teacher: "Z",
+ class_times: [{day:"M", period: 1},{day: "W", period: 3}],
+ class_type: ["G3"]
+},{_id: 3,
+ class_name: "Science",
+ regular_teacher: "CA",
+ class_times: [{day:"M", period: 1},{day: "T", period: 6}],
+ class_type: ["G4"]
+}]
+
+
+[
+{_id: 4,
+ class_name: "K-Math",
+ regular_teacher: "J",
+ class_times: [{day:"M", period: 1},{day: "M", period: 2}],
+ class_type: ["G5"]
+},
+
+{_id: 5,
+ class_name: "Korean",
+ regular_teacher: ["L","SH"],
+ class_times: [{day:"M", period: 1},{day: "T", period: 7}],
+ class_type: ["G6"],
+ shared: "YES"
+},
+
+{_id: 6,
+ class_name: "Math-e",
+ regular_teacher: "AR",
+ class_times: [{day:"M", period: 1},{day: "T", period: 6}],
+ class_type: ["G7"]
+},
+
+{_id: 7,
+ class_name: "K-Math",
+ regular_teacher: "K",
+ class_times: [{day:"M", period: 1},{day: "R", period: 3},{day: "F", period: 3}],
+ class_type: ["G8"]
+},
+
+{_id: 8,
+ class_name: "Viet A",
+ regular_teacher: "NG",
+ class_times: [{day:"M", period: 1},{day: "T", period: 7}],
+ class_type: ["G9"]
+},
+
+{_id: 9,
+ class_name: "Viet B",
+ regular_teacher: "LO",
+ class_times: [{day:"M", period: 1},{day: "T", period: 7}],
+ class_type: ["G10"]
+}
+]
+
+MONDAY 2ND PERIOD
+[
+{_id: 10,
+ class_name: "K-Math",
+ regular_teacher: "SE",
+ class_times: [{day:"M", period: 2},{day: "T", period: 6},{day: "F", period: 3}],
+ class_type: ["G1"]
+},
+
+{_id: 11,
+ class_name: "PE",
+ regular_teacher: ["LE","S"],
+ class_times: [{day:"M", period: 2},{day: "T", period: 3}],
+ class_type: ["G2","G3"],
+ shared: "YES"
+},
+
+{_id: 12,
+ class_name: "Korean",
+ regular_teacher: ["L"],
+ class_times: [{day:"M", period: 2},{day: "R", period: 2},{day:"R",period: 3}],
+ class_type: ["G4"]
+},
+
+{_id: 13,
+ class_name: "Math-e",
+ regular_teacher: ["AN"],
+ class_times: [{day:"M", period: 2},{day: "M", period: 6}],
+ class_type: ["G6"]
+},
+
+{_id: 14,
+ class_name: "Viet A",
+ regular_teacher: ["NG"],
+ class_times: [{day:"M", period: 2},{day: "W", period: 2}],
+ class_type: ["G7"]
+},
+
+{_id: 15,
+ class_name: "Viet B",
+ regular_teacher: ["LO"],
+ class_times: [{day:"M", period: 2},{day: "W", period: 2}],
+ class_type: ["G8"]
+},
+
+{_id: 16,
+ class_name: "Art",
+ regular_teacher: ["M"],
+ class_times: [{day:"M", period: 2}],
+ class_type: ["G9"]
+},
+
+{_id: 17,
+ class_name: "Korean",
+ regular_teacher: ["S"],
+ class_times: [{day:"M", period: 2}, {day:"M", period: 3},{day:"T", period: 2}, {day:"T", period: 3}],
+ class_type: ["G10"]
+}
+]
+
+
+TUESDAY 3RD PERIOD
+[
+{_id: 18,
+ class_name: "Math-e",
+ regular_teacher: ["AMEL"],
+ class_times: [{day:"M", period: 3}, {day:"W", period: 3}],
+ class_type: ["G1"]
+},
+
+{_id: 19,
+ class_name: "Math-e",
+ regular_teacher: ["AMEL"],
+ class_times: [{day:"M", period: 3}, {day:"W", period: 3}],
+ class_type: ["G1"]
+},
