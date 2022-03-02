@@ -9,3 +9,4 @@ class SchoolClass {
     }
 
 }
+console.log("Footer JS works");

@@ -1,0 +1,485 @@
+<%- include('header'); -%>
+
+<div class="container-fluid px-0 flex-grow-1">
+  <div class="row g-0 flex-nowrap navbar-expand-lg">
+    <div class="col-xl-2 col-lg-3 col-auto text-white sidebar bg-black min-vh-100" style="color: #f8f9fa">
+      <div class="row g-0 flex-nowrap sticky-top sticky-top-side">
+        <div class="col-lg-9 col-auto">
+          <div id="fullmenu" class="navbar-collapse collapse flex-column align-items-start h-auto sidenav">
+            <a class="nav-link py-3" href="#navTop">Home</a>
+
+            <a class="nav-link py-3 " href="#sectionReports">Daily Reports</a>
+            <a class="nav-link py-3" href="#sectionInbox">Inbox</a>
+            <a class="nav-link py-3" href="#sectionPremiums">Schedule</a>
+            <a class="nav-link py-3" href="#sectionAlerts">Teachers</a>
+            <a class="nav-link py-3" href="#sectionDetections">Class Directory</a>
+            <!-- <a class="nav-link py-3" href="#modalLogin" data-bs-toggle="modal">Integrations</a>
+                      <a class="nav-link py-3" href="#modalLogin" data-bs-toggle="modal">Customers</a>
+                      <a class="nav-link py-3" href="#modalLogin" data-bs-toggle="modal">Orders</a> -->
+            <a class="nav-link py-3" href="#modalLogin" data-bs-toggle="modal">Settings</a>
+          </div>
+        </div>
+        <div class="col text-center">
+          <div class="sidenav">
+            <a class="nav-link py-2" href="#navTop"><i class="ms-auto mdi mdi-home-outline"></i></a>
+
+            <a class="nav-link py-2" href="#sectionReports"><i class="ms-auto mdi mdi-file-document-box-outline"></i></a>
+            <a class="nav-link py-2" href="#sectionInbox"><i class="ms-auto mdi mdi-mailbox"></i></a>
+            <a class="nav-link py-2" href="#sectionPremiums"><i class="ms-auto mdi mdi-calendar-clock"></i></a>
+            <a class="nav-link py-2" href="#sectionAlerts"><i class="ms-auto mdi mdi-google-classroom"></i></a>
+            <a class="nav-link py-2" href="#sectionDetections"><i class="ms-auto mdi mdi-view-list"></i></a>
+            <!-- <a class="nav-link py-2" href="#modalLogin" data-bs-toggle="modal"><i class="ms-auto mdi mdi-palette-swatch"></i></a>
+                      <a class="nav-link py-2" href="#modalLogin" data-bs-toggle="modal"><i class="ms-auto mdi mdi-account-search-outline"></i></a>
+                      <a class="nav-link py-2" href="#modalLogin" data-bs-toggle="modal"><i class="ms-auto mdi mdi-bus-clock"></i></a> -->
+            <a class="nav-link py-2" href="#modalLogin" data-bs-toggle="modal"><i class="ms-auto mdi mdi-settings-outline"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <main class="col px-4 px-lg-5 pt-5">
+      <h1>Teacher Dashboard</h1>
+      <div class="row">
+
+
+
+        <div class="col-xl-12 col-md-12 pt-3 pb-4" style="background-color: red">
+          <div class="btn-group dropend">
+            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              Dropright
+            </button>
+            <ul class="dropdown-menu">
+              <li>Teacher name</li>
+              <li>Teacher name</li>
+              <li>Teacher name</li>
+            </ul>
+          </div>
+        </div>
+        <!-- <div class="col-xl-4 col-md-6 pt-3 pb-4" style="background-color: green">
+
+        </div>
+        <div class="col-xl-4 order-xl-0 order-md-1 pt-3 pb-4" style="background-color: blue">
+
+        </div> -->
+      </div>
+      <!-- ************
+      DAILY REPORT
+      ************ -->
+
+      <section class="row min-vh-100 pt-5" id="sectionReports"  >
+
+        <div class="col pt-4 d-flex flex-column"  >
+          <br>
+          <h3 class="text-secondary">Daily Reports Yo</h3>
+          <div class="bg-light rounded flex-fill p-4">
+            <div class="card bg-white text-dark shadow-sm h-100">
+              <div class="card-body">
+                <!-- tabs -->
+                <ul class="nav nav-tabs" role="tablist">
+                  <li class="nav-item"><button class="nav-link bg-transparent text-dark text-uppercase active" data-bs-toggle="tab" data-bs-target="#tab1" role="tab">Report Classes</button></li>
+                  <li class="nav-item"><button class="nav-link bg-transparent text-dark text-uppercase" data-bs-toggle="tab" data-bs-target="#tab2" role="tab">Preview</button></li>
+                </ul>
+                <div class="tab-content py-4">
+                  <div class="tab-pane active" id="tab1" role="tabpanel">
+                    <div class="container">
+
+
+                      <div class="row ">
+                        <div class="col-1 mb-1  ">
+                          <h5>Period</h5>
+
+                        </div>
+                        <div class="col mb-1 ">
+                          <h5>Today's Class</h5>
+                        </div>
+                        <div class="col-2 mb-1 ">
+                          <h5>Homework</h5>
+
+                        </div>
+                        <div class="col mb-1 ">
+                          <h5>Next Class</h5>
+                        </div>
+                        <div class="col-1 mb-1 ">
+                          <h5>Teacher</h5>
+                        </div>
+                      </div>
+
+                      <div class="row " style="height: 6rem">
+                        <div class="col-1 mb-1 border border-dark" style="position:relative">
+                          <div class="" style=" position: absolute; top: 0; bottom: 0; margin: auto; background-color:red; border-color: red; vertical-align: middle;padding: 1em 0 1em 0;">
+                            <h6 class="period-number" style="display: inline;   top: 0; bottom: 0; left: 0; right: 0; margin: auto; text-align: centered; padding: 1em 1em 1em 1em ">2</h6>
+                            <h6>Science</h6>
+                          </div>
+
+
+                        </div>
+                        <div class="col mb-1 border border-dark">
+                          <form action="/action_page.php" class="daily-report-form">
+
+                            <textarea id="w3review" name="w3review" class="daily-report-textarea" >At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
+
+                          </form>
+                        </div>
+                        <div class="col-2 mb-1 border border-dark">
+                          <form action="/action_page.php" class="daily-report-form">
+
+                            <textarea id="w3review" name="w3review" class="daily-report-textarea">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
+
+                          </form>
+
+                        </div>
+                        <div class="col mb-1 border border-dark">
+                          <form action="/action_page.php" class="daily-report-form">
+
+                            <textarea id="w3review" name="w3review" class="daily-report-textarea">
+At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
+</textarea>
+
+                          </form>
+                        </div>
+                        <div class="col-1 mb-1 border border-dark">
+                          Column
+                        </div>
+                      </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+                  </div>
+                  <div class="tab-pane" id="tab2" role="tabpanel">
+                    <div class="row">
+                      <div class="col-xl-3 col-lg-12 pb-3">
+                        <div class="card shadow-sm text-white bg-primary">
+                          <div class="card-body">
+                            <h3 class="card-title">Bots</h3>
+                            <p class="card-text">Click on a robot friend to learn more about them.</p>
+                            <a href="#" class="btn text-white border-white rounded-pill">Button</a>
+                          </div>
+                        </div>
+                        <hr>
+                        <div class="card shadow-sm float-start w-100 text-white bg-primary mb-2">
+                          <div class="card-body">
+                            <div class="float-end dropdown show"><a href="#" data-bs-toggle="dropdown" class="dropdown-toggle text-white"><i class="align-middle lnr lnr-cog"></i></a>
+                              <div class="dropdown-menu dropdown-menu-end">
+                                <a href="#" class="dropdown-item">Action</a>
+                                <a href="#" class="dropdown-item">Another action</a>
+                              </div>
+                            </div>
+                            <h4 class="card-title">Working</h4>
+                            <p class="card-text"> This template features <em>working</em> components to demonstrate realistic use and implementation. </p>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="col">
+                        <div id="accordion" class="border rounded" role="tablist" aria-multiselectable="true">
+                          <a role="tab" id="headingOne" data-bs-toggle="collapse" href="#collapseOne" aria-expanded="false" aria-controls="collapseOne" class="card-header d-block collapsed"> Amy Phillips </a>
+                          <div id="collapseOne" role="tabpanel" class="collapse" data-parent="#accordion">
+                            <div class="card bg-transparent shadow-sm border-0">
+                              <div class="card-body">
+                                <div class="row">
+                                  <div class="col-xl-10 col-lg-9 col-md-7">
+                                    <h5>Web / UI Developer</h5>
+                                    <p> I love to read, hang out with friends, listen to music, and learn new things. I&apos;ve been with ACME since the dotcom boom in 1999. </p>
+                                    <p><span class="badge badge-dark tags">css3</span> <span class="badge badge-info tags">nodejs</span></p>
+                                  </div>
+                                  <div class="col-xl-2 col-lg-3 col-md-5 col-10 mx-auto text-center">
+                                    <img src="//ui-avatars.com/api/?name=Amy+Phillips" alt="" class="mx-auto rounded-circle img-fluid bg-dark">
+                                  </div>
+                                  <div class="col-sm-4">
+                                    <h3 class="mb-0">20.7K</h3> <small>Followers</small>
+                                    <button class="btn btn-block btn-outline-secondary text-truncate">Follow</button>
+                                  </div>
+                                  <div class="col-sm-4">
+                                    <h3 class="mb-0">245</h3> <small>Following</small>
+                                    <button class="btn btn-outline-secondary btn-block text-truncate">View Profile</button>
+                                  </div>
+                                  <div class="col-sm-4">
+                                    <h3 class="mb-0">43</h3> <small>Snippets</small>
+                                    <button type="button" class="btn btn-outline-secondary btn-block text-truncate">Show</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <a role="tab" id="headingTwo" data-bs-toggle="collapse" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo" class="card-header d-block collapsed"> Devin Wozniak </a>
+                          <div id="collapseTwo" role="tabpanel" aria-labelledby="headingTwo" class="collapse show" data-parent="#accordion">
+                            <div class="card bg-transparent shadow-sm border-0">
+                              <div class="card-body">
+                                <div class="row">
+                                  <div class="col-xl-10 col-lg-9 col-md-7">
+                                    <h5>Network Admininstrator</h5>
+                                    <p> I love to read, hang out with friends, listen to music, and learn new things. I got a BS in CS from Bot University. </p>
+                                    <p><span class="badge badge-dark tags">html5</span> <span class="badge badge-dark tags">css3</span> <span class="badge badge-dark tags">nodejs</span></p>
+                                  </div>
+                                  <div class="col-xl-2 col-lg-3 col-md-5 col-10 text-center mx-auto">
+                                    <img src="//ui-avatars.com/api/?name=Devin+Wozniak" alt="bot" class="mx-auto rounded-circle img-fluid bg-dark">
+                                  </div>
+                                  <div class="col-sm-4">
+                                    <h3 class="mb-0">289</h3> <small>Followers</small>
+                                    <button class="btn btn-block btn-outline-secondary text-truncate"><span class="fa fa-plus-circle"></span> Follow</button>
+                                  </div>
+                                  <div class="col-sm-4">
+                                    <h3 class="mb-0">89</h3> <small>Following</small>
+                                    <button class="btn btn-outline-secondary btn-block text-truncate"><span class="fa fa-user"></span> View Profile</button>
+                                  </div>
+                                  <div class="col-sm-4">
+                                    <h3 class="mb-0">64</h3> <small>Snippets</small>
+                                    <button type="button" class="btn btn-outline-secondary btn-block"><span class="fa fa-gear"></span> Options</button>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <!-- /accordion -->
+                      </div>
+                    </div>
+                  </div>
+                  <!-- /tab-pane -->
+                </div>
+                <!-- /tab-content -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="row pt-5" id="sectionInbox">
+        <div class="col pt-4 d-flex flex-column">
+          <br>
+          <h3 class="text-secondary">Inbox</h3>
+          <div class="bg-light rounded flex-fill py-2 px-4">
+            <div class="row py-4">
+              <div class="col-md-2">
+                <div class="nav nav-pills flex-column text-center">
+                  <a class="nav-link active mb-2" href="#inMessages">Messages</a>
+                  <a class="nav-link border mb-2" href="#inMessages">Trash</a>
+                  <a class="nav-link border mb-2" href="#inMessages">Drafts</a>
+                </div>
+              </div>
+              <div class="col col-md">
+                <ul class="list-group" id="inMessages">
+                  <li class="list-group-item bg-transparent d-block py-1">
+                    <div class="row text-light">
+                      <div class="col-12 p-2">
+                        <span class="float-end">yesterday, 11:58 AM</span>
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="check1">
+                          <label class="custom-control-label text-nowrap" for="check1"><a href="mailto:" class="text-decoration-none">Janey Wilson</a></label>
+                        </div>
+                      </div>
+                      <div class="col-12 py-2">
+                        <p class="lead mb-0">
+                          <a href="#messageModal" data-bs-target="#messageModal" data-bs-toggle="modal" class="text-truncate text-decoration-none">Status update for last month</a>
+                          <i class="align-middle mdi mdi-attachment"></i>
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item bg-transparent d-block py-1">
+                    <div class="row text-light">
+                      <div class="col-12 p-2">
+                        <span class="float-end">Monday, 9:44 AM</span>
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" id="check2">
+                          <label class="custom-control-label text-nowrap" for="check2"><a href="mailto:" class="text-decoration-none">Alex Smith</a></label>
+                        </div>
+                      </div>
+                      <div class="col-12 py-2">
+                        <p class="lead mb-0">
+                          <a href="#messageModal" data-bs-target="#messageModal" data-bs-toggle="modal" class="text-truncate text-decoration-none">RE: Holiday party</a>
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                  <li class="list-group-item bg-transparent d-block py-1">
+                    <div class="row text-light">
+                      <div class="col-12 p-2">
+                        <span class="float-end">Friday, 2:08 PM</span>
+                        <div class="custom-control custom-checkbox">
+                          <input type="checkbox" class="custom-control-input" checked id="check2">
+                          <label class="custom-control-label text-nowrap" for="check2"><a href="mailto:" class="text-decoration-none">Marc DiFrancesca</a></label>
+                        </div>
+                      </div>
+                      <div class="col-12 py-2">
+                        <p class="lead mb-0">
+                          <a href="#messageModal" data-bs-target="#messageModal" data-bs-toggle="modal" class="text-truncate text-decoration-none">Reports from Project</a>
+                          <i class="align-middle mdi mdi-attachment"></i>
+                        </p>
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="row pt-5" id="sectionPremiums">
+        <div class="col pt-4 d-flex flex-column">
+          <br>
+          <h3 class="text-secondary">Schedule</h3>
+          <div class="bg-light rounded flex-fill p-4">
+            <div class="table-responsive bg-light">
+
+            </div>
+
+
+            <div class="table-responsive bg-light">
+
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <section class="row pt-5" id="sectionAlerts">
+        <div class="col pt-4 d-flex flex-column">
+          <br>
+          <h3 class="text-secondary">Student Directory</h3>
+          <div class="bg-light rounded flex-fill p-4">
+            <div class="table-responsive">
+              <table class="table table-sm table-borderless text-light">
+                <tbody>
+                  <tr>
+                    <th class="w-25 border-top-0">Location</th>
+                    <th class="w-50 border-top-0">Date</th>
+                    <th class="w-25 border-top-0">Risk</th>
+                  </tr>
+                  <tr>
+                    <td>Westfield</td>
+                    <td>08.05.19 <span class="badge badge-pill badge-danger">overflow</span></td>
+                    <td>323</td>
+                  </tr>
+                  <tr>
+                    <td>Galway</td>
+                    <td>08.05.19 <span class="badge badge-pill badge-danger">spill</span></td>
+                    <td>5362</td>
+                  </tr>
+                  <tr>
+                    <td>Bern</td>
+                    <td>08.05.19</td>
+                    <td>153</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="row pt-5" id="sectionDetections">
+        <div class="col pt-4 d-flex flex-column">
+          <br>
+          <h3 class="text-secondary">Class Directory</h3>
+          <div class="bg-light rounded flex-fill p-4">
+            <div class="row row-cols-1 row-cols-xl-3">
+              <div class="col pb-3">
+                <div class="card bg-dark text-light shadow-sm h-100">
+                  <div class="card-body d-flex flex-column align-items-start">
+                    <h4 class="card-title text-primary">Class List</h4>
+                    <p class="card-text">Movement was seen in the front zone at 4:16 AM</p>
+                    <a href="#" class="btn btn-outline-primary rounded-pill mt-auto">Details</a>
+                  </div>
+                </div>
+              </div>
+              <!-- <div class="col pb-3">
+                <div class="card bg-dark text-light shadow-sm h-100">
+                  <div class="card-body d-flex flex-column align-items-start">
+                    <h4 class="card-title text-primary">Detection 2</h4>
+                    <p class="card-text">Movement was seen in the West area at 3:23 AM</p>
+                    <a href="#" class="btn btn-primary rounded-pill mt-auto">Details</a>
+                  </div>
+                </div>
+              </div> -->
+              <div class="col pb-3">
+                <div class="card bg-dark text-light shadow-sm h-100">
+                  <div class="card-body d-flex flex-column align-items-start">
+                    <h4 class="card-title text-primary">Detection 3</h4>
+                    <p class="card-text">A Person was seen in the North entrance at 7:48 AM</p>
+                    <a href="#" class="btn btn-primary rounded-pill mt-auto">Details</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <footer class="row mt-5 pt-5 text-secondary">
+        <div class="col-12 col-sm">
+          <ul class="list-unstyled">
+            <li><a href="#">Products</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Benefits</a></li>
+            <li><a href="#">Developers</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-sm">
+          <ul class="list-unstyled">
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Delivery</a></li>
+            <li><a href="#">Privacy</a></li>
+            <li><a href="#">Terms</a></li>
+          </ul>
+        </div>
+        <div class="col-12 col-sm">
+          <ul class="list-unstyled">
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+            <li><a href="#">Link</a></li>
+          </ul>
+        </div>
+        <div class="col-12 text-end small py-4"> &copy; 2019-present Inc. </div>
+      </footer>
+    </main>
+  </div>
+</div>
+<div id="modalLogin" class="modal fade" tabindex="-1" role="dialog" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="mb-0">Login</h3>
+        <button type="button" class="btn-close font-weight-light" data-bs-dismiss="modal" aria-hidden="true"></button>
+      </div>
+      <div class="modal-body py-4">
+        <form class="form  mx-auto w-75" role="form" autocomplete="off" id="formLogin" novalidate="" method="POST">
+          <div class="form-group">
+            <a href="" class="float-end">New user?</a>
+            <label for="uname1">Username</label>
+            <input type="text" class="form-control form-control-lg" name="uname1" id="uname1" required>
+            <div class="invalid-feedback">Oops, you missed this one.</div>
+          </div>
+          <div class="form-group">
+            <label>Password</label>
+            <input type="password" class="form-control form-control-lg" id="pwd1" required autocomplete="new-password">
+            <div class="invalid-feedback">Enter your password too!</div>
+          </div>
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="rememberMe">
+            <label class="custom-control-label" for="rememberMe">Remember me on this computer</label>
+          </div>
+          <div class="form-group py-4">
+            <button class="btn btn-outline-secondary btn-lg" data-bs-dismiss="modal" aria-hidden="true">Cancel</button>
+            <button type="submit" class="btn btn-success btn-lg float-end" id="btnLogin">Login</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.1/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="js/scripts.js"></script>
+</body>
+
+</html> -->
+<%- include('footer'); -%>

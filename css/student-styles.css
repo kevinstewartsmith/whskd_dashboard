@@ -1,0 +1,171 @@
+
+body {
+    overflow-x: hidden;
+    padding-top: 10px;
+    /* background-color: #f6f6f6;
+    background-color: #232930; */
+
+    /* background-color: blue; */
+    background-color: white;
+    text-align: center;
+
+}
+
+
+section {
+  text-align: left;
+}
+h3 {
+  margin: auto;
+  color: white;
+}
+.bg-black {
+  /* side bar background color */
+    background-color: #70cbd0;
+
+}
+
+
+.sticky-top-side {
+    top: 100px;
+}
+
+.navbar .mdi {
+  color: #70cbd0;
+  font-size: 26px;
+}
+
+.sidebar .mdi {
+    font-size: 26px;
+    /* colors the sidebar link icons */
+    color: white;
+}
+
+.sidenav .nav-link {
+    width: 100%;
+    /* colors the sidebar text */
+    color: white;
+
+}
+
+.sidenav .nav-link.active {
+    background-color: #f8f9fa;
+}
+
+
+
+.bg-light {
+    background-color: rgba(200,200,200,0.1) !important;
+}
+
+
+
+
+
+/* body {
+  text-align: center;
+  background-color: #011F3F;
+} */
+
+#level-title {
+  font-family: 'Press Start 2P', cursive;
+  font-size: 2rem;
+  margin:  5%;
+  color: #fcaf18;
+}
+
+
+
+.container {
+  display: block;
+  width: 90%;
+  margin: auto;
+
+}
+
+.btn {
+  margin: 10px;
+  display: inline-block;
+  height: 200px;
+  width: 200px;
+  border: 10px solid black;
+  border-radius: 20%;
+
+}
+
+
+.game-over {
+  background-color: red;
+  opacity: 0.8;
+}
+
+.red {
+  background-color: red;
+}
+
+.green {
+
+  background-image: url('../memory-game-images/moon.png') ;
+
+  background-repeat:no-repeat;
+  background-size:contain;
+  height:200px;
+  width:200px;
+ background-color: green;
+
+}
+
+.blue {
+  background-color: blue;
+}
+
+.yellow {
+  background-color: yellow;
+}
+
+.pressed {
+  box-shadow: 0 0 20px white;
+  background-color: grey;
+}
+
+
+.flip-card {
+  background-color: transparent;
+  width: 200px;
+  height: 200px;
+  perspective: 1000px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  text-align: center;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+/* .flip-card:hover .flip-card-inner { */
+.flip-card-inner {
+  transform: rotateY(0deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-back {
+  background-color: blue;
+  color: transparent;
+  transform: rotateY(180deg);
+}
