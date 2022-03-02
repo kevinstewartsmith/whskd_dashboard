@@ -11,6 +11,13 @@ body {
 .teacher-header {
   color: white;
 }
+.btn {
+  border-width: 0px;
+}
+.dropdown-item > a {
+    color: pink; /* This has an effect */
+}
+
 .bg-black {
   /* side bar background color */
     background-color: #70cbd0;
