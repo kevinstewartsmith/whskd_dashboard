@@ -14,8 +14,8 @@ body {
 .btn {
   border-width: 0px;
 }
-.dropdown-item > a {
-    color: pink; /* This has an effect */
+.chart-title { 
+  white-space: nowrap;
 }
 
 .bg-black {
