@@ -37,7 +37,8 @@
       </div>
     </div>
     <main class="col px-4 px-lg-5 pt-5">
-      <h1>Teacher Dashboard</h1>
+      <h1>Teacher <%=" " + teacher + " "%> Dashboard</h1>
+
       <div class="row">
 
 
@@ -51,8 +52,8 @@
               <li><a class="dropdown-item" href="#">Regular link</a></li>
               <li><a class="dropdown-item active" href="#" aria-current="true">Active link</a></li>
               <li><a class="dropdown-item" href="#">Another link</a></li>
-              <% for (var i = 0; i < westernTeachers.length; i++) { %>
-                <li><a class="dropdown-item" href="#"><%= westernTeachers[i] %></a></li>
+              <% for (var i = 0; i < 5; i++) { %>
+                <li><a class="dropdown-item" href="#"><%=" " + teacher + " "%></a></li>
               <% } %>
             </ul>
           </div>

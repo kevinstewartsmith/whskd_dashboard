@@ -2,18 +2,22 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const teachers = require(__dirname + "/teachers");
+const _ = require('lodash');
 //Makes an express app
 const app = express();
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
+const westernTeachers = teachers.getWesternTeachers();
+const koreanVietnameseTeachers = teachers.getKoreanVietnameseTeachers();
+const allTeachers = westernTeachers.concat(koreanVietnameseTeachers);
+
 //What happens when the user goes to the homepage
 app.get("/", function(req, res) {
    // res.sendFile(__dirname + "/index.html");
    // res.sendFile(__dirname + "/memory-game.html");
-   const westernTeachers = teachers.getWesternTeachers();
-   const koreanVietnameseTeachers = teachers.getKoreanVietnameseTeachers();
+   console.log(koreanVietnameseTeachers);
    res.render("index",{
      westernTeachers: westernTeachers,
      koreanVietnameseTeachers: koreanVietnameseTeachers
@@ -23,13 +27,30 @@ app.get("/", function(req, res) {
 app.get("/teacher", function(req, res) {
    // res.sendFile(__dirname + "/teacher-dashboard.html");
    // res.sendFile(__dirname + "/memory-game.html");
-   const westernTeachers = teachers.getWesternTeachers();
+   // const westernTeachers = teachers.getWesternTeachers();
 
    console.log(westernTeachers);
    res.render("teacher",{
-     westernTeachers: westernTeachers,
-
+     // westernTeachers: westernTeachers,
+     teachers: allTeachers
    });
+})
+
+app.get("/teachers/:teacherName", function(req,res) {
+  const requestedTitle = _.lowerCase(req.params.teacherName);
+
+  console.log(allTeachers);
+  allTeachers.forEach(function(teacher) {
+  const storedTitle = _.lowerCase(teacher);
+  if (storedTitle === requestedTitle) {
+    res.render("teacher", {
+      teacher: teacher,
+
+    });
+    console.log("Match Found");
+  }
+})
+
 })
 
 app.get("/headmaster", function(req, res) {
