@@ -1,6 +1,7 @@
 //Requires node.js and express
 const express = require("express");
 const bodyParser = require("body-parser");
+const teachers = require(__dirname + "/teachers");
 //Makes an express app
 const app = express();
 
@@ -11,13 +12,24 @@ app.use(express.static("public"));
 app.get("/", function(req, res) {
    // res.sendFile(__dirname + "/index.html");
    // res.sendFile(__dirname + "/memory-game.html");
-   res.render("index")
+   const westernTeachers = teachers.getWesternTeachers();
+   const koreanVietnameseTeachers = teachers.getKoreanVietnameseTeachers();
+   res.render("index",{
+     westernTeachers: westernTeachers,
+     koreanVietnameseTeachers: koreanVietnameseTeachers
+   });
 })
 
 app.get("/teacher", function(req, res) {
    // res.sendFile(__dirname + "/teacher-dashboard.html");
    // res.sendFile(__dirname + "/memory-game.html");
-   res.render("teacher")
+   const westernTeachers = teachers.getWesternTeachers();
+
+   console.log(westernTeachers);
+   res.render("teacher",{
+     westernTeachers: westernTeachers,
+
+   });
 })
 
 app.get("/headmaster", function(req, res) {

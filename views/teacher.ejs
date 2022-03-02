@@ -48,9 +48,12 @@
               Dropright
             </button>
             <ul class="dropdown-menu">
-              <li>Teacher name</li>
-              <li>Teacher name</li>
-              <li>Teacher name</li>
+              <li><a class="dropdown-item" href="#">Regular link</a></li>
+              <li><a class="dropdown-item active" href="#" aria-current="true">Active link</a></li>
+              <li><a class="dropdown-item" href="#">Another link</a></li>
+              <% for (var i = 0; i < westernTeachers.length; i++) { %>
+                <li><a class="dropdown-item" href="#"><%= westernTeachers[i] %></a></li>
+              <% } %>
             </ul>
           </div>
         </div>
@@ -413,31 +416,8 @@ At w3schools.com you will learn how to make a website. They offer free tutorials
         </div>
       </section>
       <footer class="row mt-5 pt-5 text-secondary">
-        <div class="col-12 col-sm">
-          <ul class="list-unstyled">
-            <li><a href="#">Products</a></li>
-            <li><a href="#">Services</a></li>
-            <li><a href="#">Benefits</a></li>
-            <li><a href="#">Developers</a></li>
-          </ul>
-        </div>
-        <div class="col-12 col-sm">
-          <ul class="list-unstyled">
-            <li><a href="#">Contact</a></li>
-            <li><a href="#">Delivery</a></li>
-            <li><a href="#">Privacy</a></li>
-            <li><a href="#">Terms</a></li>
-          </ul>
-        </div>
-        <div class="col-12 col-sm">
-          <ul class="list-unstyled">
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-            <li><a href="#">Link</a></li>
-          </ul>
-        </div>
-        <div class="col-12 text-end small py-4"> &copy; 2019-present Inc. </div>
+
+        <div class="col-12 text-end small py-4"> &copy; 2022-present Inc. </div>
       </footer>
     </main>
   </div>

@@ -8,14 +8,21 @@ body {
     /* background-color: blue; */
     background-color: white;
 }
-
+.teacher-header {
+  color: white;
+}
 .bg-black {
   /* side bar background color */
     background-color: #70cbd0;
     /* background-color: purple; */
 
 }
-
+.bg-blue {
+  background-color: #FF9F45;
+}
+.bg-gray {
+  background-color: #EFEFEF;
+}
 
 .sticky-top-side {
     top: 100px;
