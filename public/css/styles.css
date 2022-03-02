@@ -24,7 +24,11 @@ body {
     /* background-color: purple; */
 
 }
-.bg-blue {
+.bg-navy {
+  background-color: #42C2FF;
+}
+
+.bg-orange {
   background-color: #FF9F45;
 }
 .bg-gray {
