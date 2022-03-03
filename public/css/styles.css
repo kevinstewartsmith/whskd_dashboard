@@ -14,7 +14,7 @@ body {
 .btn {
   border-width: 0px;
 }
-.chart-title { 
+.chart-title {
   white-space: nowrap;
 }
 
@@ -42,7 +42,9 @@ body {
 .navbar .mdi {
   color: #70cbd0;
   font-size: 26px;
+
 }
+
 
 .sidebar .mdi {
     font-size: 26px;
