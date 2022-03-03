@@ -39,18 +39,7 @@
     <main class="col px-4 px-lg-5 pt-5">
       <h1>Teacher <%=" " + teacher + " "%> Dashboard</h1>
 
-      <div class="row">
 
-
-
-        
-        <!-- <div class="col-xl-4 col-md-6 pt-3 pb-4" style="background-color: green">
-
-        </div>
-        <div class="col-xl-4 order-xl-0 order-md-1 pt-3 pb-4" style="background-color: blue">
-
-        </div> -->
-      </div>
       <!-- ************
       DAILY REPORT
       ************ -->
@@ -61,27 +50,27 @@
           <br>
           <h3 class="text-secondary"> <%="Teacher "+ teacher + " Daily Report"%> </h3>
           <div class="bg-light rounded flex-fill p-4">
-            <div class="card bg-white text-dark shadow-sm h-100">
-              <div class="card-body">
+            <div class="card bg-white text-dark shadow h-100">
+              <div class="card-body ">
                 <!-- tabs -->
                 <ul class="nav nav-tabs" role="tablist">
                   <li class="nav-item"><button class="nav-link bg-transparent text-dark text-uppercase active" data-bs-toggle="tab" data-bs-target="#tab1" role="tab">Report Classes</button></li>
-                  <li class="nav-item"><button class="nav-link bg-transparent text-dark text-uppercase" data-bs-toggle="tab" data-bs-target="#tab2" role="tab">Preview</button></li>
+                  <li class="nav-item"><button class="nav-link bg-primary text-dark text-uppercase" data-bs-toggle="tab" data-bs-target="#tab2" role="tab">Homeroom Report</button></li>
                 </ul>
-                <div class="tab-content py-4">
-                  <div class="tab-pane active" id="tab1" role="tabpanel">
-                    <div class="container">
+                <div class="tab-content py-4 " >
+                  <div class="tab-pane active " id="tab1" role="tabpanel">
+                    <div class="container ps-0">
 
 
                       <div class="row ">
-                        <div class="text-truncate col-1 mb-1  ">
+                        <div class="text-truncate col-2 mb-1   ">
                           <p class="chart-title"><strong>Period</strong></p>
 
                         </div>
-                        <div class="text-truncate col mb-1 ">
+                        <div class="text-truncate col-4 mb-1 ">
                           <p class="chart-title"><strong>Today's Class</strong></p>
                         </div>
-                        <div class="text-truncate col-2 mb-1 ">
+                        <div class="text-truncate col mb-1 ">
                           <p class="chart-title"><strong>Homework</strong></p>
 
                         </div>
@@ -97,23 +86,26 @@
 
 <!-- //////Iteraror Start///////// -->
 <% for (let i = 0; i < orderedClasses.length; i++) { %>
-<div class="row " style="height: 6rem">
-  <div class="col-1 mb-1 border border-dark" style="position:relative">
-    <div class="" style=" position: absolute; top: 0; bottom: 0; margin: auto; background-color:red; border-color: red; vertical-align: middle;padding: 1em 0 1em 0;">
-      <h6 class="period-number" style="display: inline;   top: 0; bottom: 0; left: 0; right: 0; margin: auto; text-align: centered; padding: 1em 1em 1em 1em "><%= "Period: " + orderedClassPeriods[i]%></h6>
-      <h6><%= orderedClasses[i].class_type + "-" + orderedClasses[i].class_name %></h6>
+<div class="row " style="height: 8rem">
+  <div class="col-2 m-1 border border-gray rounded-3" >
+    <div class="" >
+
+      <h6><%= orderedClassPeriods[i]%></h6>
+      <h6><%=  orderedClasses[i].class_name %></h6>
+      <h6><%= "Group: " + orderedClasses[i].class_type%></h6>
+      <h6></h6>
     </div>
 
 
   </div>
-  <div class="col mb-1 border border-dark">
+  <div class="col m-1 border border-gray rounded-3">
     <form action="/action_page.php" class="daily-report-form">
 
       <textarea id="w3review" name="w3review" class="daily-report-textarea" >At w3schools.com you will </textarea>
 
     </form>
   </div>
-  <div class="col-2 mb-1 border border-dark">
+  <div class="col-1 m-1 border border-dark rounded-3 shadow">
     <form action="/action_page.php" class="daily-report-form">
 
       <textarea id="w3review" name="w3review" class="daily-report-textarea"> </textarea>
@@ -121,7 +113,7 @@
     </form>
 
   </div>
-  <div class="col mb-1 border border-dark">
+  <div class="col m-1 border border-dark rounded-3">
     <form action="/action_page.php" class="daily-report-form">
 
       <textarea id="w3review" name="w3review" class="daily-report-textarea">
@@ -130,7 +122,7 @@ At w3schools.com you will learn
 
     </form>
   </div>
-  <div class="col-1 mb-1 border border-dark">
+  <div class="col-1 m-1 border border-dark rounded-3">
     <%= teacher %>
   </div>
 </div>

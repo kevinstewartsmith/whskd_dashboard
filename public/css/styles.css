@@ -14,6 +14,11 @@ body {
 .btn {
   border-width: 0px;
 }
+
+.border-gray {
+  border-color: black;
+  border-width: 20px;
+}
 .chart-title {
   white-space: nowrap;
 }
