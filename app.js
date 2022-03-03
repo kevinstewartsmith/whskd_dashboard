@@ -31,8 +31,8 @@ const classTimeSchema = mongoose.Schema({
   },
   period: {
     type: Number,
-    min: [1,'Must be at least 1, got {VALUE}'],
-    max: [8,'Must be 8 or below, got {VALUE}']
+    min: [1, 'Must be at least 1, got {VALUE}'],
+    max: [8, 'Must be 8 or below, got {VALUE}']
   },
 
 });
@@ -55,7 +55,7 @@ const classSchema = mongoose.Schema({
     type: [classTimeSchema],
     required: true
   },
-  class_type:{
+  class_type: {
     type: [String],
     required: true
   }
@@ -113,18 +113,25 @@ app.get("/teachers/:teacherName", function(req, res) {
     }
   })
 
-  Classes.find(function(err,classes){
+  Classes.find({regular_teacher:"Z","class_times.day":"R"},function(err, classes) {
     if (err) {
       console.log(err);
     } else {
-      mongoose.connection.close();
+      mongoose.connection.close(function(){
+        console.log("Closed db");
+      });
       // mongoose.disconnect();
 
-      classes.forEach(function(oneClass){
-        console.log(oneClass.class_name);
+      const manyClasses = classes;
+
+      teachers.sortClassOrder(manyClasses);
+      classes.forEach(function(oneClass) {
+        // console.log(oneClass);
       });
 
     }
+
+
 
   });
 
