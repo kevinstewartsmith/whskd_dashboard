@@ -43,21 +43,7 @@
 
 
 
-        <div class="col-xl-12 col-md-12 pt-3 pb-4" style="background-color: red">
-          <div class="btn-group dropend">
-            <button type="button" class="btn btn-secondary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropright
-            </button>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Regular link</a></li>
-              <li><a class="dropdown-item active" href="#" aria-current="true">Active link</a></li>
-              <li><a class="dropdown-item" href="#">Another link</a></li>
-              <% for (var i = 0; i < 5; i++) { %>
-                <li><a class="dropdown-item" href="#"><%=" " + teacher + " "%></a></li>
-              <% } %>
-            </ul>
-          </div>
-        </div>
+        
         <!-- <div class="col-xl-4 col-md-6 pt-3 pb-4" style="background-color: green">
 
         </div>
@@ -73,7 +59,7 @@
 
         <div class="col pt-4 d-flex flex-column"  >
           <br>
-          <h3 class="text-secondary">Daily Reports Yo</h3>
+          <h3 class="text-secondary"> <%="Teacher "+ teacher + " Daily Report"%> </h3>
           <div class="bg-light rounded flex-fill p-4">
             <div class="card bg-white text-dark shadow-sm h-100">
               <div class="card-body">
@@ -107,14 +93,14 @@
                         </div>
                       </div>
 
-                      
+
 
 <!-- //////Iteraror Start///////// -->
 <% for (let i = 0; i < orderedClasses.length; i++) { %>
 <div class="row " style="height: 6rem">
   <div class="col-1 mb-1 border border-dark" style="position:relative">
     <div class="" style=" position: absolute; top: 0; bottom: 0; margin: auto; background-color:red; border-color: red; vertical-align: middle;padding: 1em 0 1em 0;">
-      <h6 class="period-number" style="display: inline;   top: 0; bottom: 0; left: 0; right: 0; margin: auto; text-align: centered; padding: 1em 1em 1em 1em ">2</h6>
+      <h6 class="period-number" style="display: inline;   top: 0; bottom: 0; left: 0; right: 0; margin: auto; text-align: centered; padding: 1em 1em 1em 1em "><%= "Period: " + orderedClassPeriods[i]%></h6>
       <h6><%= orderedClasses[i].class_type + "-" + orderedClasses[i].class_name %></h6>
     </div>
 

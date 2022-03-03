@@ -77,19 +77,26 @@ exports.sortClassOrder = function(classArray) {
         sortedArray[class_time["period"] - 1] = oneClass;
 
       }
-    })
+    });
 
   });
-  // sortedArray.forEach(function(item){
-  //   if (item === "blank") {
-  //
-  //      let index = sortedArray.indexOf(item);
-  //      sortedArray.splice(index, 1);
-  //   }
-  // })
+
 
   sortedArray = sortedArray.filter(a => a !== null);
 
 
   return sortedArray;
+}
+
+exports.getOrderedPeriods = function(orderedClasses,day) {
+  let periods = [];
+  orderedClasses.forEach(function(classSession){
+    classSession["class_times"].forEach(function(classTime){
+      if (classTime["day"] === day){
+        periods.push(classTime["period"]);
+      }
+    });
+  });
+  //periods = periods.sort(function(a, b) {return a - b});
+  return periods;
 }

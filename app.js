@@ -118,7 +118,7 @@ app.get("/teachers/:teacherName", function(req, res) {
       const manyClasses = classes;
 
       orderedClasses = teachers.sortClassOrder(classes);
-      //let orderedClassPeriods = teachers.getOrderedPeriods(orderedClasses);
+      let orderedClassPeriods = teachers.getOrderedPeriods(orderedClasses,"R");
 
 
       allTeachers.forEach(function(teacher) {
@@ -126,8 +126,8 @@ app.get("/teachers/:teacherName", function(req, res) {
         if (storedTitle === requestedTitle) {
           res.render("teacher", {
             teacher: teacher,
-            orderedClasses: orderedClasses
-
+            orderedClasses: orderedClasses,
+            orderedClassPeriods: orderedClassPeriods
           });
           console.log("Match Found." );
         }
