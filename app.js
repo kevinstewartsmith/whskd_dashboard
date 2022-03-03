@@ -100,8 +100,10 @@ app.get("/teacher", function(req, res) {
 
 app.get("/teachers/:teacherName", function(req, res) {
   const requestedTitle = _.lowerCase(req.params.teacherName);
-
-  console.log(allTeachers);
+  // allTeachers.forEach(function(teach){
+  //   console.log(_.lowerCase(teach));
+  // })
+  const teacherCode = teachers.getTeacherCode(requestedTitle);
   allTeachers.forEach(function(teacher) {
     const storedTitle = _.lowerCase(teacher);
     if (storedTitle === requestedTitle) {
@@ -113,21 +115,21 @@ app.get("/teachers/:teacherName", function(req, res) {
     }
   })
 
-  Classes.find({regular_teacher:"Z","class_times.day":"R"},function(err, classes) {
+  Classes.find({regular_teacher:teacherCode,"class_times.day":"R"},function(err, classes) {
     if (err) {
       console.log(err);
     } else {
-      mongoose.connection.close(function(){
-        console.log("Closed db");
-      });
+      // mongoose.connection.close(function(){
+      //   console.log("Closed db");
+      // });
       // mongoose.disconnect();
 
       const manyClasses = classes;
 
       teachers.sortClassOrder(manyClasses);
-      classes.forEach(function(oneClass) {
-        // console.log(oneClass);
-      });
+      // classes.forEach(function(oneClass) {
+      //   // console.log(oneClass);
+      // });
 
     }
 
