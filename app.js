@@ -3,8 +3,10 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const teachers = require(__dirname + "/teachers");
 const _ = require('lodash');
+const mongoose = require('mongoose');
 //Makes an express app
 const app = express();
+mongoose.connect('mongodb://localhost:27017/WHSKD-DB');
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
@@ -14,9 +16,61 @@ app.use(express.static("public"));
 const westernTeachers = teachers.getWesternTeachers();
 const koreanVietnameseTeachers = teachers.getKoreanVietnameseTeachers();
 const allTeachers = westernTeachers.concat(koreanVietnameseTeachers);
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+///////////////Database/////////////////////////
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+const classTimeSchema = mongoose.Schema({
+  day: {
+    type: String,
+    enum: {
+      values: ['M', 'T', 'W', 'R', 'F'],
+      message: '{VALUE} is not supported'
+    }
+  },
+  period: {
+    type: Number,
+    min: [1,'Must be at least 1, got {VALUE}'],
+    max: [8,'Must be 8 or below, got {VALUE}']
+  },
+
+});
+
+
+const classSchema = mongoose.Schema({
+  _id: {
+    type: Number,
+    required: true
+  },
+  class_name: {
+    type: String,
+    required: true
+  },
+  regular_teacher: {
+    type: [String],
+    required: true
+  },
+  class_times: {
+    type: [classTimeSchema],
+    required: true
+  },
+  class_type:{
+    type: [String],
+    required: true
+  }
+
+});
+
+const Classes = mongoose.model("classe", classSchema);
 
 
 
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
+///////////////End of Database///////////////////
+/////////////////////////////////////////////////
+/////////////////////////////////////////////////
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -58,6 +112,21 @@ app.get("/teachers/:teacherName", function(req, res) {
       console.log("Match Found");
     }
   })
+
+  Classes.find(function(err,classes){
+    if (err) {
+      console.log(err);
+    } else {
+      mongoose.connection.close();
+      // mongoose.disconnect();
+
+      classes.forEach(function(oneClass){
+        console.log(oneClass.class_name);
+      });
+
+    }
+
+  });
 
 })
 
