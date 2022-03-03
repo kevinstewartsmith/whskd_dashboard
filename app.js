@@ -104,18 +104,11 @@ app.get("/teachers/:teacherName", function(req, res) {
   //   console.log(_.lowerCase(teach));
   // })
   const teacherCode = teachers.getTeacherCode(requestedTitle);
-  allTeachers.forEach(function(teacher) {
-    const storedTitle = _.lowerCase(teacher);
-    if (storedTitle === requestedTitle) {
-      res.render("teacher", {
-        teacher: teacher,
+  var orderedClasses = [];
+  Classes.find({
+    regular_teacher: teacherCode,
+    "class_times.day": "R"}, function(err, classes) {
 
-      });
-      console.log("Match Found");
-    }
-  })
-
-  Classes.find({regular_teacher:teacherCode,"class_times.day":"R"},function(err, classes) {
     if (err) {
       console.log(err);
     } else {
@@ -126,16 +119,29 @@ app.get("/teachers/:teacherName", function(req, res) {
 
       const manyClasses = classes;
 
-      teachers.sortClassOrder(manyClasses);
+      orderedClasses = teachers.sortClassOrder(manyClasses);
       // classes.forEach(function(oneClass) {
       //   // console.log(oneClass);
       // });
+      console.log("SORTED ARRAY YOOOO: " + orderedClasses);
 
     }
-
-
-
   });
+
+
+  allTeachers.forEach(function(teacher) {
+    const storedTitle = _.lowerCase(teacher);
+    if (storedTitle === requestedTitle) {
+      res.render("teacher", {
+        teacher: teacher,
+        orderedClasses: orderedClasses
+
+      });
+      console.log("Match Found. Ordered Classes type: " + type(orderedClasses[0]));
+    }
+  })
+
+
 
 })
 

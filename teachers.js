@@ -64,7 +64,8 @@ exports.getTeacherCode = function(name) {
 exports.sortClassOrder = function(classArray) {
   const thisDay = "R";
    let period = 1;
-   let sortedArray = ["","","","","","","",""];
+   let sortedArray = [null,null,null,null,null,null,null,null];
+   // let sortedArray = ["blank","blank","blank","blank","blank","blank","blank","blank"];
   //console.log("CLASS ARRAY " + classArray);
   classArray.forEach(function(oneClass) {
     console.log("CLLLASSS: " + oneClass);
@@ -80,11 +81,15 @@ exports.sortClassOrder = function(classArray) {
 
   });
   // sortedArray.forEach(function(item){
-  //   if (item === "") {
-  //     sortedArray.splice(item, 1);
+  //   if (item === "blank") {
+  //
+  //      let index = sortedArray.indexOf(item);
+  //      sortedArray.splice(index, 1);
   //   }
   // })
-  console.log("SORTED ARRAY YOOOO: " + sortedArray);
 
-  //return sortedArray;
+  sortedArray = sortedArray.filter(a => a !== null);
+
+
+  return sortedArray;
 }
