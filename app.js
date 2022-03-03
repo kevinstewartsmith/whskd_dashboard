@@ -112,34 +112,32 @@ app.get("/teachers/:teacherName", function(req, res) {
     if (err) {
       console.log(err);
     } else {
-      // mongoose.connection.close(function(){
-      //   console.log("Closed db");
-      // });
+
       // mongoose.disconnect();
 
       const manyClasses = classes;
 
-      orderedClasses = teachers.sortClassOrder(manyClasses);
-      // classes.forEach(function(oneClass) {
-      //   // console.log(oneClass);
-      // });
-      console.log("SORTED ARRAY YOOOO: " + orderedClasses);
+      orderedClasses = teachers.sortClassOrder(classes);
+      //let orderedClassPeriods = teachers.getOrderedPeriods(orderedClasses);
+
+
+      allTeachers.forEach(function(teacher) {
+        const storedTitle = _.lowerCase(teacher);
+        if (storedTitle === requestedTitle) {
+          res.render("teacher", {
+            teacher: teacher,
+            orderedClasses: orderedClasses
+
+          });
+          console.log("Match Found." );
+        }
+      })
 
     }
   });
 
 
-  allTeachers.forEach(function(teacher) {
-    const storedTitle = _.lowerCase(teacher);
-    if (storedTitle === requestedTitle) {
-      res.render("teacher", {
-        teacher: teacher,
-        orderedClasses: orderedClasses
 
-      });
-      console.log("Match Found. Ordered Classes type: " + type(orderedClasses[0]));
-    }
-  })
 
 
 

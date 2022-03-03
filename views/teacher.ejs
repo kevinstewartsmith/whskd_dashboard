@@ -107,51 +107,15 @@
                         </div>
                       </div>
 
-                      <div class="row " style="height: 6rem">
-                        <div class="col-1 mb-1 border border-dark" style="position:relative">
-                          <div class="" style=" position: absolute; top: 0; bottom: 0; margin: auto; background-color:red; border-color: red; vertical-align: middle;padding: 1em 0 1em 0;">
-                            <h6 class="period-number" style="display: inline;   top: 0; bottom: 0; left: 0; right: 0; margin: auto; text-align: centered; padding: 1em 1em 1em 1em ">2</h6>
-                            <h6>Science</h6>
-                          </div>
-
-
-                        </div>
-                        <div class="col mb-1 border border-dark">
-                          <form action="/action_page.php" class="daily-report-form">
-
-                            <textarea id="w3review" name="w3review" class="daily-report-textarea" >At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-
-                          </form>
-                        </div>
-                        <div class="col-2 mb-1 border border-dark">
-                          <form action="/action_page.php" class="daily-report-form">
-
-                            <textarea id="w3review" name="w3review" class="daily-report-textarea">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
-
-                          </form>
-
-                        </div>
-                        <div class="col mb-1 border border-dark">
-                          <form action="/action_page.php" class="daily-report-form">
-
-                            <textarea id="w3review" name="w3review" class="daily-report-textarea">
-At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
-</textarea>
-
-                          </form>
-                        </div>
-                        <div class="col-1 mb-1 border border-dark">
-                          Column
-                        </div>
-                      </div>
+                      
 
 <!-- //////Iteraror Start///////// -->
-<% for (var i = 0; i < 9; i++) { %>
+<% for (let i = 0; i < orderedClasses.length; i++) { %>
 <div class="row " style="height: 6rem">
   <div class="col-1 mb-1 border border-dark" style="position:relative">
     <div class="" style=" position: absolute; top: 0; bottom: 0; margin: auto; background-color:red; border-color: red; vertical-align: middle;padding: 1em 0 1em 0;">
       <h6 class="period-number" style="display: inline;   top: 0; bottom: 0; left: 0; right: 0; margin: auto; text-align: centered; padding: 1em 1em 1em 1em ">2</h6>
-      <h6>Science</h6>
+      <h6><%= orderedClasses[i].class_type + "-" + orderedClasses[i].class_name %></h6>
     </div>
 
 
@@ -159,14 +123,14 @@ At w3schools.com you will learn how to make a website. They offer free tutorials
   <div class="col mb-1 border border-dark">
     <form action="/action_page.php" class="daily-report-form">
 
-      <textarea id="w3review" name="w3review" class="daily-report-textarea" >At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
+      <textarea id="w3review" name="w3review" class="daily-report-textarea" >At w3schools.com you will </textarea>
 
     </form>
   </div>
   <div class="col-2 mb-1 border border-dark">
     <form action="/action_page.php" class="daily-report-form">
 
-      <textarea id="w3review" name="w3review" class="daily-report-textarea">At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.</textarea>
+      <textarea id="w3review" name="w3review" class="daily-report-textarea"> </textarea>
 
     </form>
 
@@ -175,17 +139,17 @@ At w3schools.com you will learn how to make a website. They offer free tutorials
     <form action="/action_page.php" class="daily-report-form">
 
       <textarea id="w3review" name="w3review" class="daily-report-textarea">
-At w3schools.com you will learn how to make a website. They offer free tutorials in all web development technologies.
+At w3schools.com you will learn
 </textarea>
 
     </form>
   </div>
   <div class="col-1 mb-1 border border-dark">
-    Column
+    <%= teacher %>
   </div>
 </div>
 <% } %>
-<h1>22<%= orderedClasses %></h1>
+
 
 
 
