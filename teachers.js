@@ -85,6 +85,8 @@ exports.sortClassOrder = function(classArray) {
   sortedArray = sortedArray.filter(a => a !== null);
 
 
+
+
   return sortedArray;
 }
 
@@ -92,11 +94,19 @@ exports.getOrderedPeriods = function(orderedClasses,day) {
   let periods = [];
   orderedClasses.forEach(function(classSession){
     classSession["class_times"].forEach(function(classTime){
-      if (classTime["day"] === day){
+      if (classTime["day"] === day ){
         periods.push(classTime["period"]);
       }
     });
   });
   //periods = periods.sort(function(a, b) {return a - b});
+
+  function onlyUnique(value, index, self) {
+  return self.indexOf(value) === index;
+}
+
+// usage example:
+
+periods = periods.filter(onlyUnique);
   return periods;
 }
