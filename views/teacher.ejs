@@ -60,7 +60,7 @@
                 <div class="tab-content py-4 " >
                   <div class="tab-pane active " id="tab1" role="tabpanel">
                     <div class="container ps-0">
-
+                        <!-- <h3> "Teacher " + teacher + "'s " + "Friday " + "Classes:</h3> -->
 
                       <div class="row ">
                         <div class="text-truncate col-2 mb-1   ">
@@ -87,7 +87,7 @@
 <!-- //////Iteraror Start///////// -->
 <% for (let i = 0; i < orderedClasses.length; i++) { %>
 <div class="row " style="height: 8rem">
-  <div class="col-2 m-1 border border-gray rounded-3" >
+  <div class="col-2 m-1  border border border-dark rounded-3 shadow" >
     <div class="" >
 
       <h6><%= orderedClassPeriods[i]%></h6>
@@ -98,10 +98,10 @@
 
 
   </div>
-  <div class="col m-1 border border-gray rounded-3">
+  <div class="col m-1 border border border-dark rounded-3 shadow">
     <form action="/action_page.php" class="daily-report-form">
 
-      <textarea id="w3review" name="w3review" class="daily-report-textarea" >At w3schools.com you will </textarea>
+      <textarea id="w3review" name="w3review" class="daily-report-textarea" > </textarea>
 
     </form>
   </div>
@@ -113,17 +113,17 @@
     </form>
 
   </div>
-  <div class="col m-1 border border-dark rounded-3">
+  <div class="col m-1 border border-dark rounded-3 shadow">
     <form action="/action_page.php" class="daily-report-form">
 
       <textarea id="w3review" name="w3review" class="daily-report-textarea">
-At w3schools.com you will learn
+
 </textarea>
 
     </form>
   </div>
-  <div class="col-1 m-1 border border-dark rounded-3">
-    <%= teacher %>
+  <div class="col-1 m-1 pt-4   border border border-dark rounded-3 shadow">
+    <p class="m-2"><%= teacher %></p>
   </div>
 </div>
 <% } %>

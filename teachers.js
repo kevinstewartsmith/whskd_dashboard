@@ -62,7 +62,7 @@ exports.getTeacherCode = function(name) {
 }
 
 exports.sortClassOrder = function(classArray) {
-  const thisDay = "R";
+  const thisDay = "F";
    let period = 1;
    let sortedArray = [null,null,null,null,null,null,null,null];
    // let sortedArray = ["blank","blank","blank","blank","blank","blank","blank","blank"];

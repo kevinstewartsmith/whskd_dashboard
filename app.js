@@ -107,7 +107,7 @@ app.get("/teachers/:teacherName", function(req, res) {
   var orderedClasses = [];
   Classes.find({
     regular_teacher: teacherCode,
-    "class_times.day": "R"}, function(err, classes) {
+    "class_times.day": "F"}, function(err, classes) {
 
     if (err) {
       console.log(err);
@@ -118,7 +118,7 @@ app.get("/teachers/:teacherName", function(req, res) {
       const manyClasses = classes;
 
       orderedClasses = teachers.sortClassOrder(classes);
-      let orderedClassPeriods = teachers.getOrderedPeriods(orderedClasses,"R");
+      let orderedClassPeriods = teachers.getOrderedPeriods(orderedClasses,"F");
 
 
       allTeachers.forEach(function(teacher) {

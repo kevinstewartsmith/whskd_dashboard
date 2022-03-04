@@ -15,9 +15,9 @@ body {
   border-width: 0px;
 }
 
-.border-gray {
-  border-color: black;
-  border-width: 20px;
+.border-g {
+  border-color: red;
+
 }
 .chart-title {
   white-space: nowrap;
