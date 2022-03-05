@@ -136,9 +136,53 @@ app.get("/teachers/:teacherName", function(req, res) {
 
 
 
-
-
 })
+
+app.post("/teachers/:teacherName", function(req,res){
+
+  console.log("BODY: ");
+  const classDetails = req.body.class_details;
+  const className = classDetails.class_name;
+  const classType = classDetails.class_type;
+  const period = classDetails.period;
+  const weekDay = classDetails.daily_report.weekday;
+  const regularTeacher = classDetails.regular_teacher;
+  const lowerCaseTeacher = _.lowerCase(regularTeacher);
+  const teacherCode = teachers.getTeacherCode(lowerCaseTeacher);
+  console.log("REGULAR TEACHER POST: " + teacherCode);
+  console.log(classDetails + className + classType + period +regularTeacher);
+  console.log("Day: " + weekDay);
+//   class_name: 'Math',
+// class_type: [ 'G3' ],
+// period: '1',
+// regular_teacher: [ 'Amel' ]
+
+  Classes.find({
+    class_name: className,
+    class_type: classType,
+    "class_times.day": "F",
+    "class_times.period": period,
+    regular_teacher: teacherCode,
+
+
+
+  }, function(err, classes) {
+
+    if (err) {
+      console.log(err);
+    } else {
+
+      // mongoose.disconnect();
+
+      console.log(classes);
+
+
+    res.redirect('/teachers/:teacherName');
+    }
+  });
+
+
+});
 
 app.get("/headmaster", function(req, res) {
   res.sendFile(__dirname + "/headmaster-dashboard.html");

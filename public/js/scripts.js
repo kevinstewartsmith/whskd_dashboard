@@ -90,13 +90,21 @@ function typeEvent(tag) {
         homework: row.find(".homework").text(),
         next_class: row.find(".next-class").text()
       }
+    }
 
+    var teacherURL = "/teachers/" + classDetails["regular_teacher"];
+    console.log("TTTeacher: " + teacherURL);
 
-}
-
-console.log(classDetails);
+    $.ajax({type: "POST", url: teacherURL, dataType :"json", data :
+      {"class_details":classDetails}
+    });
+    console.log(classDetails);
 
   }
+
+
+
+
 }
 
 
