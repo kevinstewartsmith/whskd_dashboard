@@ -1,21 +1,4 @@
 
-// console.log("Footer JS works");
-// console.log($("todaysClass1").val());
-
-// $('textArea').click(function() {
-//     //var text = $('textarea#mytextarea').val();
-//     //send to server and process response
-//     console.log($(this).attr('id'));
-//     console.log($(this).val());
-//     console.log(Date.now());
-// });
-
-// $(".row").click(function() {
-//   //console.log($(this).attr("id"));
-//
-//   console.log($(this).find("textarea.today").attr("name") + $(this).find("textarea.today").val());
-// })
-
 
 //setup before functions
 var typingTimer;                //timer identifier
@@ -75,68 +58,55 @@ function typeEvent(tag) {
     clearTimeout(typingTimer);
   });
 
-  //user is "finished typing," do something
+
   function doneTyping () {
-    var spliceID = tag.attr("id").slice(0, -1)
+
     var textArea = "textarea#" + tag.attr("id");
     $(textArea).text(tag.val());
     var row = tag.parents().eq(2)
-
+    var lastClass = row.find('.class-type').text()
+    lastClass = lastClass.replace("Group: ","");
+    var lastClassArray = lastClass.split(',')  //.split(' ').pop();
+    console.log(lastClassArray);
     console.log("CLASS_Name: " + row.attr("id"));
-    console.log("class_type: " + row.find(".class-type").text());
+    console.log("class_type: " + lastClassArray);
     console.log("period: " + row.find(".period").text());
     console.log("todays_class: " + row.find(".today").text());
     console.log("homework: " + row.find(".homework").text());
     console.log("next_class: " + row.find(".next-class").text());
     console.log("teacher: " + row.find(".teacher").text());
 
-    var row = tag.parents().eq(2);
-    var doc = {
-      class_name: row.children("class-name").attr("id")
-    }
-    console.log("Class name from doc:" + row.find("class-name").attr("id"));
+    const classDetails = {
 
-    // classDocument["class1Array"][spliceID] = tag.val()
-    // console.log(classDocument["class1Array"]);
+      class_name: row.attr("id"),
+      class_type: lastClassArray,
+      period : Number(row.find(".period").text()),
+      regular_teacher: [ row.find(".teacher").text() ],
+      daily_report: {
+        date_in_ms: Date.now(),
+        date: getDate(),
+        weekday: getDay(),
+        todays_class:row.find(".today").text(),
+        homework: row.find(".homework").text(),
+        next_class: row.find(".next-class").text()
+      }
 
-    currentDoc[spliceID] = tag.val()
-    console.log(currentDoc);
 
+}
+
+console.log(classDetails);
 
   }
 }
 
-//var currentDoc = classDocument["class1Array"];
-// for (var i = 0; i < 8; i++){
-//   var docKey = "class" + (i+1) + "Array";
-//     currentDoc = classDocument[docKey];
-//     console.log(currentDoc["todaysClass"]);
-//     for (var j; j < 3; j++) {
-//       typeEvent(classTags[i][j]);
-//     }
-//
-//     // classTags[i].foreach(function(tag){
-//     //   typeEvent(tag);
-//     // });
-//
-// }
+
 
 
 for (var i = 0; i < 8; i++) {
-//classDocument.forEach(function(document) {
-  var docKey = "class" + (i+1) + "Array"
-  currentDoc = classDocument[docKey];
   for (var j = 0; j < 3; j++ ) {
     typeEvent(classTags[i][j]);
   }
-
 };
-
-
-//
-// typeEvent(classTags[0][0]);
-// typeEvent(classTags[0][1]);
-// typeEvent(classTags[0][2]);
 
 
   function getDate() {
@@ -155,5 +125,12 @@ for (var i = 0; i < 8; i++) {
 
    return today.toLocaleDateString("en-US", options);
  }
+
+ function getDay() {
+  const today = new Date();
+  const dayCodes = ["S","M","T","W","R","F","S"];
+  const dayNum = today.getDay();
+  return dayCodes[dayNum];
+}
  console.log(getDate());
- console.log(Date.now());
+ console.log(getDay());
