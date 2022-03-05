@@ -91,10 +91,10 @@
 
     <div class="" style="position: relative">
 
-      <h1 class="p-0" style="font-size: 8.5rem; color:#ECECEC; position: absolute;  padding:0 display:inline-block; margin-top: -35px; margin-left: 0px" ><strong><%= orderedClassPeriods[i]%></strong></h1>
+      <h1 class="p-0 period" style="font-size: 8.5rem; color:#ECECEC; position: absolute;  padding:0 display:inline-block; margin-top: -35px; margin-left: 0px" ><strong><%= orderedClassPeriods[i]%></strong></h1>
       <div class="mt-4 ms-0" style="position: absolute; top: 0px; left: 0.4rem">
-        <h6 class="text-truncate" style="font-size: 1.3rem; color:#2F86A6"><%=  orderedClasses[i].class_name %></h6>
-        <h6 class="m-0 text-truncate"><%= "Group: " + orderedClasses[i].class_type%></h6>
+        <h6 class="text-truncate class-name" style="font-size: 1.3rem; color:#2F86A6" id=""><%=  orderedClasses[i].class_name %></h6>
+        <h6 class="m-0 text-truncate class-type" id=""><%= "Group: " + orderedClasses[i].class_type%></h6>
       </div>
 
 
@@ -121,14 +121,14 @@
   <div class="col m-1 border border-dark rounded-3 shadow">
     <form action="/action_page.php" class="daily-report-form">
 
-      <textarea  name="w3review" class="daily-report-textarea" id="<%= "nextClass" + orderedClassPeriods[i]%>">c
+      <textarea  name="w3review" class="daily-report-textarea next-class" id="<%= "nextClass" + orderedClassPeriods[i]%>">c
 
 </textarea>
 
     </form>
   </div>
   <div class="col-1 m-1 pt-4   border border border-dark rounded-3 shadow">
-    <p class="m-2 text-truncate"><strong><%= teacher %></strong></p>
+    <p class="m-2 text-truncate teacher"><strong><%= teacher %></strong></p>
   </div>
 </div>
 <% } %>

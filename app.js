@@ -100,9 +100,6 @@ app.get("/teacher", function(req, res) {
 
 app.get("/teachers/:teacherName", function(req, res) {
   const requestedTitle = _.lowerCase(req.params.teacherName);
-  // allTeachers.forEach(function(teach){
-  //   console.log(_.lowerCase(teach));
-  // })
   const teacherCode = teachers.getTeacherCode(requestedTitle);
   var orderedClasses = [];
   Classes.find({
