@@ -54,8 +54,19 @@ function typeEvent(tag) {
   });
 
   //on keydown, clear the countdown
-  tag.on('keydown', function () {
+  tag.on('keydown', function (key) {
+    
+    var code = key.keyCode || key.which;
+    if(code == 9) { //Enter keycode
+      console.log("TAB");
+      tag.text(tag.val())
+      clearTimeout(typingTimer);
+
+      typingTimer = setTimeout(doneTyping, doneTypingInterval);
+    }
     clearTimeout(typingTimer);
+
+
   });
 
 
