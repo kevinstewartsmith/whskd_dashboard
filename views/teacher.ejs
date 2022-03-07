@@ -86,7 +86,8 @@
 
 <!-- //////Iteraror Start///////// -->
 <% for (let i = 0; i < orderedClasses.length; i++) { %>
-<div class="row " style="height: 8rem" id="<%= orderedClasses[i].class_name %>">
+
+<div class="row " name="<%= orderedClasses[i]._id %>" style="height: 8rem" id="<%= orderedClasses[i].class_name %>">
   <div class="col-2 m-1  border border border-dark rounded-3 shadow" >
 
     <div class="" style="position: relative">
@@ -106,14 +107,14 @@
   <div class="col m-1 border border border-dark rounded-3 shadow">
     <form action="/action_page.php" class="daily-report-form">
 
-      <textarea  name="Today" class="daily-report-textarea today" id="todaysClass<%= orderedClassPeriods[i]%>"> <%= "Period: " + orderedClassPeriods[i]%></textarea>
+      <textarea  name="Today" class="daily-report-textarea today" id="todaysClass<%= orderedClassPeriods[i]%>"><%= currentReports[i].todays_class %></textarea>
 
     </form>
   </div>
   <div class="col-1 m-1 border border-dark rounded-3 shadow">
     <form action="/action_page.php" class="daily-report-form">
 
-      <textarea  name="w3review" class="daily-report-textarea homework" id="<%= "homework" + orderedClassPeriods[i] %>" >hw </textarea>
+      <textarea  name="w3review" class="daily-report-textarea homework" id="<%= "homework" + orderedClassPeriods[i] %>" ><%= currentReports[i].homework %></textarea>
 
     </form>
 
@@ -121,9 +122,7 @@
   <div class="col m-1 border border-dark rounded-3 shadow">
     <form action="/action_page.php" class="daily-report-form">
 
-      <textarea  name="w3review" class="daily-report-textarea next-class" id="<%= "nextClass" + orderedClassPeriods[i]%>">c
-
-</textarea>
+      <textarea  name="w3review" class="daily-report-textarea nextclass" id="<%= "nextClass" + orderedClassPeriods[i]%>"><%= currentReports[i].next_class %></textarea>
 
     </form>
   </div>

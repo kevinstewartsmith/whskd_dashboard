@@ -37,6 +37,20 @@ const classTimeSchema = mongoose.Schema({
 
 });
 
+const dailyReportSchema = mongoose.Schema({
+  date_in_ms: String,
+  date: String,
+  weekday: {
+    type: String,
+    enum: {
+      values: ['S','M', 'T', 'W', 'R', 'F','S'],
+      message: '{VALUE} is not supported'
+    }
+  },
+  todays_class: String,
+  homework: String,
+  next_class: String,
+});
 
 const classSchema = mongoose.Schema({
   _id: {
@@ -58,11 +72,14 @@ const classSchema = mongoose.Schema({
   class_type: {
     type: [String],
     required: true
-  }
+  },
+  daily_reports : [dailyReportSchema],
+  current_report : dailyReportSchema
 
 });
 
 const Classes = mongoose.model("classe", classSchema);
+const DailyReports = mongoose.model("daily_report", dailyReportSchema);
 
 
 
@@ -99,24 +116,28 @@ app.get("/teacher", function(req, res) {
 })
 
 app.get("/teachers/:teacherName", function(req, res) {
-  const requestedTitle = _.lowerCase(req.params.teacherName);
-  const teacherCode = teachers.getTeacherCode(requestedTitle);
+  const requestedTitle = _.lowerCase(req.params.teacherName); //Convert Teacher name to lower case string
+  const teacherCode = teachers.getTeacherCode(requestedTitle); //get the teacher acronym
   var orderedClasses = [];
-  Classes.find({
+  Classes.find({ //Find classes based on
+
     regular_teacher: teacherCode,
-    "class_times.day": "F"}, function(err, classes) {
+    "class_times.day": "F"
+
+  },function(err, classes) {
 
     if (err) {
       console.log(err);
     } else {
-
+      //console.log("First CurrentReport in GET method: " + classes[0].current_report);
       // mongoose.disconnect();
 
       const manyClasses = classes;
 
       orderedClasses = teachers.sortClassOrder(classes);
       let orderedClassPeriods = teachers.getOrderedPeriods(orderedClasses,"F");
-
+      let currentReportArray = teachers.getOrderedCurrentReports(orderedClasses);
+      console.log("CR ARR: " + currentReportArray);
 
       allTeachers.forEach(function(teacher) {
         const storedTitle = _.lowerCase(teacher);
@@ -124,7 +145,10 @@ app.get("/teachers/:teacherName", function(req, res) {
           res.render("teacher", {
             teacher: teacher,
             orderedClasses: orderedClasses,
-            orderedClassPeriods: orderedClassPeriods
+            orderedClassPeriods:orderedClassPeriods,
+            //dailyReports: orderedClassPeriods.daily_reports.todays_class
+            //dailyReports: orderedDailyReports
+            currentReports: currentReportArray,
           });
           console.log("Match Found." );
         }
@@ -140,8 +164,9 @@ app.get("/teachers/:teacherName", function(req, res) {
 
 app.post("/teachers/:teacherName", function(req,res){
 
-  console.log("BODY: ");
+
   const classDetails = req.body.class_details;
+  console.log("Class details found in post method: " + classDetails.daily_report.next_class );
   const className = classDetails.class_name;
   const classType = classDetails.class_type;
   const period = classDetails.period;
@@ -149,15 +174,12 @@ app.post("/teachers/:teacherName", function(req,res){
   const regularTeacher = classDetails.regular_teacher;
   const lowerCaseTeacher = _.lowerCase(regularTeacher);
   const teacherCode = teachers.getTeacherCode(lowerCaseTeacher);
-  console.log("REGULAR TEACHER POST: " + teacherCode);
-  console.log(classDetails + className + classType + period +regularTeacher);
-  console.log("Day: " + weekDay);
-//   class_name: 'Math',
-// class_type: [ 'G3' ],
-// period: '1',
-// regular_teacher: [ 'Amel' ]
 
-  Classes.find({
+
+
+
+
+  Classes.findOne({
     class_name: className,
     class_type: classType,
     "class_times.day": "F",
@@ -166,18 +188,38 @@ app.post("/teachers/:teacherName", function(req,res){
 
 
 
-  }, function(err, classes) {
+
+  }, function(err, foundClass) {
 
     if (err) {
       console.log(err);
     } else {
 
       // mongoose.disconnect();
+    //  classes.daily_reports.push(dailyReport);
+    //  classes.save();
+      //console.log("Found Class: " + foundClass);
 
-      console.log(classes);
+      const currentReport = new DailyReports({
+        todays_class: classDetails.daily_report.todays_class,
+        homework: classDetails.daily_report.homework,
+        next_class: classDetails.daily_report.next_class,
+      });
+      currentReport.save();
 
 
-    res.redirect('/teachers/:teacherName');
+
+      Classes.updateOne({_id:foundClass.id},{current_report:currentReport},function(err,result){
+        if (err){
+          console.log(err);
+        } else {
+                console.log("Successfully Updated: " + result);
+                res.redirect('/teachers/:teacherName');
+        }
+      })
+
+
+
     }
   });
 
@@ -194,4 +236,52 @@ app.get("/headmaster", function(req, res) {
 //The console.log message will show up in the terminal
 app.listen(4000, function() {
   console.log("Server is running on port 4000");
-})
+});
+
+
+
+// Classes.find(function(err,results){
+//   if (err){
+//     console.log(err);
+//   } else {
+//     results.forEach(function(result){
+//
+//       var currentReport = new DailyReports({
+//         todays_class: "Today's class",
+//         homework:"Homework",
+//         next_class: "Next class Brotha"
+//       });
+//       currentReport.save();
+//
+//       //{_id:result.id},{current_report:currentReport}
+//
+//       Classes.updateOne({_id:result.id},{current_report:currentReport},function(err){
+//         if (err){
+//           console.log(err);
+//         } else {
+//           //console.log("Successfully Updated");
+//         }
+//       })
+//
+//       //console.log("R;" +);
+//       //console.log(result);
+//     })
+//   }
+// });
+
+//console.log(Classes);
+// var currentReport = new DailyReports({
+//   todays_class: "Today's class",
+//   homework:"Homework",
+//   next_class: "Next class"
+// });
+//
+// currentReport.save();
+//
+// DailyReports.findOne({todays_class: "Today's class"},function(err,result){
+//   if (err){
+//     console.log(err)
+//   } else {
+//     console.log(result);
+//   }
+// });

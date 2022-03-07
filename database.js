@@ -61,3 +61,19 @@ const fruit = new Fruit({
   ],
   class_type: [ 'CDA' ]
 }
+
+
+Classes.find(function(err,classes){
+  if (err) {
+    console.log(err);
+  } else {
+    mongoose.connection.close();
+    // mongoose.disconnect();
+
+    classes.forEach(function(class){
+      console.log(class.name);
+    });
+
+  }
+
+});

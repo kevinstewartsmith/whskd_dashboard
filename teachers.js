@@ -68,7 +68,7 @@ exports.sortClassOrder = function(classArray) {
    // let sortedArray = ["blank","blank","blank","blank","blank","blank","blank","blank"];
   //console.log("CLASS ARRAY " + classArray);
   classArray.forEach(function(oneClass) {
-    console.log("CLLLASSS: " + oneClass);
+    //console.log("CLLLASSS: " + oneClass);
     //console.log(oneClass["class_name"] + " CLASS TIMES " + oneClass["class_times"]);
     oneClass["class_times"].forEach(function(class_time){
       //console.log("CLASS DAY " + class_time["day"]);
@@ -83,7 +83,6 @@ exports.sortClassOrder = function(classArray) {
 
 
   sortedArray = sortedArray.filter(a => a !== null);
-
 
 
 
@@ -109,4 +108,22 @@ exports.getOrderedPeriods = function(orderedClasses,day) {
 
 periods = periods.filter(onlyUnique);
   return periods;
+}
+
+exports.getOrderedCurrentReports = function(orderedClasses,day) {
+  dailyReportArray = [];
+  orderedClasses.forEach(function(oneClass){
+    dailyReportArray.push(oneClass.current_report);
+  });
+
+  return dailyReportArray
+
+       
+
+
+//  console.log(orderedClasses[0].daily_reports[orderedClasses[0].daily_reports.length-2]["todays_class"]);
+  //var sorted0 = sortedArray[0].daily_reports;
+  //console.log("SORTED REPORTS: " + sorted0[0]["todays_class"]);
+  //return reports;
+
 }

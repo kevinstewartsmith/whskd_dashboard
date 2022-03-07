@@ -2,7 +2,7 @@
 
 //setup before functions
 var typingTimer;                //timer identifier
-var doneTypingInterval = 1000;  //time in ms, 5 seconds for example
+var doneTypingInterval = 500;  //time in ms, 5 seconds for example
 
 
 
@@ -29,7 +29,7 @@ var classTags = [
 console.log("Next class ID: " + class1Tags[2].attr("id"));
 console.log("Next class ID: " + classTags[0][0].parent().parent().attr("class"));
 console.log("Class name: " + classTags[0][0].parent().parent().parent().find("class-name").attr("id"));
-$("textarea#todaysClass4").text("demo_test.txt");
+
 var classDocument = {
   class1Array : { todaysClass:"ddd",homework:"",nextClass:""},
   class2Array : { todaysClass:"",homework:"",nextClass:""},
@@ -55,14 +55,14 @@ function typeEvent(tag) {
 
   //on keydown, clear the countdown
   tag.on('keydown', function (key) {
-    
+
     var code = key.keyCode || key.which;
     if(code == 9) { //Enter keycode
       console.log("TAB");
       tag.text(tag.val())
       clearTimeout(typingTimer);
 
-      typingTimer = setTimeout(doneTyping, doneTypingInterval);
+      typingTimer = setTimeout(doneTyping, 0);
     }
     clearTimeout(typingTimer);
 
@@ -79,7 +79,7 @@ function typeEvent(tag) {
     lastClass = lastClass.replace("Group: ","");
     var lastClassArray = lastClass.split(',')  //.split(' ').pop();
     console.log(lastClassArray);
-    console.log("CLASS_Name: " + row.attr("id"));
+    console.log("CLASS_Name: " + row.attr("name"));
     console.log("class_type: " + lastClassArray);
     console.log("period: " + row.find(".period").text());
     console.log("todays_class: " + row.find(".today").text());
@@ -99,7 +99,7 @@ function typeEvent(tag) {
         weekday: getDay(),
         todays_class:row.find(".today").text(),
         homework: row.find(".homework").text(),
-        next_class: row.find(".next-class").text()
+        next_class: row.find(".nextclass").text()
       }
     }
 
