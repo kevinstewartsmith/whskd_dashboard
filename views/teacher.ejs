@@ -1,5 +1,5 @@
-<%- include('header'); -%>
-
+<%- include('partials/header'); -%>
+<p hidden id="teacherCode"><%=teacherInfo["code"]%></p>
 <div class="container-fluid px-0 flex-grow-1">
   <div class="row g-0 flex-nowrap navbar-expand-lg">
     <div class="col-xl-2 col-lg-2 col-auto text-white sidebar bg-black min-vh-100" style="color: #f8f9fa">
@@ -91,60 +91,51 @@
 
 <!-- //////Iteraror Start///////// -->
 <% for (let i = 0; i < orderedClasses.length; i++) { %>
-<%- include('row', {orderedClasses: orderedClasses,orderedHRPeriods:orderedClassPeriods,teacher:teacher,i:i}); %>
-<div class="row " name="<%= orderedClasses[i]._id %>" style="height: 8rem" id="<%= orderedClasses[i].class_name %>">
-  <div class="col-2 m-1  border border border-dark rounded-3 shadow" >
+  <div class="row " name="<%= orderedClasses[i]._id %>" style="height: 8rem" id="<%= orderedClasses[i].class_name %>">
+    <div class="col-2 m-1  border border border-dark rounded-3 shadow" >
 
-    <div class="" style="position: relative">
+      <div class="" style="position: relative">
 
-      <h1 class="p-0 period" style="font-size: 8.5rem; color:#ECECEC; position: absolute;  padding:0 display:inline-block; margin-top: -35px; margin-left: 0px" ><strong><%= orderedClassPeriods[i]%></strong></h1>
-      <div class="mt-4 ms-0" style="position: absolute; top: 0px; left: 0.4rem">
-        <h6 class="text-truncate class-name" style="font-size: 1.3rem; color:#2F86A6" id=""><%=  orderedClasses[i].class_name %></h6>
-        <h6 class="m-0 text-truncate class-type <%=orderedClasses[i].class_type%> " id=""><%= "Group: " + orderedClasses[i].class_type%></h6>
+        <h1 class="p-0 period" style="font-size: 8.5rem; color:#ECECEC; position: absolute;  padding:0 display:inline-block; margin-top: -35px; margin-left: 0px" ><strong><%= orderedClassPeriods[i]%></strong></h1>
+        <div class="mt-4 ms-0" style="position: absolute; top: 0px; left: 0.4rem">
+          <h6 class="text-truncate class-name" style="font-size: 1.3rem; color:#2F86A6" id=""><%=  orderedClasses[i].class_name %></h6>
+          <h6 class="m-0 text-truncate class-type <%=orderedClasses[i].class_type%> " id=""><%= "Group: " + orderedClasses[i].class_type%></h6>
+        </div>
+
+
+        <h6></h6>
       </div>
 
 
-      <h6></h6>
     </div>
+    <div class="col m-1 border border border-dark rounded-3 shadow">
+      <form action="/action_page.php" class="daily-report-form">
 
+        <textarea  name="Today" class="daily-report-textarea today" id="todaysClass<%= orderedClassPeriods[i]%>"><%= orderedClasses[i].current_report.todays_class %></textarea>
 
+      </form>
+    </div>
+    <div class="col-1 m-1 border border-dark rounded-3 shadow">
+      <form action="/action_page.php" class="daily-report-form">
+
+        <textarea  name="w3review" class="daily-report-textarea homework" id="<%= "homework" + orderedClassPeriods[i] %>" ><%= orderedClasses[i].current_report.homework %></textarea>
+
+      </form>
+
+    </div>
+    <div class="col m-1 border border-dark rounded-3 shadow">
+      <form action="/action_page.php" class="daily-report-form">
+
+        <textarea  name="w3review" class="daily-report-textarea nextclass" id="<%= "nextClass" + orderedClassPeriods[i]%>"><%= orderedClasses[i].current_report.next_class %></textarea>
+
+      </form>
+    </div>
+    <div class="col-1 m-1 pt-4   border border border-dark rounded-3 shadow">
+      <p class="m-2 text-truncate teacher"><strong><%= teacher %></strong></p>
+    </div>
   </div>
-  <div class="col m-1 border border border-dark rounded-3 shadow">
-    <form action="/action_page.php" class="daily-report-form">
 
-      <textarea  name="Today" class="daily-report-textarea today" id="todaysClass<%= orderedClassPeriods[i]%>"><%= orderedClasses[i].current_report.todays_class %></textarea>
-
-    </form>
-  </div>
-  <div class="col-1 m-1 border border-dark rounded-3 shadow">
-    <form action="/action_page.php" class="daily-report-form">
-
-      <textarea  name="w3review" class="daily-report-textarea homework" id="<%= "homework" + orderedClassPeriods[i] %>" ><%= orderedClasses[i].current_report.homework %></textarea>
-
-    </form>
-
-  </div>
-  <div class="col m-1 border border-dark rounded-3 shadow">
-    <form action="/action_page.php" class="daily-report-form">
-
-      <textarea  name="w3review" class="daily-report-textarea nextclass" id="<%= "nextClass" + orderedClassPeriods[i]%>"><%= orderedClasses[i].current_report.next_class %></textarea>
-
-    </form>
-  </div>
-  <div class="col-1 m-1 pt-4   border border border-dark rounded-3 shadow">
-    <p class="m-2 text-truncate teacher"><strong><%= teacher %></strong></p>
-  </div>
-</div>
 <% } %>
-
-
-
-
-
-
-
-
-
 <!-- //////Iteraror END///////// -->
 
                     </div>
@@ -546,4 +537,4 @@
 </body>
 
 </html> -->
-<%- include('footer'); -%>
+<%- include('partials/footer'); -%>

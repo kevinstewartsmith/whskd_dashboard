@@ -80,6 +80,7 @@ function typeEvent(tag) {
     var lastClass = row.find('.class-type').text()
     lastClass = lastClass.replace("Group: ","");
     var lastClassArray = lastClass.split(',')  //.split(' ').pop();
+    var teacherCode = $("#teacherCode").text();
     console.log(lastClassArray);
     console.log("CLASS_Name: " + row.attr("name"));
     console.log("class_type: " + lastClassArray);
@@ -88,13 +89,14 @@ function typeEvent(tag) {
     console.log("homework: " + row.find(".homework").text());
     console.log("next_class: " + row.find(".next-class").text());
     console.log("teacher: " + row.find(".teacher").text());
-
+    var teacherFirstName = row.find(".teacher").text()
     const classDetails = {
 
       class_name: row.attr("id"),
       class_type: lastClassArray,
       period : Number(row.find(".period").text()),
-      regular_teacher: [ row.find(".teacher").text() ],
+      regular_teacher: teacherCode,
+      teacher_first_name: teacherFirstName,//[ row.find(".teacher").text() ],//[ row.find(".teacher").text() ],
       daily_report: {
         date_in_ms: Date.now(),
         date: thisDate,
@@ -104,8 +106,10 @@ function typeEvent(tag) {
         next_class: row.find(".nextclass").text()
       }
     }
+    console.log("SCRIPTS: CLASS DETAILS: " + classDetails);
 
-    var teacherURL = "/teachers/" + classDetails["regular_teacher"];
+    console.log("TEACHER CODE SCRIPT: " + teacherCode);
+    var teacherURL = "/teachers/" + teacherFirstName;
     console.log("TTTeacher: " + teacherURL);
 
     $.ajax({type: "POST", url: teacherURL, dataType :"json", data :

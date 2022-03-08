@@ -98,7 +98,7 @@ const teacherInfo = {
 "song hn":"S"
 };
 exports.getTeacherInfo = function(name) {
-  return teacherInfo[name];
+  return teacherInfo[String(name)];
 }
 
 exports.sortClassOrder = function(classArray,day) {

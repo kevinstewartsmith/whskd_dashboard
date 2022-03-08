@@ -122,8 +122,10 @@ app.get("/teacher", function(req, res) {
 })
 
 app.get("/teachers/:teacherName", function(req, res) {
-  const requestedTitle = _.lowerCase(req.params.teacherName); //Convert Teacher name to lower case string
+  const requestedTitle = _.lowerCase(req.params.teacherName);
+  console.log("REQUESTED TITLE: " + requestedTitle); //Convert Teacher name to lower case string
   const teacherInfo = teachers.getTeacherInfo(requestedTitle);
+  console.log("APP.js GET Teacher Info: " + teacherInfo);
   const teacherHR = teacherInfo["hrClass"];
   console.log("Teacher Code: " + teacherInfo); //get the teacher acronym
   var orderedClasses = [];
@@ -164,7 +166,8 @@ app.get("/teachers/:teacherName", function(req, res) {
                 orderedHRPeriods:orderedHRPeriods,
                 weekDay: thisDayCode,
                 thisDate: thisDate,
-                teacherInfo: teacherInfo
+                teacherInfo: teacherInfo,
+                teacherFirstName: requestedTitle
               });
               console.log("Match Found." );
             }
@@ -188,8 +191,10 @@ app.post("/teachers/:teacherName", function(req,res){
   const period = classDetails.period;
   const weekDay = classDetails.daily_report.weekday;
   const regularTeacher = classDetails.regular_teacher;
-  const lowerCaseTeacher = _.lowerCase(regularTeacher);
-  const teacherCode = teachers.getTeacherCode(lowerCaseTeacher);
+  const teacherFirstName = classDetails.teacher_first_name;
+  console.log("TEACHER FIRST NAME APP>JS POST : " + teacherFirstName);
+  const lowerCaseTeacher = _.lowerCase(teacherFirstName);
+  const teacherInfo = teachers.getTeacherInfo(lowerCaseTeacher);
 
 
 
@@ -200,7 +205,7 @@ app.post("/teachers/:teacherName", function(req,res){
     class_type: classType,
     "class_times.day": thisDayCode,
     "class_times.period": period,
-    regular_teacher: teacherCode,
+    regular_teacher: regularTeacher,
 
 
 
@@ -231,7 +236,7 @@ app.post("/teachers/:teacherName", function(req,res){
           console.log(err);
         } else {
                 console.log("Successfully Updated: " + result);
-                res.redirect('/teachers/:teacherName');
+                res.redirect('/teachers/:' + teacherFirstName);
         }
       })
 
