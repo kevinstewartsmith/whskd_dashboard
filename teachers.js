@@ -34,31 +34,71 @@ exports.getKoreanVietnameseTeachers = function() {
   return koreanVietTeachers.sort();
 }
 
-const teacherCode = {
-  "amel": "AMEL",
-"andy" : "AN",
+const teacherInfo = {
+"amel": {
+  code: "AMEL",
+  hrClass: "G3",
+  cda: "CDA",
+  cda: "ESL3"
+},
+"andy" : {
+  code: "AN",
+  hrClass: "G6",
+  cda: "CDA",
+  cda: "ESL6"
+},
 "art" : "AR",
-"cai" :"CA",
+"cai" :{
+  code: "CA",
+  hrClass:"G4",
+  cda: "CDA",
+  esl: "ESL7"
+},
 "chris" : "CH",
 "jonathan" : "JON",
-"lenka" : "LE",
+"lenka" : {
+  code: "LE",
+  hrClass:"G4",
+  cda: null,
+  esl: "ESL4"
+},
 "marta" : "M",
 "sirina" : "SI",
 "sophie" : "SOPHIE",
-"tukson" : "T",
-"zeyneb": "Z",
+"tukson" : {
+  code: "T",
+  hrClass:"G2",
+  cda: "CDA",
+  esl: "ESL2"
+},
+"zeyneb": {
+  code: "Z",
+  hrClass:"G1",
+  cda: "CDA",
+  esl: "ESL1"
+},
 "jang yj": "J",
 "kim kj" : "K",
-"kim yj" : "KYJ",
+"kim yj" :{
+  code:"KYJ",
+  hrClass:null,
+  cda: null,
+  esl: null
+} ,
 "lee mk" : "L",
-"loan" : "LO",
+"loan" : {
+  code:"LO",
+  hrClass:null,
+  cda: "CDA",
+  esl: null
+},
 "ngoc" : "NG",
 "seo hj": "SE",
 "shin hj":"SH",
 "song hn":"S"
 };
-exports.getTeacherCode = function(name) {
-  return teacherCode[name];
+exports.getTeacherInfo = function(name) {
+  return teacherInfo[name];
 }
 
 exports.sortClassOrder = function(classArray,day) {
