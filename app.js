@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const teachers = require(__dirname + "/teachers");
 const _ = require('lodash');
 const mongoose = require('mongoose');
+const dates = require(__dirname + "/date")
+const crazy = require(__dirname + "/classesJSON")
 //Makes an express app
 const app = express();
 mongoose.connect('mongodb://localhost:27017/WHSKD-DB');
@@ -16,12 +18,16 @@ app.use(express.static("public"));
 const westernTeachers = teachers.getWesternTeachers();
 const koreanVietnameseTeachers = teachers.getKoreanVietnameseTeachers();
 const allTeachers = westernTeachers.concat(koreanVietnameseTeachers);
+const thisDayCode =  dates.getDay();
+const thisDate = dates.getDate();
+console.log(thisDayCode);
+console.log("app.get day:" + dates.getDay());
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 ///////////////Database/////////////////////////
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
-const classTimeSchema = mongoose.Schema({
+const classTimesSchema = mongoose.Schema({
   day: {
     type: String,
     enum: {
@@ -66,7 +72,7 @@ const classSchema = mongoose.Schema({
     required: true
   },
   class_times: {
-    type: [classTimeSchema],
+    type: [classTimesSchema],
     required: true
   },
   class_type: {
@@ -80,8 +86,7 @@ const classSchema = mongoose.Schema({
 
 const Classes = mongoose.model("classe", classSchema);
 const DailyReports = mongoose.model("daily_report", dailyReportSchema);
-
-
+const ClassTimes =  mongoose.model("class_time", classTimesSchema);
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -95,6 +100,7 @@ const DailyReports = mongoose.model("daily_report", dailyReportSchema);
 /////////////////////////////////////////////////
 //What happens when the user goes to the homepage
 app.get("/", function(req, res) {
+
   // res.sendFile(__dirname + "/index.html");
   // res.sendFile(__dirname + "/memory-game.html");
   console.log(koreanVietnameseTeachers);
@@ -116,13 +122,18 @@ app.get("/teacher", function(req, res) {
 })
 
 app.get("/teachers/:teacherName", function(req, res) {
+
+
+
+
   const requestedTitle = _.lowerCase(req.params.teacherName); //Convert Teacher name to lower case string
-  const teacherCode = teachers.getTeacherCode(requestedTitle); //get the teacher acronym
+  const teacherCode = teachers.getTeacherCode(requestedTitle);
+  console.log("Teacher Code: " + teacherCode); //get the teacher acronym
   var orderedClasses = [];
   Classes.find({ //Find classes based on
-
+    //class_type: "G4",
     regular_teacher: teacherCode,
-    "class_times.day": "F"
+    "class_times.day": thisDayCode
 
   },function(err, classes) {
 
@@ -131,11 +142,11 @@ app.get("/teachers/:teacherName", function(req, res) {
     } else {
       //console.log("First CurrentReport in GET method: " + classes[0].current_report);
       // mongoose.disconnect();
-
+      console.log(classes);
       const manyClasses = classes;
 
-      orderedClasses = teachers.sortClassOrder(classes);
-      let orderedClassPeriods = teachers.getOrderedPeriods(orderedClasses,"F");
+      orderedClasses = teachers.sortClassOrder(classes,thisDayCode);
+      let orderedClassPeriods = teachers.getOrderedPeriods(orderedClasses,thisDayCode);
       let currentReportArray = teachers.getOrderedCurrentReports(orderedClasses);
       console.log("CR ARR: " + currentReportArray);
 
@@ -149,6 +160,8 @@ app.get("/teachers/:teacherName", function(req, res) {
             //dailyReports: orderedClassPeriods.daily_reports.todays_class
             //dailyReports: orderedDailyReports
             currentReports: currentReportArray,
+            weekDay: thisDayCode,
+            thisDate: thisDate
           });
           console.log("Match Found." );
         }
@@ -182,7 +195,7 @@ app.post("/teachers/:teacherName", function(req,res){
   Classes.findOne({
     class_name: className,
     class_type: classType,
-    "class_times.day": "F",
+    "class_times.day": thisDayCode,
     "class_times.period": period,
     regular_teacher: teacherCode,
 
@@ -204,6 +217,7 @@ app.post("/teachers/:teacherName", function(req,res){
         todays_class: classDetails.daily_report.todays_class,
         homework: classDetails.daily_report.homework,
         next_class: classDetails.daily_report.next_class,
+        weekday: thisDayCode
       });
       currentReport.save();
 
@@ -285,3 +299,33 @@ app.listen(4000, function() {
 //     console.log(result);
 //   }
 // });
+// var crazyArray = crazy.getCrazyArray();
+// for (var i=0; i<crazyArray.length;i++){
+//   var crazyClassTimes = crazyArray[i]["class_times"];
+//   crazyClassTimes.forEach(function(classTime){
+//     const classTimes = new ClassTimes({
+//         day: classTime["day"],
+//         period: classTime["period"]
+//     });
+//     classTimes.save();
+//     //Add to the class Item
+//     Classes.findOne({_id:crazyArray[i]["_id"]},function(err,foundClass){
+//       if (err){
+//         console.log(err);
+//       } else {
+//         console.log(foundClass);
+//         Classes.updateOne({_id:foundClass["_id"]},{$push:{class_times:classTimes}},function(err){
+//           if (err) {
+//             console.log(err);
+//           } else {
+//             console.log("Successfully Updated Class Times!");
+//           }
+//         })
+//       }
+//     })
+//
+//   });
+// }
+
+//classTimes.save();
+//console.log(crazy.getCrazyArray()[76]["class_times"][0]["period"]);

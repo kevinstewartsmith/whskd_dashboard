@@ -1,9 +1,11 @@
 
-
 //setup before functions
 var typingTimer;                //timer identifier
-var doneTypingInterval = 500;  //time in ms, 5 seconds for example
-
+var doneTypingInterval = 500;
+var thisWeekDay = $("#weekDay").text();
+var thisDate = $("#thisDate").text();
+console.log("JQUERY ON") //time in ms, 5 seconds for example
+console.log("EJS: date:" + thisWeekDay);
 
 
 var class1Tags = [$('textarea#todaysClass1'),$('textarea#homework1'),$('textarea#nextClass1')];
@@ -26,9 +28,9 @@ var classTags = [
   [$('textarea#todaysClass8'),$('textarea#homework8'),$('textarea#nextClass8')],
 ];
 
-console.log("Next class ID: " + class1Tags[2].attr("id"));
-console.log("Next class ID: " + classTags[0][0].parent().parent().attr("class"));
-console.log("Class name: " + classTags[0][0].parent().parent().parent().find("class-name").attr("id"));
+// console.log("Next class ID: " + class1Tags[2].attr("id"));
+// console.log("Next class ID: " + classTags[0][0].parent().parent().attr("class"));
+// console.log("Class name: " + classTags[0][0].parent().parent().parent().find("class-name").attr("id"));
 
 var classDocument = {
   class1Array : { todaysClass:"ddd",homework:"",nextClass:""},
@@ -41,8 +43,8 @@ var classDocument = {
   class8Array : { todaysClass:"",homework:"",nextClass:""},
 
 }
-console.log(classDocument["class"+1+"Array"]["todaysClass"]);
-console.log(classTags[0][0].attr("id"));
+// console.log(classDocument["class"+1+"Array"]["todaysClass"]);
+// console.log(classTags[0][0].attr("id"));
 
 function typeEvent(tag) {
 
@@ -95,8 +97,8 @@ function typeEvent(tag) {
       regular_teacher: [ row.find(".teacher").text() ],
       daily_report: {
         date_in_ms: Date.now(),
-        date: getDate(),
-        weekday: getDay(),
+        date: thisDate,
+        weekday: thisWeekDay,
         todays_class:row.find(".today").text(),
         homework: row.find(".homework").text(),
         next_class: row.find(".nextclass").text()
@@ -128,28 +130,28 @@ for (var i = 0; i < 8; i++) {
 };
 
 
-  function getDate() {
-   const today = new Date();
-   const options = {
-     weekday: 'long',
-     month: 'long',
-     day: 'numeric',
-     year: 'numeric',
-     hour: 'numeric',
-     minute: 'numeric',
-     second: 'numeric',
-     hour12: false
-
-   };
-
-   return today.toLocaleDateString("en-US", options);
- }
-
+//   function getDate() {
+//    const today = new Date();
+//    const options = {
+//      weekday: 'long',
+//      month: 'long',
+//      day: 'numeric',
+//      year: 'numeric',
+//      hour: 'numeric',
+//      minute: 'numeric',
+//      second: 'numeric',
+//      hour12: false
+//
+//    };
+//
+//    return today.toLocaleDateString("en-US", options);
+//  }
+//
  function getDay() {
   const today = new Date();
   const dayCodes = ["S","M","T","W","R","F","S"];
   const dayNum = today.getDay();
   return dayCodes[dayNum];
 }
- console.log(getDate());
- console.log(getDay());
+//  console.log(getDate());
+//  console.log(getDay());

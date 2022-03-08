@@ -45,19 +45,22 @@
       ************ -->
 
       <section class="row min-vh-100 pt-5" id="sectionReports"  >
+        <p hidden id="thisDate"></p>
+          <p hidden id="weekDay"><%=weekDay%></p>
 
         <div class="col pt-4 d-flex flex-column"  >
           <br>
-          <h3 class="text-secondary"> <%="Teacher "+ teacher + " Daily Report"%> </h3>
+          <h3 class="text-secondary"> <%="Teacher "+ teacher + " Daily Report - " + thisDate %> </h3>
           <div class="bg-light rounded  h-fill p-4">
             <div class="card bg-white text-dark shadow h-fill">
               <div class="card-body ">
                 <!-- tabs -->
                 <ul class="nav nav-tabs" role="tablist">
                   <li class="nav-item"><button class="nav-link bg-transparent text-dark text-uppercase active" data-bs-toggle="tab" data-bs-target="#tab1" role="tab">Report Classes</button></li>
-                  <li class="nav-item"><button class="nav-link bg-primary text-dark text-uppercase" data-bs-toggle="tab" data-bs-target="#tab2" role="tab">Homeroom Report</button></li>
+                  <li class="nav-item"><button class="nav-link bg-primary text-dark text-uppercase" data-bs-toggle="tab" data-bs-target="#tab2" role="tab">Template</button></li>
+                  <li class="nav-item"><button class="nav-link bg-primary text-dark text-uppercase" data-bs-toggle="tab" data-bs-target="#tab3" role="tab">Homeroom Report</button></li>
                 </ul>
-                <div class="tab-content py-4 " >
+                <div class="tab-content py-2 " >
                   <div class="tab-pane active " id="tab1" role="tabpanel">
                     <div class="container ps-0">
                         <!-- <h3> "Teacher " + teacher + "'s " + "Friday " + "Classes:</h3> -->
@@ -234,6 +237,100 @@
                     </div>
                   </div>
                   <!-- /tab-pane -->
+
+
+
+                <!-- new tab pane here -->
+                <div class="tab-pane " id="tab3" role="tabpanel">
+                  <div class="container ps-0">
+                      <!-- <h3> "Teacher " + teacher + "'s " + "Friday " + "Classes:</h3> -->
+
+                    <div class="row ">
+                      <div class="text-truncate col-2 mb-1   ">
+                        <p class="chart-title"><strong>Period</strong></p>
+
+                      </div>
+                      <div class="text-truncate col-4 mb-1 ">
+                        <p class="chart-title"><strong>Today's Class</strong></p>
+                      </div>
+                      <div class="text-truncate col mb-1 ">
+                        <p class="chart-title"><strong>Homework</strong></p>
+
+                      </div>
+                      <div class="text-truncate col mb-1 ">
+                        <p class="chart-title"><strong>Next Class</strong></p>
+                      </div>
+                      <div class="text-truncate col-1 mb-1 ">
+                        <p class="chart-title"><strong>Teacher</strong></p>
+                      </div>
+                    </div>
+
+
+
+                <!-- //////Iteraror Start///////// -->
+                <% for (let i = 0; i < orderedClasses.length; i++) { %>
+
+                <div class="row " name="<%= orderedClasses[i]._id %>" style="height: 8rem" id="<%= orderedClasses[i].class_name %>">
+                <div class="col-2 m-1  border border border-dark rounded-3 shadow" >
+
+                <div class="" style="position: relative">
+
+                <h1 class="p-0 period" style="font-size: 8.5rem; color:#ECECEC; position: absolute;  padding:0 display:inline-block; margin-top: -35px; margin-left: 0px" ><strong><%= orderedClassPeriods[i]%></strong></h1>
+                <div class="mt-4 ms-0" style="position: absolute; top: 0px; left: 0.4rem">
+                <h6 class="text-truncate class-name" style="font-size: 1.3rem; color:#2F86A6" id=""><%=  orderedClasses[i].class_name %></h6>
+                <h6 class="m-0 text-truncate class-type <%=orderedClasses[i].class_type%> " id=""><%= "Group: " + orderedClasses[i].class_type%></h6>
+                </div>
+
+
+                <h6></h6>
+                </div>
+
+
+                </div>
+                <div class="col m-1 border border border-dark rounded-3 shadow">
+                <form action="/action_page.php" class="daily-report-form">
+
+                <textarea  name="Today" class="daily-report-textarea today" id="todaysClass<%= orderedClassPeriods[i]%>"><%= currentReports[i].todays_class %></textarea>
+
+                </form>
+                </div>
+                <div class="col-1 m-1 border border-dark rounded-3 shadow">
+                <form action="/action_page.php" class="daily-report-form">
+
+                <textarea  name="w3review" class="daily-report-textarea homework" id="<%= "homework" + orderedClassPeriods[i] %>" ><%= currentReports[i].homework %></textarea>
+
+                </form>
+
+                </div>
+                <div class="col m-1 border border-dark rounded-3 shadow">
+                <form action="/action_page.php" class="daily-report-form">
+
+                <textarea  name="w3review" class="daily-report-textarea nextclass" id="<%= "nextClass" + orderedClassPeriods[i]%>"><%= currentReports[i].next_class %></textarea>
+
+                </form>
+                </div>
+                <div class="col-1 m-1 pt-4   border border border-dark rounded-3 shadow">
+                <p class="m-2 text-truncate teacher"><strong><%= teacher %></strong></p>
+                </div>
+                </div>
+                <% } %>
+
+
+
+
+
+
+
+
+
+                <!-- //////Iteraror END///////// -->
+
+                  </div>
+                </div>
+
+
+
+
                 </div>
                 <!-- /tab-content -->
               </div>

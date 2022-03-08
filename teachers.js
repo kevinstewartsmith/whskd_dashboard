@@ -61,8 +61,8 @@ exports.getTeacherCode = function(name) {
   return teacherCode[name];
 }
 
-exports.sortClassOrder = function(classArray) {
-  const thisDay = "F";
+exports.sortClassOrder = function(classArray,day) {
+  const thisDay = day;
    let period = 1;
    let sortedArray = [null,null,null,null,null,null,null,null];
    // let sortedArray = ["blank","blank","blank","blank","blank","blank","blank","blank"];
@@ -89,12 +89,12 @@ exports.sortClassOrder = function(classArray) {
   return sortedArray;
 }
 
-exports.getOrderedPeriods = function(orderedClasses,day) {
+exports.getOrderedPeriods = function(unorderedClasses,day) {
   let periods = [];
-  orderedClasses.forEach(function(classSession){
-    classSession["class_times"].forEach(function(classTime){
-      if (classTime["day"] === day ){
-        periods.push(classTime["period"]);
+  unorderedClasses.forEach(function(classSession){
+    classSession.class_times.forEach(function(classTime){
+      if (classTime.day === day ){
+        periods.push(classTime.period);
       }
     });
   });
@@ -118,7 +118,7 @@ exports.getOrderedCurrentReports = function(orderedClasses,day) {
 
   return dailyReportArray
 
-       
+
 
 
 //  console.log(orderedClasses[0].daily_reports[orderedClasses[0].daily_reports.length-2]["todays_class"]);
