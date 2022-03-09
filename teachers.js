@@ -39,13 +39,13 @@ const teacherInfo = {
     code: "AMEL",
     hrClass: "G3",
     cda: "CDA",
-    cda: "ESL3"
+    esl: "ESL3"
   },
   "andy" : {
     code: "AN",
     hrClass: "G6",
     cda: "CDA",
-    cda: "ESL6"
+    esl: "ESL6"
   },
   "art" :{
     code: "AR",

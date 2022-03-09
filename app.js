@@ -127,6 +127,7 @@ app.get("/teachers/:teacherName", function(req, res) {
   const teacherInfo = teachers.getTeacherInfo(requestedTitle);
   console.log("APP.js GET Teacher Info: " + teacherInfo);
   const teacherHR = teacherInfo["hrClass"];
+  const teacherESL = teacherInfo["esl"];
   console.log("Teacher Code: " + teacherInfo); //get the teacher acronym
   var orderedClasses = [];
   var orderedHomeroomClasses = [];
@@ -134,53 +135,63 @@ app.get("/teachers/:teacherName", function(req, res) {
   var orderedESLClasses = [];
   var orderedCDAClasses = [];
   const classTags = teachers.getClassTags();
-  Classes.find({class_type: teacherHR,"class_times.day": thisDayCode },function(err,hrClasses){
-    if (err) { console.log(err)} else {
-      console.log(hrClasses);
-      orderedHomeroomClasses = teachers.sortClassOrder(hrClasses,thisDayCode);
-      orderedHRPeriods = teachers.getOrderedPeriods(orderedHomeroomClasses,thisDayCode);
 
-      Classes.find({ //Find classes based on
-        regular_teacher: teacherInfo["code"],
-        "class_times.day": thisDayCode
-      },function(err, classes) {
-        if (err) {
-          console.log(err);
-        } else {
-          // mongoose.disconnect();
-          console.log(classes);
-          const manyClasses = classes;
+  Classes.find({class_type: teacherESL,"class_times.day": thisDayCode },function(err,eslClasses){
+    if (err) {
+      console.log(err);
+    } else {
+      console.log("ESL CLAsses: " + eslClasses);
+      Classes.find({class_type: teacherHR,"class_times.day": thisDayCode },function(err,hrClasses){
+        if (err) { console.log(err)} else {
+          //console.log(hrClasses);
+          orderedHomeroomClasses = teachers.sortClassOrder(hrClasses,thisDayCode);
+          orderedHRPeriods = teachers.getOrderedPeriods(orderedHomeroomClasses,thisDayCode);
 
-          orderedClasses = teachers.sortClassOrder(classes,thisDayCode);
-          let orderedClassPeriods = teachers.getOrderedPeriods(orderedClasses,thisDayCode);
-          let currentReportArray = teachers.getOrderedCurrentReports(orderedClasses);
-          //console.log("CR ARR: " + currentReportArray);
-          console.log("ORDEREDCLASSPERIODS: " + orderedClassPeriods);
-          allTeachers.forEach(function(teacher) {
-            const storedTitle = _.lowerCase(teacher);
-            if (storedTitle === requestedTitle) {
-              res.render("teacher", {
-                teacher: teacher,
-                orderedClasses: orderedClasses,
-                orderedClassPeriods:orderedClassPeriods,
-                orderedHomeroomClasses:orderedHomeroomClasses,
-                orderedHRPeriods:orderedHRPeriods,
-                weekDay: thisDayCode,
-                thisDate: thisDate,
-                teacherInfo: teacherInfo,
-                teacherFirstName: requestedTitle,
-                classTags: classTags
-              });
-              console.log("Match Found." );
+          Classes.find({ //Find classes based on
+            regular_teacher: teacherInfo["code"],
+            "class_times.day": thisDayCode
+          },function(err, classes) {
+            if (err) {
+              console.log(err);
+            } else {
+              // mongoose.disconnect();
+              console.log(classes);
+              const manyClasses = classes;
+
+              orderedClasses = teachers.sortClassOrder(classes,thisDayCode);
+              let orderedClassPeriods = teachers.getOrderedPeriods(orderedClasses,thisDayCode);
+              let currentReportArray = teachers.getOrderedCurrentReports(orderedClasses);
+              //console.log("CR ARR: " + currentReportArray);
+              //console.log("ORDEREDCLASSPERIODS: " + orderedClassPeriods);
+              allTeachers.forEach(function(teacher) {
+                const storedTitle = _.lowerCase(teacher);
+                if (storedTitle === requestedTitle) {
+                  res.render("teacher", {
+                    teacher: teacher,
+                    orderedClasses: orderedClasses,
+                    orderedClassPeriods:orderedClassPeriods,
+                    orderedHomeroomClasses:orderedHomeroomClasses,
+                    orderedHRPeriods:orderedHRPeriods,
+                    weekDay: thisDayCode,
+                    thisDate: thisDate,
+                    teacherInfo: teacherInfo,
+                    teacherFirstName: requestedTitle,
+                    classTags: classTags
+                  });
+                  console.log("Match Found." );
+                }
+              })
+
             }
-          })
+          });
+
 
         }
       });
 
-
     }
   });
+
 })
 
 app.post("/teachers/:teacherName", function(req,res){
