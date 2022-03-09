@@ -159,3 +159,20 @@ for (var i = 0; i < 8; i++) {
 }
 //  console.log(getDate());
 //  console.log(getDay());
+function logTestData(){
+ //  $.ajax({
+ //   url: '/elements/element',
+ //   type: 'GET',
+ //
+ // });
+ // $.get("/elements/element", function(data, status){
+ //    alert("Data: " + data + "\nStatus: " + status);
+ //  });
+ //  $.ajax({type: "POST", url: /elements/element, dataType :"json", data :
+ //    {"class_details":classDetails}
+ //  });
+ $.get("/elements/element",function(data){
+   console.log(data)
+   $("textarea#todaysClass3").val(data)
+ });
+}

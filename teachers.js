@@ -157,7 +157,33 @@ exports.getOrderedCurrentReports = function(orderedClasses,day) {
   });
 
   return dailyReportArray
+}
 
+exports.getClassTags = function() {
+  const classTags = {
+    orderedClasses: {
+      todaysClass: "todaysClass",
+      homework: "homework",
+      nextClass: "nextClass"
+    },
+    orderedHomeroomClasses: {
+      todaysClass: "todaysHomeroomClass",
+      homework: "homeroomHomework",
+      nextClass: "nextHomeroomClass"
+    },
+    orderedESLClasses: {
+      todaysClass: "todaysESLClass",
+      homework: "eslHomework",
+      nextClass: "nextESLClass"
+    },
+    orderedCDAClasses: {
+      todaysClass: "todaysCDAClass",
+      homework: "cdaHomework",
+      nextClass: "nextCDAClass"
+    } 
+  }
+  return classTags;
+}
 
 
 
@@ -165,5 +191,3 @@ exports.getOrderedCurrentReports = function(orderedClasses,day) {
   //var sorted0 = sortedArray[0].daily_reports;
   //console.log("SORTED REPORTS: " + sorted0[0]["todays_class"]);
   //return reports;
-
-}

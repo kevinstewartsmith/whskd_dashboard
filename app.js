@@ -133,6 +133,7 @@ app.get("/teachers/:teacherName", function(req, res) {
   var orderedHRPeriods = [];
   var orderedESLClasses = [];
   var orderedCDAClasses = [];
+  const classTags = teachers.getClassTags();
   Classes.find({class_type: teacherHR,"class_times.day": thisDayCode },function(err,hrClasses){
     if (err) { console.log(err)} else {
       console.log(hrClasses);
@@ -153,8 +154,8 @@ app.get("/teachers/:teacherName", function(req, res) {
           orderedClasses = teachers.sortClassOrder(classes,thisDayCode);
           let orderedClassPeriods = teachers.getOrderedPeriods(orderedClasses,thisDayCode);
           let currentReportArray = teachers.getOrderedCurrentReports(orderedClasses);
-          console.log("CR ARR: " + currentReportArray);
-
+          //console.log("CR ARR: " + currentReportArray);
+          console.log("ORDEREDCLASSPERIODS: " + orderedClassPeriods);
           allTeachers.forEach(function(teacher) {
             const storedTitle = _.lowerCase(teacher);
             if (storedTitle === requestedTitle) {
@@ -167,7 +168,8 @@ app.get("/teachers/:teacherName", function(req, res) {
                 weekDay: thisDayCode,
                 thisDate: thisDate,
                 teacherInfo: teacherInfo,
-                teacherFirstName: requestedTitle
+                teacherFirstName: requestedTitle,
+                classTags: classTags
               });
               console.log("Match Found." );
             }
@@ -246,6 +248,11 @@ app.post("/teachers/:teacherName", function(req,res){
   });
 
 
+});
+app.get("/elements/:element",function(req,res){
+  //const requestedTitle = _.lowerCase(req.params.element);
+  console.log(req.params.element);
+  res.send("oki")
 });
 
 app.get("/headmaster", function(req, res) {

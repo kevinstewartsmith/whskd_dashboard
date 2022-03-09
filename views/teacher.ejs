@@ -1,42 +1,10 @@
 <%- include('partials/header'); -%>
 <p hidden id="teacherCode"><%=teacherInfo["code"]%></p>
+<p hidden id="classTags"><%=classTags%></p>
 
 <div class="container-fluid px-0 flex-grow-1">
   <div class="row g-0 flex-nowrap navbar-expand-lg">
-    <div class="col-xl-2 col-lg-2 col-auto text-white sidebar bg-black min-vh-100" style="color: #f8f9fa">
-      <div class="row g-0 flex-nowrap sticky-top sticky-top-side">
-        <div class="col-lg-9 col-auto">
-          <div id="fullmenu" class="navbar-collapse collapse flex-column align-items-start h-auto sidenav">
-            <a class="nav-link py-3" href="#navTop">Home</a>
-
-            <a class="nav-link py-3 " href="#sectionReports">Daily Reports</a>
-            <a class="nav-link py-3" href="#sectionInbox">Inbox</a>
-            <a class="nav-link py-3" href="#sectionPremiums">Schedule</a>
-            <a class="nav-link py-3" href="#sectionAlerts">Teachers</a>
-            <a class="nav-link py-3" href="#sectionDetections">Class Directory</a>
-            <!-- <a class="nav-link py-3" href="#modalLogin" data-bs-toggle="modal">Integrations</a>
-                      <a class="nav-link py-3" href="#modalLogin" data-bs-toggle="modal">Customers</a>
-                      <a class="nav-link py-3" href="#modalLogin" data-bs-toggle="modal">Orders</a> -->
-            <a class="nav-link py-3" href="#modalLogin" data-bs-toggle="modal">Settings</a>
-          </div>
-        </div>
-        <div class="col text-center">
-          <div class="sidenav">
-            <a class="nav-link py-2" href="#navTop"><i class="ms-auto mdi mdi-home-outline"></i></a>
-
-            <a class="nav-link py-2" href="#sectionReports"><i class="ms-auto mdi mdi-file-document-box-outline"></i></a>
-            <a class="nav-link py-2" href="#"><i class="ms-auto mdi mdi-mailbox"></i></a>
-            <a class="nav-link py-2" href="#"><i class="ms-auto mdi mdi-calendar-clock"></i></a>
-            <a class="nav-link py-2" href="#"><i class="ms-auto mdi mdi-google-classroom"></i></a>
-            <a class="nav-link py-2" href="#"><i class="ms-auto mdi mdi-view-list"></i></a>
-            <!-- <a class="nav-link py-2" href="#modalLogin" data-bs-toggle="modal"><i class="ms-auto mdi mdi-palette-swatch"></i></a>
-                      <a class="nav-link py-2" href="#modalLogin" data-bs-toggle="modal"><i class="ms-auto mdi mdi-account-search-outline"></i></a>
-                      <a class="nav-link py-2" href="#modalLogin" data-bs-toggle="modal"><i class="ms-auto mdi mdi-bus-clock"></i></a> -->
-            <a class="nav-link py-2" href="#modalLogin" data-bs-toggle="modal"><i class="ms-auto mdi mdi-settings-outline"></i></a>
-          </div>
-        </div>
-      </div>
-    </div>
+<%- include('partials/teacher-sidebar'); -%>
     <main class="col px-4 px-lg-5 pt-5">
       <h1>Teacher <%=" " + teacher + " "%> Dashboard</h1>
 
@@ -81,7 +49,7 @@
 
 <!-- //////Iteraror Start///////// -->
 <% for (let i = 0; i < orderedClasses.length; i++) { %>
-  <%- include("partials/row",{orderedClasses:orderedClasses,orderedClassPeriods:orderedClassPeriods,i:i}) -%>
+  <%- include("partials/row",{orderedClasses:orderedClasses,classTag:classTags["orderedClasses"],orderedClassPeriods:orderedClassPeriods,i:i}) -%>
 <% } %>
 <!-- //////Iteraror END///////// -->
 
@@ -94,84 +62,11 @@
                 <!-- new tab pane here -->
                 <div class="tab-pane " id="tab2" role="tabpanel">
                   <div class="container ps-0">
-                      <!-- <h3> "Teacher " + teacher + "'s " + "Friday " + "Classes:</h3> -->
-
-                    <div class="row ">
-                      <div class="text-truncate col-2 mb-1   ">
-                        <p class="chart-title"><strong>Period</strong></p>
-
-                      </div>
-                      <div class="text-truncate col-4 mb-1 ">
-                        <p class="chart-title"><strong>Today's Class</strong></p>
-                      </div>
-                      <div class="text-truncate col mb-1 ">
-                        <p class="chart-title"><strong>Homework</strong></p>
-
-                      </div>
-                      <div class="text-truncate col mb-1 ">
-                        <p class="chart-title"><strong>Next Class</strong></p>
-                      </div>
-                      <div class="text-truncate col-1 mb-1 ">
-                        <p class="chart-title"><strong>Teacher</strong></p>
-                      </div>
-                    </div>
-
-
-
-                <!-- //////Iteraror Start///////// -->
+<%- include("partials/row_header") -%>
                 <% for (let i = 0; i < orderedHomeroomClasses.length; i++) { %>
-
-                <div class="row " name="<%= orderedHomeroomClasses[i]._id %>" style="height: 8rem" id="<%= orderedHomeroomClasses[i].class_name %>">
-                <div class="col-2 m-1  border border border-dark rounded-3 shadow" >
-
-                <div class="" style="position: relative">
-
-                <h1 class="p-0 period" style="font-size: 8.5rem; color:#ECECEC; position: absolute;  padding:0 display:inline-block; margin-top: -35px; margin-left: 0px" ><strong><%= orderedHRPeriods[i]%></strong></h1>
-                <div class="mt-4 ms-0" style="position: absolute; top: 0px; left: 0.4rem">
-                <h6 class="text-truncate class-name" style="font-size: 1.3rem; color:#2F86A6" id=""><%=  orderedHomeroomClasses[i].class_name %></h6>
-                <h6 class="m-0 text-truncate class-type <%=orderedHomeroomClasses[i].class_type%> " id=""><%= "Group: " + orderedHomeroomClasses[i].class_type%></h6>
-                </div>
-
-
-                <h6></h6>
-                </div>
-
-
-                </div>
-                <div class="col m-1 border border border-dark rounded-3 shadow">
-                <form action="/action_page.php" class="daily-report-form">
-
-                <textarea  name="Today" class="daily-report-textarea today" id="todaysClass<%= orderedHomeroomClasses[i]%>"><%= orderedHomeroomClasses[i].current_report.todays_class %></textarea>
-
-                </form>
-                </div>
-                <div class="col-1 m-1 border border-dark rounded-3 shadow">
-                <form action="/action_page.php" class="daily-report-form">
-
-                <textarea  name="w3review" class="daily-report-textarea homework" id="<%= "homework" + orderedHomeroomClasses[i] %>" ><%= orderedHomeroomClasses[i].current_report.homework %></textarea>
-
-                </form>
-
-                </div>
-                <div class="col m-1 border border-dark rounded-3 shadow">
-                <form action="/action_page.php" class="daily-report-form">
-
-                <textarea  name="w3review" class="daily-report-textarea nextclass" id="<%= "nextClass" + orderedHomeroomClasses[i]%>"><%= orderedHomeroomClasses[i].current_report.next_class %></textarea>
-
-                </form>
-                </div>
-                <div class="col-1 m-1 pt-4   border border border-dark rounded-3 shadow">
-                <p class="m-2 text-truncate teacher"><strong><%= orderedHomeroomClasses[i].regular_teacher %></strong></p>
-                </div>
-                </div>
-                <% } %>
-
-
-
-
-
-
-
+<%- include("partials/row",{orderedClasses:orderedHomeroomClasses,classTag:classTags["orderedHomeroomClasses"],orderedClassPeriods:orderedHRPeriods,i:i}) -%>
+                <%} %>
+                <!-- //////Iteraror Start///////// -->
 
 
                 <!-- //////Iteraror END///////// -->

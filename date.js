@@ -41,7 +41,7 @@ exports.getDay = function() {
   const dayCodes = ["S","M","T","W","R","F","S"];
   const dayNum = today.getDay();
   //return dayCodes[dayNum];
-  return "F"; //fake code
+  return "R"; //fake code
 }
 //console.log(getDate());
 //console.log(getDay());
