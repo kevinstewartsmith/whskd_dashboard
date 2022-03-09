@@ -142,7 +142,9 @@ app.get("/teachers/:teacherName", function(req, res) {
     if (err) {console.log();
       console.log(err);
     } else {
-      console.log("CDA Classes app.js GET:" + cdaClasses);
+      orderedCDAClasses = teachers.sortClassOrder(cdaClasses,thisDayCode);
+      orderedCDAPeriods = teachers.getOrderedPeriods(orderedCDAClasses);
+      console.log("CDA Classes app.js GET:" + cdaClasses.length);
       Classes.find({class_type: teacherESL,"class_times.day": thisDayCode },function(err,eslClasses){
         if (err) {
           console.log(err);
@@ -184,6 +186,8 @@ app.get("/teachers/:teacherName", function(req, res) {
                         orderedHRPeriods:orderedHRPeriods,
                         orderedESLClasses: orderedESLClasses,
                         orderedESLPeriods: orderedESLPeriods,
+                        orderedCDAClasses: orderedCDAClasses,
+                        orderedCDAPeriods: orderedCDAPeriods,
                         weekDay: thisDayCode,
                         thisDate: thisDate,
                         teacherInfo: teacherInfo,

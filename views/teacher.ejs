@@ -44,9 +44,6 @@
                         <!-- <h3> "Teacher " + teacher + "'s " + "Friday " + "Classes:</h3> -->
 
 <%- include("partials/row_header") -%>
-
-
-
 <!-- //////Iteraror Start///////// -->
 <% for (let i = 0; i < orderedClasses.length; i++) { %>
   <%- include("partials/row",{orderedClasses:orderedClasses,classTag:classTags["orderedClasses"],orderedClassPeriods:orderedClassPeriods,i:i}) -%>
@@ -78,7 +75,20 @@
                   <div class="container ps-0">
 <%- include("partials/row_header") -%>
                 <% for (let i = 0; i < orderedESLClasses.length; i++) { %>
-<%- include("partials/row",{orderedClasses:orderedESLClasses,classTag:classTags["orderedESLClasses"],orderedESLClassPeriods:orderedESLPeriods,i:i}) -%>
+<%- include("partials/row",{orderedClasses:orderedESLClasses,classTag:classTags["orderedESLClasses"],orderedClassPeriods:orderedESLPeriods,i:i}) -%>
+                <%} %>
+                <!-- //////Iteraror Start///////// -->
+
+
+                <!-- //////Iteraror END///////// -->
+
+                  </div>
+                </div>
+                <div class="tab-pane " id="tab4" role="tabpanel">
+                  <div class="container ps-0">
+<%- include("partials/row_header") -%>
+                <% for (let i = 0; i < orderedCDAClasses.length; i++) { %>
+<%- include("partials/row",{orderedClasses:orderedCDAClasses,classTag:classTags["orderedCDAClasses"],orderedClassPeriods:orderedCDAPeriods,i:i}) -%>
                 <%} %>
                 <!-- //////Iteraror Start///////// -->
 
