@@ -128,6 +128,7 @@ app.get("/teachers/:teacherName", function(req, res) {
   console.log("APP.js GET Teacher Info: " + teacherInfo);
   const teacherHR = teacherInfo["hrClass"];
   const teacherESL = teacherInfo["esl"];
+  const teacherCDA = teacherInfo["cda"];
   console.log("Teacher Code: " + teacherInfo); //get the teacher acronym
   var orderedClasses = [];
   var orderedHomeroomClasses = [];
@@ -137,67 +138,74 @@ app.get("/teachers/:teacherName", function(req, res) {
   var orderedCDAClasses = [];
   var orderedCDAPeriods = [];
   const classTags = teachers.getClassTags();
-
-  Classes.find({class_type: teacherESL,"class_times.day": thisDayCode },function(err,eslClasses){
-    if (err) {
+  Classes.find({class_type: teacherCDA,"class_times.day": thisDayCode, regular_teacher: teacherInfo["code"] },function(err,cdaClasses){
+    if (err) {console.log();
       console.log(err);
     } else {
-      console.log("ESL CLAsses: " + eslClasses);
-      orderedESLClasses = teachers.sortClassOrder(eslClasses,thisDayCode);
-      orderedESLPeriods = teachers.getOrderedPeriods(orderedESLClasses,thisDayCode);
+      console.log("CDA Classes app.js GET:" + cdaClasses);
+      Classes.find({class_type: teacherESL,"class_times.day": thisDayCode },function(err,eslClasses){
+        if (err) {
+          console.log(err);
+        } else {
+          //console.log("ESL CLAsses: " + eslClasses);
+          orderedESLClasses = teachers.sortClassOrder(eslClasses,thisDayCode);
+          orderedESLPeriods = teachers.getOrderedPeriods(orderedESLClasses,thisDayCode);
 
-      Classes.find({class_type: teacherHR,"class_times.day": thisDayCode },function(err,hrClasses){
-        if (err) { console.log(err)} else {
-          //console.log(hrClasses);
-          orderedHomeroomClasses = teachers.sortClassOrder(hrClasses,thisDayCode);
-          orderedHRPeriods = teachers.getOrderedPeriods(orderedHomeroomClasses,thisDayCode);
+          Classes.find({class_type: teacherHR,"class_times.day": thisDayCode },function(err,hrClasses){
+            if (err) { console.log(err)} else {
+              //console.log(hrClasses);
+              orderedHomeroomClasses = teachers.sortClassOrder(hrClasses,thisDayCode);
+              orderedHRPeriods = teachers.getOrderedPeriods(orderedHomeroomClasses,thisDayCode);
 
-          Classes.find({ //Find classes based on
-            regular_teacher: teacherInfo["code"],
-            "class_times.day": thisDayCode
-          },function(err, classes) {
-            if (err) {
-              console.log(err);
-            } else {
-              // mongoose.disconnect();
-              console.log(classes);
-              const manyClasses = classes;
+              Classes.find({ //Find classes based on
+                regular_teacher: teacherInfo["code"],
+                "class_times.day": thisDayCode
+              },function(err, classes) {
+                if (err) {
+                  console.log(err);
+                } else {
+                  // mongoose.disconnect();
+                  console.log(classes);
+                  const manyClasses = classes;
 
-              orderedClasses = teachers.sortClassOrder(classes,thisDayCode);
-              let orderedClassPeriods = teachers.getOrderedPeriods(orderedClasses,thisDayCode);
-              let currentReportArray = teachers.getOrderedCurrentReports(orderedClasses);
-              //console.log("CR ARR: " + currentReportArray);
-              //console.log("ORDEREDCLASSPERIODS: " + orderedClassPeriods);
-              allTeachers.forEach(function(teacher) {
-                const storedTitle = _.lowerCase(teacher);
-                if (storedTitle === requestedTitle) {
-                  res.render("teacher", {
-                    teacher: teacher,
-                    orderedClasses: orderedClasses,
-                    orderedClassPeriods:orderedClassPeriods,
-                    orderedHomeroomClasses:orderedHomeroomClasses,
-                    orderedHRPeriods:orderedHRPeriods,
-                    orderedESLClasses: orderedESLClasses,
-                    orderedESLPeriods: orderedESLPeriods,
-                    weekDay: thisDayCode,
-                    thisDate: thisDate,
-                    teacherInfo: teacherInfo,
-                    teacherFirstName: requestedTitle,
-                    classTags: classTags
-                  });
-                  console.log("Match Found." );
+                  orderedClasses = teachers.sortClassOrder(classes,thisDayCode);
+                  let orderedClassPeriods = teachers.getOrderedPeriods(orderedClasses,thisDayCode);
+                  let currentReportArray = teachers.getOrderedCurrentReports(orderedClasses);
+                  //console.log("CR ARR: " + currentReportArray);
+                  //console.log("ORDEREDCLASSPERIODS: " + orderedClassPeriods);
+                  allTeachers.forEach(function(teacher) {
+                    const storedTitle = _.lowerCase(teacher);
+                    if (storedTitle === requestedTitle) {
+                      res.render("teacher", {
+                        teacher: teacher,
+                        orderedClasses: orderedClasses,
+                        orderedClassPeriods:orderedClassPeriods,
+                        orderedHomeroomClasses:orderedHomeroomClasses,
+                        orderedHRPeriods:orderedHRPeriods,
+                        orderedESLClasses: orderedESLClasses,
+                        orderedESLPeriods: orderedESLPeriods,
+                        weekDay: thisDayCode,
+                        thisDate: thisDate,
+                        teacherInfo: teacherInfo,
+                        teacherFirstName: requestedTitle,
+                        classTags: classTags
+                      });
+                      console.log("Match Found." );
+                    }
+                  })
+
                 }
-              })
+              });
+
 
             }
           });
 
-
         }
       });
-
     }
   });
+
 
 })
 
