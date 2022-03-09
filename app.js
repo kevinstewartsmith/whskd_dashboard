@@ -133,7 +133,9 @@ app.get("/teachers/:teacherName", function(req, res) {
   var orderedHomeroomClasses = [];
   var orderedHRPeriods = [];
   var orderedESLClasses = [];
+  var orderedESLPeriods = [];
   var orderedCDAClasses = [];
+  var orderedCDAPeriods = [];
   const classTags = teachers.getClassTags();
 
   Classes.find({class_type: teacherESL,"class_times.day": thisDayCode },function(err,eslClasses){
@@ -141,6 +143,9 @@ app.get("/teachers/:teacherName", function(req, res) {
       console.log(err);
     } else {
       console.log("ESL CLAsses: " + eslClasses);
+      orderedESLClasses = teachers.sortClassOrder(eslClasses,thisDayCode);
+      orderedESLPeriods = teachers.getOrderedPeriods(orderedESLClasses,thisDayCode);
+
       Classes.find({class_type: teacherHR,"class_times.day": thisDayCode },function(err,hrClasses){
         if (err) { console.log(err)} else {
           //console.log(hrClasses);
@@ -172,6 +177,8 @@ app.get("/teachers/:teacherName", function(req, res) {
                     orderedClassPeriods:orderedClassPeriods,
                     orderedHomeroomClasses:orderedHomeroomClasses,
                     orderedHRPeriods:orderedHRPeriods,
+                    orderedESLClasses: orderedESLClasses,
+                    orderedESLPeriods: orderedESLPeriods,
                     weekDay: thisDayCode,
                     thisDate: thisDate,
                     teacherInfo: teacherInfo,
