@@ -35,67 +35,132 @@ exports.getKoreanVietnameseTeachers = function() {
 }
 
 const teacherInfo = {
-"amel": {
-  code: "AMEL",
-  hrClass: "G3",
-  cda: "CDA",
-  cda: "ESL3"
-},
-"andy" : {
-  code: "AN",
-  hrClass: "G6",
-  cda: "CDA",
-  cda: "ESL6"
-},
-"art" : "AR",
-"cai" :{
-  code: "CA",
-  hrClass:"G4",
-  cda: "CDA",
-  esl: "ESL7"
-},
-"chris" : "CH",
-"jonathan" : "JON",
-"lenka" : {
-  code: "LE",
-  hrClass:"G4",
-  cda: null,
-  esl: "ESL4"
-},
-"marta" : "M",
-"sirina" : "SI",
-"sophie" : "SOPHIE",
-"tukson" : {
-  code: "T",
-  hrClass:"G2",
-  cda: "CDA",
-  esl: "ESL2"
-},
-"zeyneb": {
-  code: "Z",
-  hrClass:"G1",
-  cda: "CDA",
-  esl: "ESL1"
-},
-"jang yj": "J",
-"kim kj" : "K",
-"kim yj" :{
-  code:"KYJ",
-  hrClass:null,
-  cda: null,
-  esl: null
-} ,
-"lee mk" : "L",
-"loan" : {
-  code:"LO",
-  hrClass:null,
-  cda: "CDA",
-  esl: null
-},
-"ngoc" : "NG",
-"seo hj": "SE",
-"shin hj":"SH",
-"song hn":"S"
+  "amel": {
+    code: "AMEL",
+    hrClass: "G3",
+    cda: "CDA",
+    cda: "ESL3"
+  },
+  "andy" : {
+    code: "AN",
+    hrClass: "G6",
+    cda: "CDA",
+    cda: "ESL6"
+  },
+  "art" :{
+    code: "AR",
+    hrClass:null,
+    cda: "CDA",
+    esl: null
+  } ,
+  "cai" :{
+    code: "CA",
+    hrClass:"G4",
+    cda: "CDA",
+    esl: "ESL7"
+  },
+  "chris" : {
+    code: "CH",
+    hrClass:"G10",
+    cda: "CDA",
+    esl: "ESL10"
+  },
+  "jonathan" : {
+    code: "JON",
+    hrClass:"G9",
+    cda: "CDA",
+    esl: "ESL9"
+  },
+  "lenka" : {
+    code: "LE",
+    hrClass:"G4",
+    cda: null,
+    esl: "ESL4"
+  },
+  "marta" : {
+    code: "M",
+    hrClass:null,
+    cda: null,
+    esl: null
+  },
+  "sirina" : {
+    code: "SI",
+    hrClass:"G8",
+    cda: "CDA",
+    esl: "ESL8"
+  },
+  "sophie" : {
+    code: "SOPHIE",
+    hrClass:"G5",
+    cda: null,
+    esl: "ESL5"
+  },
+  "tukson" : {
+    code: "T",
+    hrClass:"G2",
+    cda: "CDA",
+    esl: "ESL2"
+  },
+  "zeyneb": {
+    code: "Z",
+    hrClass:"G1",
+    cda: "CDA",
+    esl: "ESL1"
+  },
+  "jang yj": {
+    code:"J",
+    hrClass:null,
+    cda: null,
+    esl: null
+  },
+  "kim kj" : {
+    code:"K",
+    hrClass:null,
+    cda: null,
+    esl: null
+  },
+  "kim yj" :{
+    code:"KYJ",
+    hrClass:null,
+    cda: null,
+    esl: null
+  } ,
+  "lee mk" : {
+    code:"L",
+    hrClass:null,
+    cda: null,
+    esl: null
+  },
+  "loan" : {
+    code:"LO",
+    hrClass:null,
+    cda: "CDA",
+    esl: null
+  },
+  "ngoc" : {
+    code:"NG",
+    hrClass:null,
+    cda: "CDA",
+    esl: null
+  },
+  "seo hj": {
+    code:"SE",
+    hrClass:null,
+    cda: null,
+    esl: null
+  },
+  "shin hj":{
+    code:"SH",
+    hrClass:null,
+    cda: null,
+    esl: null
+  },
+  "song hn":{
+    code:"S",
+    hrClass:null,
+    cda: null,
+    esl: null
+  }
 };
 exports.getTeacherInfo = function(name) {
   return teacherInfo[String(name)];
@@ -180,7 +245,7 @@ exports.getClassTags = function() {
       todaysClass: "todaysCDAClass",
       homework: "cdaHomework",
       nextClass: "nextCDAClass"
-    } 
+    }
   }
   return classTags;
 }
