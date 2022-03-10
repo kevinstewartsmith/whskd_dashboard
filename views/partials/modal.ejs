@@ -1,0 +1,27 @@
+<div class="modal" id="<%=id%>">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title"><h4><%= teacherInfo + " Daily Report"%></h4>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+        Modal body..
+<%- include("row_header") -%>
+
+
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <a class="btn btn-primary float-end  "data-bs-toggle="modal" data-bs-target="#myModal"  role="button">Download</a>
+        <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+      </div>
+
+    </div>
+  </div>
+</div>

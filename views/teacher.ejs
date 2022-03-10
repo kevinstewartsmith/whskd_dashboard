@@ -51,10 +51,8 @@
 <!-- //////Iteraror END///////// -->
 
                     </div>
+
                   </div>
-
-
-
 
                 <!-- new tab pane here -->
                 <div class="tab-pane " id="tab2" role="tabpanel">
@@ -63,14 +61,14 @@
                 <% for (let i = 0; i < orderedHomeroomClasses.length; i++) { %>
 <%- include("partials/row",{orderedClasses:orderedHomeroomClasses,classTag:classTags["orderedHomeroomClasses"],orderedClassPeriods:orderedHRPeriods,i:i}) -%>
                 <%} %>
-<%- include("partials/preview-and-download-button") %>
-                <!-- //////Iteraror Start///////// -->
-
-
-                <!-- //////Iteraror END///////// -->
-
                   </div>
                   <button type="button" name="button" id="download">Download</button>
+                  <div class="">
+                    <% if (teacherInfo["hrClass"] != null) { %>
+                    <%- include("partials/preview-and-download-button",{id:"homeroomReport"}) -%>
+
+                    <%}%>
+                  </div>
                 </div>
 
                 <div class="tab-pane " id="tab3" role="tabpanel">
@@ -79,12 +77,17 @@
                 <% for (let i = 0; i < orderedESLClasses.length; i++) { %>
 <%- include("partials/row",{orderedClasses:orderedESLClasses,classTag:classTags["orderedESLClasses"],orderedClassPeriods:orderedESLPeriods,i:i}) -%>
                 <%} %>
-<%- include("partials/preview-and-download-button") %>
+
                 <!-- //////Iteraror Start///////// -->
 
 
                 <!-- //////Iteraror END///////// -->
 
+                  </div>
+                  <div class="">
+                    <% if (teacherInfo["esl"] != null) { %>
+                    <%- include("partials/preview-and-download-button",{id:"ESLreport"}) -%>
+                    <%}%>
                   </div>
                 </div>
                 <div class="tab-pane " id="tab4" role="tabpanel">
@@ -93,15 +96,15 @@
                 <% for (let i = 0; i < orderedCDAClasses.length; i++) { %>
 <%- include("partials/row",{orderedClasses:orderedCDAClasses,classTag:classTags["orderedCDAClasses"],orderedClassPeriods:orderedCDAPeriods,i:i}) -%>
                 <%} %>
-<%- include("partials/preview-and-download-button") %>
-                <!-- //////Iteraror Start///////// -->
-
-
-                <!-- //////Iteraror END///////// -->
 
                   </div>
-                </div>
+                  <div class="">
+                    <% if (teacherInfo["cda"] != null) { %>
+                    <%- include("partials/preview-and-download-button",{id:"CDAreport"}) -%>
 
+                    <%}%>
+                  </div>
+                </div>
 
                 </div>
                 <!-- /tab-content -->
@@ -110,36 +113,19 @@
             </div>
           </div>
         </div>
-
-        <!-- The Modal -->
-        <div class="modal" id="myModal">
-          <div class="modal-dialog modal-xl">
-            <div class="modal-content">
-
-              <!-- Modal Header -->
-              <div class="modal-header">
-                <h4 class="modal-title">Modal Heading</h4>
-                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-              </div>
-
-              <!-- Modal body -->
-              <div class="modal-body">
-                Modal body..
-              </div>
-
-              <!-- Modal footer -->
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-              </div>
-
-            </div>
-          </div>
-        </div>
       </section>
 
+<% if (teacherInfo["hrClass"] != null) { %>
+<%- include("partials/modal",{teacherInfo:teacherInfo["hrClass"],id:"homeroomReport"}) -%>
+<%}%>
 
+<% if (teacherInfo["esl"] != null) { %>
+<%- include("partials/modal",{teacherInfo:teacherInfo["esl"],id:"ESLreport"}) -%>
+<%}%>
 
-
+<% if (teacherInfo["cda"] != null) { %>
+<%- include("partials/modal",{teacherInfo:teacherInfo["cda"],id:"CDAreport"}) -%>
+<%}%>
       <footer class="row mt-5 pt-5 text-secondary">
 
         <div class="col-12 text-end small py-4"> &copy; 2022-present Inc. </div>
