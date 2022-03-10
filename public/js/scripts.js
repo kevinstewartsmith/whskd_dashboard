@@ -50,6 +50,7 @@ function typeEvent(tag) {
 
   //on keyup, start the countdown
   tag.on('keyup', function () {
+
     clearTimeout(typingTimer);
 
     typingTimer = setTimeout(doneTyping, doneTypingInterval);
@@ -61,10 +62,13 @@ function typeEvent(tag) {
     var code = key.keyCode || key.which;
     if(code == 9) { //Enter keycode
       console.log("TAB");
-      tag.text(tag.val())
-      clearTimeout(typingTimer);
+      console.log(tag.val());
 
-      typingTimer = setTimeout(doneTyping, 0);
+      tag.text(tag.val())
+      doneTyping();
+      //clearTimeout(typingTimer);
+
+      //typingTimer = setTimeout(doneTyping, 0);
     }
     clearTimeout(typingTimer);
 
@@ -82,7 +86,7 @@ function typeEvent(tag) {
     var lastClassArray = lastClass.split(',')  //.split(' ').pop();
     var teacherCode = $("#teacherCode").text();
     console.log(lastClassArray);
-    console.log("CLASS_Name: " + row.attr("name"));
+    console.log("CLASS_Name: " + row.attr("id"));
     console.log("class_type: " + lastClassArray);
     console.log("period: " + row.find(".period").text());
     console.log("todays_class: " + row.find(".today").text());
@@ -176,3 +180,46 @@ function logTestData(){
    $("textarea#todaysClass3").val(data)
  });
 }
+
+
+
+
+setUpDownloadPageAsImage();
+
+function setUpDownloadPageAsImage() {
+  document.getElementById("download").addEventListener("click", function() {
+    html2canvas($("#tab2")[0]).then(function(canvas) {
+      console.log(canvas);
+      simulateDownloadImageClick(canvas.toDataURL(), 'file-name.png');
+    });
+  });
+}
+
+function simulateDownloadImageClick(uri, filename) {
+  var link = document.createElement('a');
+  if (typeof link.download !== 'string') {
+    window.open(uri);
+  } else {
+    link.href = uri;
+    link.download = filename;
+    accountForFirefox(clickLink, link);
+  }
+}
+
+function clickLink(link) {
+  link.click();
+}
+
+function accountForFirefox(click) { // wrapper function
+  let link = arguments[1];
+  document.body.appendChild(link);
+  click(link);
+  document.body.removeChild(link);
+}
+
+var myModal = document.getElementById('myModal')
+var myInput = document.getElementById('myInput')
+
+myModal.addEventListener('shown.bs.modal', function () {
+  myInput.focus()
+})
