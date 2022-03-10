@@ -39,7 +39,7 @@
 
                 </ul>
                 <div class="tab-content py-2 " >
-                  <div class="tab-pane active " id="tab1" role="tabpanel">
+                  <div class="tab-pane active show fade" id="tab1" role="tabpanel">
                     <div class="container ps-0">
                         <!-- <h3> "Teacher " + teacher + "'s " + "Friday " + "Classes:</h3> -->
 
@@ -55,7 +55,7 @@
                   </div>
 
                 <!-- new tab pane here -->
-                <div class="tab-pane " id="tab2" role="tabpanel">
+                <div class="tab-pane fade" id="tab2" role="tabpanel">
                   <div class="container ps-0">
 <%- include("partials/row_header") -%>
                 <% for (let i = 0; i < orderedHomeroomClasses.length; i++) { %>
@@ -71,7 +71,7 @@
                   </div>
                 </div>
 
-                <div class="tab-pane " id="tab3" role="tabpanel">
+                <div class="tab-pane fade" id="tab3" role="tabpanel">
                   <div class="container ps-0">
 <%- include("partials/row_header") -%>
                 <% for (let i = 0; i < orderedESLClasses.length; i++) { %>
@@ -90,7 +90,7 @@
                     <%}%>
                   </div>
                 </div>
-                <div class="tab-pane " id="tab4" role="tabpanel">
+                <div class="tab-pane fade" id="tab4" role="tabpanel">
                   <div class="container ps-0">
 <%- include("partials/row_header") -%>
                 <% for (let i = 0; i < orderedCDAClasses.length; i++) { %>
@@ -116,7 +116,7 @@
       </section>
 
 <% if (teacherInfo["hrClass"] != null) { %>
-<%- include("partials/modal",{teacherInfo:teacherInfo["hrClass"],id:"homeroomReport"}) -%>
+<%- include("partials/modal",{teacherInfo:teacherInfo["hrClass"],id:"homeroomReport",orderedClasses:orderedHomeroomClasses,orderedClassPeriods:orderedHRPeriods}) -%>
 <%}%>
 
 <% if (teacherInfo["esl"] != null) { %>

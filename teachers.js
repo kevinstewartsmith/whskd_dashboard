@@ -162,6 +162,9 @@ const teacherInfo = {
     esl: null
   }
 };
+exports.getAllTeacherInfo = function() {
+  return teacherInfo;
+}
 exports.getTeacherInfo = function(name) {
   return teacherInfo[String(name)];
 }

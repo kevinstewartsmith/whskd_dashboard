@@ -10,12 +10,31 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        Modal body..
-<%- include("row_header") -%>
+
+        <div class="m-4" >
+
+<div class="" style="background-color: transparent; padding: 10px; margin-bottom: 30px">
+<div class="" style="background-color:transparent; display: inline-block">
+  <img src="/images/site_logo.png" height="100px" alt="">
+</div>
+<div class="" style="display:inline;  position:absolute;"">
+  <h1 class="" style="float: left; margin-left: 120px; color:#C8C6C6; font-size:3rem"><%= teacherInfo + " Daily Report"%></h1>
+  <h3 class="" style="display:inline;   float: left; margin-left: 120px; margin-top:10px; color:#C8C6C6">Thursday, March 10, 2022</h3>
+</div>
 
 
+
+
+</div>
+<%- include( "row_header" ) -%>
+
+<% for (let i = 0; i < orderedClasses.length; i++) { %>
+
+<%- include( "download-row", {orderedClasses:orderedClasses, orderedClassPeriods:orderedClassPeriods, classTag:classTags,i:i}) -%>
+
+<% } %>
       </div>
-
+</div>
       <!-- Modal footer -->
       <div class="modal-footer">
         <a class="btn btn-primary float-end  "data-bs-toggle="modal" data-bs-target="#myModal"  role="button">Download</a>

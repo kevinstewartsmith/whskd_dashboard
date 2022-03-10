@@ -18,10 +18,12 @@ app.use(express.static("public"));
 const westernTeachers = teachers.getWesternTeachers();
 const koreanVietnameseTeachers = teachers.getKoreanVietnameseTeachers();
 const allTeachers = westernTeachers.concat(koreanVietnameseTeachers);
+const allTeacherInfo = teachers.getAllTeacherInfo();
 const thisDayCode =  dates.getDay();
 const thisDate = dates.getDate();
 console.log(thisDayCode);
 console.log("app.get day:" + dates.getDay());
+//console.log(allTeacherInfo);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 ///////////////Database/////////////////////////
@@ -87,6 +89,7 @@ const classSchema = mongoose.Schema({
 const Classes = mongoose.model("classe", classSchema);
 const DailyReports = mongoose.model("daily_report", dailyReportSchema);
 const ClassTimes =  mongoose.model("class_time", classTimesSchema);
+
 
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -192,7 +195,8 @@ app.get("/teachers/:teacherName", function(req, res) {
                         thisDate: thisDate,
                         teacherInfo: teacherInfo,
                         teacherFirstName: requestedTitle,
-                        classTags: classTags
+                        classTags: classTags,
+                        allTeacherInfo: allTeacherInfo
                       });
                       console.log("Match Found." );
                     }

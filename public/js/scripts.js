@@ -184,11 +184,11 @@ function logTestData(){
 
 
 
-setUpDownloadPageAsImage();
+setUpDownloadPageAsImage("download");
 
-function setUpDownloadPageAsImage() {
-  document.getElementById("download").addEventListener("click", function() {
-    html2canvas($("#tab2")[0]).then(function(canvas) {
+function setUpDownloadPageAsImage(id) {
+  document.getElementById(id).addEventListener("click", function() {
+    html2canvas($("#sectionReports")[0]).then(function(canvas) {
       console.log(canvas);
       simulateDownloadImageClick(canvas.toDataURL(), 'file-name.png');
     });
