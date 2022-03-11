@@ -2,6 +2,16 @@
 <p hidden id="teacherCode"><%=teacherInfo["code"]%></p>
 <p hidden id="classTags"><%=classTags%></p>
 
+
+  <% if (orderedClasses.length) { %>
+
+     <script>
+        var orderedClassesLength = <%= orderedClasses.length %>
+     </script>
+<% } %>
+
+
+
 <div class="container-fluid px-0 flex-grow-1">
   <div class="row g-0 flex-nowrap navbar-expand-lg">
 <%- include('partials/teacher-sidebar'); -%>

@@ -46,7 +46,7 @@ const classTimesSchema = mongoose.Schema({
 });
 
 const dailyReportSchema = mongoose.Schema({
-  date_in_ms: String,
+  date_in_ms: Number,
   date: String,
   weekday: {
     type: String,
@@ -202,6 +202,7 @@ app.get("/teachers/:teacherName", function(req, res) {
                         classTags: classTags,
                         allTeacherInfo: allTeacherInfo
                       });
+
                       console.log("Match Found." );
                     }
                   })
@@ -266,7 +267,8 @@ app.post("/teachers/:teacherName", function(req,res){
         todays_class: classDetails.daily_report.todays_class,
         homework: classDetails.daily_report.homework,
         next_class: classDetails.daily_report.next_class,
-        weekday: thisDayCode
+        weekday: thisDayCode,
+        date_in_ms: Date.now()
       });
       currentReport.save();
 
@@ -290,11 +292,15 @@ app.post("/teachers/:teacherName", function(req,res){
 });
 app.get("/elements/:element",function(req,res){
   //const requestedTitle = _.lowerCase(req.params.element);
-  console.log(req.params.element);
-  var id = req.params.element;
+  console.log("RESPONSE DATA TYPE: " + typeof req.params.element);
+  var classIDParam = console.log("CLASS ID PARAM " + req.params.element);
+  var idString = req.params.element;
+
+  var classIDParam = parseInt(idString)
+  console.log("classIDParam DATA TYPE: " + typeof classIDParam);
   var foundClass;
   var classInfo;
-  Classes.findOne({_id: id}, function(err,result){
+  Classes.findOne({_id: classIDParam}, function(err,result){
     if(err){
       console.log(err);
     } else {
@@ -449,3 +455,23 @@ app.listen(4000, function() {
 
 //classTimes.save();
 //console.log(crazy.getCrazyArray()[76]["class_times"][0]["period"]);
+
+// const currentReport = new DailyReports({
+//   todays_class: "todays class",
+//   homework: "homework",
+//   next_class: "next class",
+//   weekday: thisDayCode,
+//   date_in_ms: Date.now()
+// });
+// currentReport.save();
+//
+// //console.log("FOUND CLASS ID: " + foundClass);
+//
+// Classes.updateMany({},{current_report:currentReport},function(err,result){
+//   if (err){
+//     console.log(err);
+//   } else {
+//           console.log("Successfully Updated: " + result);
+//           //res.redirect('/teachers/:' + teacherFirstName);
+//   }
+// })

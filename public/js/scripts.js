@@ -175,56 +175,170 @@ for (var i = 0; i < 8; i++) {
 };
 
 
-//   function getDate() {
-//    const today = new Date();
-//    const options = {
-//      weekday: 'long',
-//      month: 'long',
-//      day: 'numeric',
-//      year: 'numeric',
-//      hour: 'numeric',
-//      minute: 'numeric',
-//      second: 'numeric',
-//      hour12: false
-//
-//    };
-//
-//    return today.toLocaleDateString("en-US", options);
-//  }
-//
+
  function getDay() {
   const today = new Date();
   const dayCodes = ["S","M","T","W","R","F","S"];
   const dayNum = today.getDay();
   return dayCodes[dayNum];
 }
-//  console.log(getDate());
-//  console.log(getDay());
-function logTestData(){
- //  $.ajax({
- //   url: '/elements/element',
- //   type: 'GET',
- //
- // });
- // $.get("/elements/element", function(data, status){
- //    alert("Data: " + data + "\nStatus: " + status);
- //  });
- //  $.ajax({type: "POST", url: /elements/element, dataType :"json", data :
- //    {"class_details":classDetails}
- //  });
- console.log($("textarea#todaysClass1").parents().eq(2).attr("name"));
- //for (var i = 1; i < 9; i++){
-var id = $("textarea#todaysClass1").parents().eq(2).attr("name")
-     $.get("/elements/" + id, function(data){
-       console.log(data.current_report.todays_class)
-    $("textarea#todaysClass1").val(data.current_report.todays_class)
-     });
- //}
- // $.get("/elements/1",function(data){
- //   console.log(data.current_report.todays_class)
- //   //$("textarea#todaysClass3").val(data)
- // });
+
+
+const todaysClassArray = []
+for (var i = 1; i < orderedClassesLength + 1; i++) {
+  todaysClassArray.push("textarea#todaysClass" +i);
+  console.log(typeof todaysClassArray[i - 1]);
 }
+
+
+  // function reloadDivs() {
+  //
+  //   todaysClassArray.forEach(function(classID){
+  //     var id = $(classID).parents().eq(2).attr("name");
+  //     $.get("/elements/" + id, function(data){
+  //
+  //       if (data.current_report.todaysClass != $("textarea#todaysClass1").val()) {
+  //         $("textarea#todaysClass1").val(data.current_report.todays_class)
+  //       }
+  //     });
+  //   });
+  //
+  //
+  // }
+
+
+
+setInterval(logTestData, 6000)
+function logTestData(){
+
+    // console.log($("textarea#todaysClass1").parents().eq(2).attr("name"));
+    //   //for (var i = 1; i < 9; i++){
+    //
+    //
+    // var id = $("textarea#todaysClass1").parents().eq(2).attr("name")
+    // $.get("/elements/" + id, function(data){
+    // console.log(data.current_report.todays_class)
+    //
+    // if (data.current_report.todaysClass != $("textarea#todaysClass1").val()) {
+    //   $("textarea#todaysClass1").val(data.current_report.todays_class)
+    //   }
+    // });
+    //
+    // //console.log($("textarea#todaysClass1").parents().eq(2).attr("name"));
+    // //for (var i = 1; i < 9; i++){
+    // var id = $("textarea#todaysClass3").parents().eq(2).attr("name")
+    // $.get("/elements/" + id, function(data){
+    // console.log(data.current_report.todays_class)
+    //
+    // if (data.current_report.todaysClass != $("textarea#todaysClass3").val()) {
+    //   $("textarea#todaysClass3").val(data.current_report.todays_class)
+    //   }
+    // });
+
+    // classTags.forEach(function(tag){
+    //   console.log("The tag: " + tag[0].parents().eq(2).attr("name"));
+    //   var id = tag[0].parents().eq(2).attr("name");
+    //   $.get("/elements/" + id, function(data){
+    //     if (data.current_report.todaysClass != tag[0].val()) {
+    //       tag[0].val(data.current_report.todays_class)
+    //     }
+    //   });
+    // });
+
+    // var rows = $(".report");
+    // for (var i = 0; i < rows.length; i++) {
+    //   var id = rows[i].attr("name");
+    //   $.get("/elements/" + id, function(data){
+    //     rows[i].find(".today").val(data.current_report.todays_class)
+    //   });
+    // };
+  }
+function omg() {
+    var rows = $(".row.report")
+    rows.each(function(i){
+      //console.log("i " + $( this ).attr("name"));
+      //console.log("i " + $( this ).attr("id"));
+      var tag = $( this );
+      var textArea = $( this ).find(".today")
+      var textAreaID = textArea.attr("id")
+      var domToday = $( this ).find(".today").val()
+      var name = $( this ).attr("name")
+      var domID = $( this ).attr("id")
+      console.log("DOM ID: " + domID);
+      $.get("/elements/" + name, function(data){
+        // if (data.current_report.todaysClass != tag[0].val()) {
+        //   tag[0].val(data.current_report.todays_class)
+        // }
+        // if (data.current_report.todaysClass != tag[0].val()) {
+        //       tag[0].val(data.current_report.todays_class)
+        // }
+        var req = data.current_report.todays_class
+        console.log("Today's class ID:  " + textAreaID );
+        console.log("REQ:" + data.current_report.todays_class + "  Type: " + typeof data.current_report.todays_class);
+        console.log("DOM ID: " + domID + "  Type: " + typeof domID);
+        console.log("DOM Name: " + name + "  Type: " + typeof name);
+        console.log("Dom Today: " + domToday+ "  Type: " + typeof domToday );
+        //$( this ).text("hello")
+
+        if (req != domToday) {
+              console.log("They're Different!");
+              var textAreaHash = "textarea.today#" + textAreaID
+              tag.find(textAreaHash).val(req)
+              console.log(textAreaHash);
+        }
+
+      });
+    })
+}
+//}
+// var rows = $(".row.report")
+// rows.each(function(i){
+//   //console.log("i " + $( this ).attr("name"));
+//   //console.log("i " + $( this ).attr("id"));
+//
+//   var name = $( this ).attr("name")
+//   var domID = $( this ).attr("id")
+//   console.log("NAME BEFORE:" + id);
+//   $.get("/elements/" + id, function(data){
+//     // if (data.current_report.todaysClass != tag[0].val()) {
+//     //   tag[0].val(data.current_report.todays_class)
+//     // }
+//     // if (data.current_report.todaysClass != tag[0].val()) {
+//     //       tag[0].val(data.current_report.todays_class)
+//     // }
+//     console.log("REQ:" + data.current_report.todays_class);
+//     console.log("DOM ID: " + domID);
+//     console.log("DOM Name: " + $( this ).attr("name"));
+//     //$( this ).text("hello")
+//   });
+// })
+
+
+// var rows = $(".row.report")
+// rows.each(function(i){
+//   //console.log("i " + $( this ).attr("name"));
+//   //console.log("i " + $( this ).attr("id"));
+//   var id = $( this ).attr("name")
+//   $.get("/elements/" + id, function(data){
+//     // if (data.current_report.todaysClass != tag[0].val()) {
+//     //   tag[0].val(data.current_report.todays_class)
+//     // }
+//     console.log(data);
+//   //$( this ).text("hello")
+// });
+// })
+
+//console.log("rows: " + $(".today").text())
+
+// classTags.forEach(function(tag){
+//   console.log("The tag: " + tag[0].parents().eq(2).attr("name"));
+//   tag[0].parents().eq(2).attr("name");
+//   $.get("/elements/" + id, function(data){
+//     if (data.current_report.todaysClass != tag[0].val()) {
+//       tag[0].val(data.current_report.todays_class)
+//     }
+//   });
+// });
 
 
 
