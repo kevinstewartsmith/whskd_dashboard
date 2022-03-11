@@ -39,6 +39,28 @@ var homeroomClassTags = [
 [$('textarea#todaysHomeroomClass8'), $('textarea#homeroomHomework8'),$('textarea#nextHomeroomClass8')]
 ];
 
+var eslClassTags = [
+[$('textarea#todaysESLClass1'), $('textarea#eslHomework1'),$('textarea#nextESLClass1')],
+[$('textarea#todaysESLClass2'), $('textarea#eslHomework2'),$('textarea#nextESLClass2')],
+[$('textarea#todaysESLClass3'), $('textarea#eslHomework3'),$('textarea#nextESLClass3')],
+[$('textarea#todaysESLClass4'), $('textarea#eslHomework4'),$('textarea#nextESLClass4')],
+[$('textarea#todaysESLClass5'), $('textarea#eslHomework5'),$('textarea#nextESLClass5')],
+[$('textarea#todaysESLClass6'), $('textarea#eslHomework6'),$('textarea#nextESLClass6')],
+[$('textarea#todaysESLClass7'), $('textarea#eslHomework7'),$('textarea#nextESLClass7')],
+[$('textarea#todaysESLClass8'), $('textarea#eslHomework8'),$('textarea#nextESLClass8')]
+];
+
+var cdaClassTags = [
+[$('textarea#todaysCDAClass1'), $('textarea#cdaHomework1'),$('textarea#nextCDAClass1')],
+[$('textarea#todaysCDAClass2'), $('textarea#cdaHomework2'),$('textarea#nextCDAClass2')],
+[$('textarea#todaysCDAClass3'), $('textarea#cdaHomework3'),$('textarea#nextCDAClass3')],
+[$('textarea#todaysCDAClass4'), $('textarea#cdaHomework4'),$('textarea#nextCDAClass4')],
+[$('textarea#todaysCDAClass5'), $('textarea#cdaHomework5'),$('textarea#nextCDAClass5')],
+[$('textarea#todaysCDAClass6'), $('textarea#cdaHomework6'),$('textarea#nextCDAClass6')],
+[$('textarea#todaysCDAClass7'), $('textarea#cdaHomework7'),$('textarea#nextCDAClass7')],
+[$('textarea#todaysCDAClass8'), $('textarea#cdaHomework8'),$('textarea#nextCDAClass8')]
+];
+
 
 // console.log("Next class ID: " + class1Tags[2].attr("id"));
 // console.log("Next class ID: " + classTags[0][0].parent().parent().attr("class"));
@@ -147,6 +169,8 @@ for (var i = 0; i < 8; i++) {
   for (var j = 0; j < 3; j++ ) {
     typeEvent(classTags[i][j]);
     typeEvent(homeroomClassTags[i][j]);
+    typeEvent(eslClassTags[i][j]);
+    typeEvent(cdaClassTags[i][j]);
   }
 };
 

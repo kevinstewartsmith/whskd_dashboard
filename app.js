@@ -21,8 +21,8 @@ const allTeachers = westernTeachers.concat(koreanVietnameseTeachers);
 const allTeacherInfo = teachers.getAllTeacherInfo();
 const thisDayCode =  dates.getDay();
 const thisDate = dates.getDate();
-console.log(thisDayCode);
-console.log("app.get day:" + dates.getDay());
+//console.log(thisDayCode);
+//console.log("app.get day:" + dates.getDay());
 //console.log(allTeacherInfo);
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
@@ -107,7 +107,7 @@ app.get("/", function(req, res) {
 
   // res.sendFile(__dirname + "/index.html");
   // res.sendFile(__dirname + "/memory-game.html");
-  console.log(koreanVietnameseTeachers);
+  //console.log(koreanVietnameseTeachers);
   res.render("index", {
     westernTeachers: westernTeachers,
     koreanVietnameseTeachers: koreanVietnameseTeachers
@@ -118,7 +118,7 @@ app.get("/teacher", function(req, res) {
   // res.sendFile(__dirname + "/teacher-dashboard.html");
   // res.sendFile(__dirname + "/memory-game.html");
   // const westernTeachers = teachers.getWesternTeachers();
-  console.log(westernTeachers);
+//  console.log(westernTeachers);
   res.render("teacher", {
     // westernTeachers: westernTeachers,
     teachers: allTeachers
@@ -127,13 +127,13 @@ app.get("/teacher", function(req, res) {
 
 app.get("/teachers/:teacherName", function(req, res) {
   const requestedTitle = _.lowerCase(req.params.teacherName);
-  console.log("REQUESTED TITLE: " + requestedTitle); //Convert Teacher name to lower case string
+  //console.log("REQUESTED TITLE: " + requestedTitle); //Convert Teacher name to lower case string
   const teacherInfo = teachers.getTeacherInfo(requestedTitle);
-  console.log("APP.js GET Teacher Info: " + teacherInfo);
+  //console.log("APP.js GET Teacher Info: " + teacherInfo);
   const teacherHR = teacherInfo["hrClass"];
   const teacherESL = teacherInfo["esl"];
   const teacherCDA = teacherInfo["cda"];
-  console.log("Teacher Code: " + teacherInfo); //get the teacher acronym
+  //console.log("Teacher Code: " + teacherInfo); //get the teacher acronym
   var orderedClasses = [];
   var orderedHomeroomClasses = [];
   var orderedHRPeriods = [];
@@ -142,13 +142,16 @@ app.get("/teachers/:teacherName", function(req, res) {
   var orderedCDAClasses = [];
   var orderedCDAPeriods = [];
   const classTags = teachers.getClassTags();
+  console.log(teacherCDA);
+  console.log(thisDayCode);
+  console.log(teacherInfo["code"]);
   Classes.find({class_type: teacherCDA,"class_times.day": thisDayCode, regular_teacher: teacherInfo["code"] },function(err,cdaClasses){
-    if (err) {console.log();
+    if (err) {
       console.log(err);
     } else {
       orderedCDAClasses = teachers.sortClassOrder(cdaClasses,thisDayCode);
-      orderedCDAPeriods = teachers.getOrderedPeriods(orderedCDAClasses);
-      console.log("CDA Classes app.js GET:" + cdaClasses.length);
+      orderedCDAPeriods = teachers.getOrderedPeriods(orderedCDAClasses,thisDayCode);
+    //  console.log("CDA Classes app.js LENGTH:" + orderedCDAClasses[0].class_times);
       Classes.find({class_type: teacherESL,"class_times.day": thisDayCode },function(err,eslClasses){
         if (err) {
           console.log(err);
@@ -171,7 +174,7 @@ app.get("/teachers/:teacherName", function(req, res) {
                   console.log(err);
                 } else {
                   // mongoose.disconnect();
-                  console.log(classes);
+                //  console.log("TEACHER CLASSES APP.GET:" + classes);
                   const manyClasses = classes;
 
                   orderedClasses = teachers.sortClassOrder(classes,thisDayCode);

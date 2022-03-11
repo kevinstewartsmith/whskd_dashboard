@@ -213,29 +213,37 @@ exports.sortClassOrder = function(classArray,day) {
 
   sortedArray = sortedArray.filter(a => a !== null);
 
-
+ //console.log("Sorted CLASSES Teachers.sortOdrer:" + sortedArray);
 
   return sortedArray;
 }
 
-exports.getOrderedPeriods = function(unorderedClasses,day) {
+exports.getOrderedPeriods = function(orderedClasses,day) {
   let periods = [];
-  unorderedClasses.forEach(function(classSession){
+  console.log("ORDER: " + orderedClasses);
+  orderedClasses.forEach(function(classSession){
     classSession.class_times.forEach(function(classTime){
       if (classTime.day === day ){
+        console.log("PERIODS HERE");
+        console.log("CLASSTIMES: " + classTime.period);
         periods.push(classTime.period);
       }
     });
   });
+  console.log("PERIODS: Get ordered periods: " + periods);
   //periods = periods.sort(function(a, b) {return a - b});
 
   function onlyUnique(value, index, self) {
-  return self.indexOf(value) === index;
-}
+    return self.indexOf(value) === index;
+  }
 
 // usage example:
 
 periods = periods.filter(onlyUnique);
+
+periods = periods.sort(function(a, b) {
+  return a - b;
+});
   return periods;
 }
 
