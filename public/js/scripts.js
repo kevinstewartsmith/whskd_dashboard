@@ -28,6 +28,18 @@ var classTags = [
   [$('textarea#todaysClass8'),$('textarea#homework8'),$('textarea#nextClass8')],
 ];
 
+var homeroomClassTags = [
+[$('textarea#todaysHomeroomClass1'), $('textarea#homeroomHomework1'),$('textarea#nextHomeroomClass1')],
+[$('textarea#todaysHomeroomClass2'), $('textarea#homeroomHomework2'),$('textarea#nextHomeroomClass2')],
+[$('textarea#todaysHomeroomClass3'), $('textarea#homeroomHomework3'),$('textarea#nextHomeroomClass3')],
+[$('textarea#todaysHomeroomClass4'), $('textarea#homeroomHomework4'),$('textarea#nextHomeroomClass4')],
+[$('textarea#todaysHomeroomClass5'), $('textarea#homeroomHomework5'),$('textarea#nextHomeroomClass5')],
+[$('textarea#todaysHomeroomClass6'), $('textarea#homeroomHomework6'),$('textarea#nextHomeroomClass6')],
+[$('textarea#todaysHomeroomClass7'), $('textarea#homeroomHomework7'),$('textarea#nextHomeroomClass7')],
+[$('textarea#todaysHomeroomClass8'), $('textarea#homeroomHomework8'),$('textarea#nextHomeroomClass8')]
+];
+
+
 // console.log("Next class ID: " + class1Tags[2].attr("id"));
 // console.log("Next class ID: " + classTags[0][0].parent().parent().attr("class"));
 // console.log("Class name: " + classTags[0][0].parent().parent().parent().find("class-name").attr("id"));
@@ -84,7 +96,7 @@ function typeEvent(tag) {
     var lastClass = row.find('.class-type').text()
     lastClass = lastClass.replace("Group: ","");
     var lastClassArray = lastClass.split(',')  //.split(' ').pop();
-    var teacherCode = $("#teacherCode").text();
+    var teacherCode = row.find(".code").text();//$("#teacherCode").text();
     console.log(lastClassArray);
     console.log("CLASS_Name: " + row.attr("id"));
     console.log("class_type: " + lastClassArray);
@@ -110,7 +122,7 @@ function typeEvent(tag) {
         next_class: row.find(".nextclass").text()
       }
     }
-    console.log("SCRIPTS: CLASS DETAILS: " + classDetails);
+    console.log("SCRIPTS: CLASS DETAILS: " + teacherFirstName);
 
     console.log("TEACHER CODE SCRIPT: " + teacherCode);
     var teacherURL = "/teachers/" + teacherFirstName;
@@ -134,6 +146,7 @@ function typeEvent(tag) {
 for (var i = 0; i < 8; i++) {
   for (var j = 0; j < 3; j++ ) {
     typeEvent(classTags[i][j]);
+    typeEvent(homeroomClassTags[i][j]);
   }
 };
 

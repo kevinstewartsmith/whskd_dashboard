@@ -39,127 +39,148 @@ const teacherInfo = {
     code: "AMEL",
     hrClass: "G3",
     cda: "CDA",
-    esl: "ESL3"
+    esl: "ESL3",
+    name: "Amel"
   },
   "andy" : {
     code: "AN",
     hrClass: "G6",
     cda: "CDA",
-    esl: "ESL6"
+    esl: "ESL6",
+    name: "Andy"
   },
   "art" :{
     code: "AR",
     hrClass:null,
     cda: "CDA",
-    esl: null
+    esl: null,
+    name: "Art"
   } ,
   "cai" :{
     code: "CA",
     hrClass:"G4",
     cda: "CDA",
-    esl: "ESL7"
+    esl: "ESL7",
+    name: "Cai"
   },
   "chris" : {
     code: "CH",
     hrClass:"G10",
     cda: "CDA",
-    esl: "ESL10"
+    esl: "ESL10",
+    name: "Chris"
   },
   "jonathan" : {
     code: "JON",
     hrClass:"G9",
     cda: "CDA",
-    esl: "ESL9"
+    esl: "ESL9",
+    name: "Jonathan"
   },
   "lenka" : {
     code: "LE",
     hrClass:"G4",
     cda: null,
-    esl: "ESL4"
+    esl: "ESL4",
+    name: "Lenka"
   },
   "marta" : {
     code: "M",
     hrClass:null,
     cda: null,
-    esl: null
+    esl: null,
+    name: "Marta"
   },
   "sirina" : {
     code: "SI",
     hrClass:"G8",
     cda: "CDA",
-    esl: "ESL8"
+    esl: "ESL8",
+    name: "Sirina"
   },
   "sophie" : {
     code: "SOPHIE",
     hrClass:"G5",
     cda: null,
-    esl: "ESL5"
+    esl: "ESL5",
+    name: "Sophie"
   },
   "tukson" : {
     code: "T",
     hrClass:"G2",
     cda: "CDA",
-    esl: "ESL2"
+    esl: "ESL2",
+    name: "Tukson"
   },
   "zeyneb": {
     code: "Z",
     hrClass:"G1",
     cda: "CDA",
-    esl: "ESL1"
+    esl: "ESL1",
+    name: "Zeyneb"
   },
   "jang yj": {
     code:"J",
     hrClass:null,
     cda: null,
-    esl: null
+    esl: null,
+    name: "Jang YJ"
   },
   "kim kj" : {
     code:"K",
     hrClass:null,
     cda: null,
-    esl: null
+    esl: null,
+    name: "Kim KJ"
   },
   "kim yj" :{
     code:"KYJ",
     hrClass:null,
     cda: null,
-    esl: null
+    esl: null,
+    name: "Kim YJ"
   } ,
   "lee mk" : {
     code:"L",
     hrClass:null,
     cda: null,
-    esl: null
+    esl: null,
+    name: "Lee MK"
   },
   "loan" : {
     code:"LO",
     hrClass:null,
     cda: "CDA",
-    esl: null
+    esl: null,
+    name: "Loan"
   },
   "ngoc" : {
     code:"NG",
     hrClass:null,
     cda: "CDA",
-    esl: null
+    esl: null,
+    name: "Ngoc"
   },
   "seo hj": {
     code:"SE",
     hrClass:null,
     cda: null,
-    esl: null
+    esl: null,
+    name: "Seo HJ"
   },
   "shin hj":{
     code:"SH",
     hrClass:null,
     cda: null,
-    esl: null
+    esl: null,
+    name: "Shin HJ"
   },
   "song hn":{
     code:"S",
     hrClass:null,
     cda: null,
-    esl: null
+    esl: null,
+    name: "Song HN"
   }
 };
 exports.getAllTeacherInfo = function() {

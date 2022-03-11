@@ -40,8 +40,8 @@ exports.getDay = function() {
   const today = new Date();
   const dayCodes = ["S","M","T","W","R","F","S"];
   const dayNum = today.getDay();
-  //return dayCodes[dayNum];
-  return "R"; //fake code
+  return dayCodes[dayNum];
+  //return "R"; //fake code
 }
 //console.log(getDate());
 //console.log(getDay());

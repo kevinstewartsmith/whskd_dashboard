@@ -82,7 +82,8 @@ const classSchema = mongoose.Schema({
     required: true
   },
   daily_reports : [dailyReportSchema],
-  current_report : dailyReportSchema
+  current_report : dailyReportSchema,
+  teacher_name: [String]
 
 });
 
@@ -221,7 +222,8 @@ app.post("/teachers/:teacherName", function(req,res){
 
 
   const classDetails = req.body.class_details;
-  console.log("Class details found in post method: " + classDetails.daily_report.next_class );
+
+  console.log("Class details found in post method: " + classDetails);
   const className = classDetails.class_name;
   const classType = classDetails.class_type;
   const period = classDetails.period;
@@ -265,7 +267,7 @@ app.post("/teachers/:teacherName", function(req,res){
       });
       currentReport.save();
 
-
+      console.log("FOUND CLASS ID: " + foundClass);
 
       Classes.updateOne({_id:foundClass.id},{current_report:currentReport},function(err,result){
         if (err){
@@ -303,26 +305,74 @@ app.listen(4000, function() {
 
 
 
-// Classes.find(function(err,results){
+// Classes.find({},function(err,results){
 //   if (err){
 //     console.log(err);
 //   } else {
 //     results.forEach(function(result){
 //
-//       var currentReport = new DailyReports({
-//         todays_class: "Today's class",
-//         homework:"Homework",
-//         next_class: "Next class Brotha"
-//       });
-//       currentReport.save();
+//       // var currentReport = new DailyReports({
+//       //   todays_class: "Today's class",
+//       //   homework:"Homework",
+//       //   next_class: "Next class Brotha"
+//       // });
+//       // currentReport.save();
 //
 //       //{_id:result.id},{current_report:currentReport}
+//       var regularTeacherArray = result.regular_teacher
+//       console.log(regularTeacherArray.length);
+//       var firstNameArray = [];
 //
-//       Classes.updateOne({_id:result.id},{current_report:currentReport},function(err){
+//       regularTeacherArray.forEach(function(regularTeacher){
+//         console.log(regularTeacher);
+//         allTeachers.forEach(function(teacher){
+//              var lowerCaseTeacher = _.lowerCase(teacher);
+//              //console.log("Teacher Info:" + allTeacherInfo[lowerCaseTeacher].code);
+//              //console.log(allTeacherInfo[lowerCaseTeacher].name);
+//              //console.log(regularTeacher);
+//              if (regularTeacher === allTeacherInfo[lowerCaseTeacher].code) {
+//                //console.log(allTeacherInfo[lowerCaseTeacher].name);
+//                firstNameArray.push(allTeacherInfo[lowerCaseTeacher].name)
+//              }
+//         })
+//       });
+//       console.log(firstNameArray)
+//       // console.log(regularTeacherArray.length);
+//       // console.log("Resluting regular teachers from db: " + result.regular_teacher);
+//       // var resultTeachersCodes = result.regular_teacher
+//       // var regularTeachersCodes = [];
+//       // resultTeachersCodes.forEach(function(resultTeacherCode){
+//       //   regularTeachersCodes.push(resultTeacherCode)
+//       // });
+//
+//       //console.log("New Array of teacher codes:" + regularTeachersCodes);
+//       // var teacherFirstNames = []
+//       // allTeachers.forEach(function(teacher){
+//       //   var lowerCaseTeacher = _.lowerCase(teacher);
+//       //   console.log("Teacher Info:" + allTeacherInfo[lowerCaseTeacher].code);
+//       //
+//       //   if (allTeacherInfo[lowerCaseTeacher].code === )
+//       //   //allTeacherInfo[]
+//       // })
+//       //*****
+//       // const requestedTitle = _.lowerCase(req.params.teacherName);
+//       // var teacherName;
+//       // var teacherCode = result.regular_teacher
+//       //
+//       // allTeachers.forEach(function(teacher){
+//       //   if (allTeacherInfo.teacher["code"] === teacherCode){
+//       //     teacherName = allTeacherInfo[teacher]["name"]
+//       //   }
+//       // })
+//       // console.log(teacherName);
+//
+//       //****
+//
+//       Classes.updateOne({_id:result.id},{teacher_name :firstNameArray},function(err){
 //         if (err){
 //           console.log(err);
 //         } else {
-//           //console.log("Successfully Updated");
+//           console.log("Successfully Updated");
 //         }
 //       })
 //
