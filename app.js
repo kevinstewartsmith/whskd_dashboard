@@ -291,7 +291,25 @@ app.post("/teachers/:teacherName", function(req,res){
 app.get("/elements/:element",function(req,res){
   //const requestedTitle = _.lowerCase(req.params.element);
   console.log(req.params.element);
-  res.send("oki")
+  var id = req.params.element;
+  var foundClass;
+  var classInfo;
+  Classes.findOne({_id: id}, function(err,result){
+    if(err){
+      console.log(err);
+    } else {
+      console.log("CLASS NAME GET AJAX: " + result.class_name);
+      classInfo = {
+        class_name: result.class_name,
+        current_report: result.current_report
+
+      };
+        res.send(classInfo)
+
+    }
+
+  })
+
 });
 
 app.get("/headmaster", function(req, res) {

@@ -212,10 +212,18 @@ function logTestData(){
  //  $.ajax({type: "POST", url: /elements/element, dataType :"json", data :
  //    {"class_details":classDetails}
  //  });
- $.get("/elements/element",function(data){
-   console.log(data)
-   $("textarea#todaysClass3").val(data)
- });
+ console.log($("textarea#todaysClass1").parents().eq(2).attr("name"));
+ //for (var i = 1; i < 9; i++){
+var id = $("textarea#todaysClass1").parents().eq(2).attr("name")
+     $.get("/elements/" + id, function(data){
+       console.log(data.current_report.todays_class)
+    $("textarea#todaysClass1").val(data.current_report.todays_class)
+     });
+ //}
+ // $.get("/elements/1",function(data){
+ //   console.log(data.current_report.todays_class)
+ //   //$("textarea#todaysClass3").val(data)
+ // });
 }
 
 
@@ -260,3 +268,8 @@ var myInput = document.getElementById('myInput')
 myModal.addEventListener('shown.bs.modal', function () {
   myInput.focus()
 })
+
+
+function loadDiv() {
+    $('textarea#todaysClass1').load("some text")
+}
