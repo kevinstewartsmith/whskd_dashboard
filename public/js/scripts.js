@@ -360,11 +360,11 @@ function omg() {
 
 
 
-setUpDownloadPageAsImage("download");
+setUpDownloadPageAsImage("homeroomDownload");
 
 function setUpDownloadPageAsImage(id) {
   document.getElementById(id).addEventListener("click", function() {
-    html2canvas($("#sectionReports")[0]).then(function(canvas) {
+    html2canvas($("#homeroomReportFinal")[0]).then(function(canvas) {
       console.log(canvas);
       simulateDownloadImageClick(canvas.toDataURL(), 'file-name.png');
     });
@@ -393,14 +393,14 @@ function accountForFirefox(click) { // wrapper function
   document.body.removeChild(link);
 }
 
-var myModal = document.getElementById('myModal')
+//var myModal = document.getElementById('myModal')
 var myInput = document.getElementById('myInput')
 
-myModal.addEventListener('shown.bs.modal', function () {
-  myInput.focus()
-})
+// myModal.addEventListener('shown.bs.modal', function () {
+//   myInput.focus()
+// })
 
 
-function loadDiv() {
-    $('textarea#todaysClass1').load("some text")
-}
+// function loadDiv() {
+//     $('textarea#todaysClass1').load("some text")
+// }

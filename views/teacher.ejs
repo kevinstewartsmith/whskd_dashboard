@@ -131,11 +131,11 @@
 <%}%>
 
 <% if (teacherInfo["esl"] != null) { %>
-<%- include("partials/modal",{teacherInfo:teacherInfo["esl"],id:"ESLreport"}) -%>
+<%- include("partials/modal",{teacherInfo:teacherInfo["esl"],id:"ESLreport", orderedClasses: orderedESLClasses, orderedClassPeriods: orderedESLPeriods}) -%>
 <%}%>
 
 <% if (teacherInfo["cda"] != null) { %>
-<%- include("partials/modal",{teacherInfo:teacherInfo["cda"],id:"CDAreport"}) -%>
+<%- include("partials/modal",{teacherInfo:teacherInfo["cda"],id:"CDAreport", orderedClasses: orderedCDAClasses, orderedClassPeriods: orderedCDAPeriods}) -%>
 <%}%>
       <footer class="row mt-5 pt-5 text-secondary">
 
