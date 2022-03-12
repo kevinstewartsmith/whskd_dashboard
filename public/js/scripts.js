@@ -8,14 +8,14 @@ console.log("JQUERY ON") //time in ms, 5 seconds for example
 console.log("EJS: date:" + thisWeekDay);
 
 
-var class1Tags = [$('textarea#todaysClass1'),$('textarea#homework1'),$('textarea#nextClass1')];
-var class2Tags = [$('textarea#todaysClass2'),$('textarea#homework2'),$('textarea#nextClass2')];
-var class3Tags = [$('textarea#todaysClass3'),$('textarea#homework3'),$('textarea#nextClass3')];
-var class4Tags = [$('textarea#todaysClass4'),$('textarea#homework4'),$('textarea#nextClass4')];
-var class5Tags = [$('textarea#todaysClass5'),$('textarea#homework5'),$('textarea#nextClass5')];
-var class6Tags = [$('textarea#todaysClass6'),$('textarea#homework6'),$('textarea#nextClass6')];
-var class7Tags = [$('textarea#todaysClass7'),$('textarea#homework7'),$('textarea#nextClass7')];
-var class8Tags = [$('textarea#todaysClass8'),$('textarea#homework8'),$('textarea#nextClass8')];
+// var class1Tags = [$('textarea#todaysClass1'),$('textarea#homework1'),$('textarea#nextClass1')];
+// var class2Tags = [$('textarea#todaysClass2'),$('textarea#homework2'),$('textarea#nextClass2')];
+// var class3Tags = [$('textarea#todaysClass3'),$('textarea#homework3'),$('textarea#nextClass3')];
+// var class4Tags = [$('textarea#todaysClass4'),$('textarea#homework4'),$('textarea#nextClass4')];
+// var class5Tags = [$('textarea#todaysClass5'),$('textarea#homework5'),$('textarea#nextClass5')];
+// var class6Tags = [$('textarea#todaysClass6'),$('textarea#homework6'),$('textarea#nextClass6')];
+// var class7Tags = [$('textarea#todaysClass7'),$('textarea#homework7'),$('textarea#nextClass7')];
+// var class8Tags = [$('textarea#todaysClass8'),$('textarea#homework8'),$('textarea#nextClass8')];
 
 var classTags = [
   [$('textarea#todaysClass1'),$('textarea#homework1'),$('textarea#nextClass1')],
@@ -119,14 +119,14 @@ function typeEvent(tag) {
     lastClass = lastClass.replace("Group: ","");
     var lastClassArray = lastClass.split(',')  //.split(' ').pop();
     var teacherCode = row.find(".code").text();//$("#teacherCode").text();
-    console.log(lastClassArray);
-    console.log("CLASS_Name: " + row.attr("id"));
-    console.log("class_type: " + lastClassArray);
-    console.log("period: " + row.find(".period").text());
-    console.log("todays_class: " + row.find(".today").text());
-    console.log("homework: " + row.find(".homework").text());
-    console.log("next_class: " + row.find(".next-class").text());
-    console.log("teacher: " + row.find(".teacher").text());
+    // console.log(lastClassArray);
+    // console.log("CLASS_Name: " + row.attr("id"));
+    // console.log("class_type: " + lastClassArray);
+    // console.log("period: " + row.find(".period").text());
+    // console.log("todays_class: " + row.find(".today").text());
+    // console.log("homework: " + row.find(".homework").text());
+    // console.log("next_class: " + row.find(".next-class").text());
+    // console.log("teacher: " + row.find(".teacher").text());
     var teacherFirstName = row.find(".teacher").text()
     const classDetails = {
 

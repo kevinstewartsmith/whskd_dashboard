@@ -1,4 +1,4 @@
-<div class="row bg-transparent" name="<%= orderedClasses[i]._id %>" style="height: 8rem" id="<%= orderedClasses[i].class_name %>">
+<div class="row bg-transparent" name="<%= orderedClasses[i]._id %>" style="height: 12rem" id="<%= orderedClasses[i].class_name %>">
   <div class="col-2 m-1  border border border-dark rounded-3 shadow" >
 
     <div class="" style="position: relative">
@@ -18,14 +18,14 @@
   <div class="col m-1 border border border-dark rounded-3 shadow">
     <form action="/action_page.php" class="daily-report-form">
 
-      <textarea  name="Today" class="daily-report-textarea today"  id="<%= classTag["todaysClass"] + orderedClassPeriods[i]%>"><%= orderedClasses[i].current_report.todays_class %></textarea>
+      <textarea  name="Today" class="daily-report-textarea today"  id="<%= classTag["todaysClass"] + orderedClassPeriods[i]%>" readonly><%= orderedClasses[i].current_report.todays_class %></textarea>
 
     </form>
   </div>
   <div class="col-1 m-1 border border-dark rounded-3 shadow">
     <form action="/action_page.php" class="daily-report-form">
 
-      <textarea  name="w3review" class="daily-report-textarea homework" id="<%= classTag["homework"] + orderedClassPeriods[i] %>" ><%= orderedClasses[i].current_report.homework %></textarea>
+      <textarea  name="w3review" class="daily-report-textarea homework" id="<%= classTag["homework"] + orderedClassPeriods[i] %>" readonly><%= orderedClasses[i].current_report.homework %></textarea>
 
     </form>
 
@@ -33,7 +33,7 @@
   <div class="col m-1 border border-dark rounded-3 shadow">
     <form action="/action_page.php" class="daily-report-form">
 
-      <textarea  name="w3review" class="daily-report-textarea nextclass" id="<%= classTag["nextClass"]  + orderedClassPeriods[i]%>"><%= orderedClasses[i].current_report.next_class %></textarea>
+      <textarea  name="w3review" class="daily-report-textarea nextclass" id="<%= classTag["nextClass"]  + orderedClassPeriods[i]%>" readonly><%= orderedClasses[i].current_report.next_class %></textarea>
 
     </form>
   </div>
