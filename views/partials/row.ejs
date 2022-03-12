@@ -1,4 +1,8 @@
-<div class="row bg-transparent report" name="<%= orderedClasses[i]._id %>" style="height: 8rem" id="<%= orderedClasses[i].class_name %>">
+<div class="row bg-transparent report" name="<%= orderedClasses[i]._id %>" style="height: 12rem" id="<%= orderedClasses[i].class_name %>">
+  <script type="text/javascript" class="" id="">
+    var dateInMS = <%= orderedClasses[i].current_report.date_in_ms %>;
+  </script>
+  <p hidden class="date" id=""><%= orderedClasses[i].current_report.date_in_ms %></p>
   <div class="col-2 m-1  border border border-dark rounded-3 shadow" >
 
     <div class="" style="position: relative">
@@ -22,7 +26,7 @@
 
     </form>
   </div>
-  <div class="col-1 m-1 border border-dark rounded-3 shadow">
+  <div class="col-2 m-1 border border-dark rounded-3 shadow">
     <form action="/action_page.php" class="daily-report-form">
 
       <textarea  name="w3review" class="daily-report-textarea homework" id="<%= classTag["homework"] + orderedClassPeriods[i] %>" ><%= orderedClasses[i].current_report.homework %></textarea>

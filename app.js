@@ -201,6 +201,7 @@ app.get("/teachers/:teacherName", function(req, res) {
                         teacherFirstName: requestedTitle,
                         classTags: classTags,
                         allTeacherInfo: allTeacherInfo
+                        
                       });
 
                       console.log("Match Found." );
