@@ -356,17 +356,25 @@ function omg() {
 //     }
 //   });
 // });
-function reportDownload() {
-  var hrClassID = "#homeroomReportFinal";
-  var hrDownloadButtonID = "homeroomDownload"
-  var filename = 'homeroom-report.png'
+var hrClassID = "#homeroomReportFinal";
+var hrDownloadButtonID = "homeroomDownload"
+var filename = 'homeroom-report.png'
+var eslClassID = "#eslReportFinal";
+var eslDownloadButtonID = "eslDownload";
+var eslFileName = "esl-report.png";
+var cdaClassID = "#cdaReportFinal";
+var cdaDownloadButtonID = "cdaDownload";
+var cdaFileName = "cda-report.png";
+
+function reportDownload(classID, buttonID, filename) {
 
 
-  setUpDownloadPageAsImage(hrDownloadButtonID);
+
+  setUpDownloadPageAsImage(buttonID);
 
   function setUpDownloadPageAsImage(id) {
     document.getElementById(id).addEventListener("click", function() {
-      html2canvas($(hrClassID)[0]).then(function(canvas) {
+      html2canvas($(classID)[0]).then(function(canvas) {
         console.log(canvas);
         simulateDownloadImageClick(canvas.toDataURL(), filename);
       });
@@ -395,7 +403,10 @@ function reportDownload() {
     document.body.removeChild(link);
   }
 }
-reportDownload();
+reportDownload(hrClassID,hrDownloadButtonID,filename);
+reportDownload(eslClassID,eslDownloadButtonID,eslFileName);
+reportDownload(cdaClassID,cdaDownloadButtonID,cdaFileName);
+
 //var myModal = document.getElementById('myModal')
 //var myInput = document.getElementById('myInput')
 
