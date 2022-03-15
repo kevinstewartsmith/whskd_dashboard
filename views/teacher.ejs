@@ -127,15 +127,15 @@
       </section>
 
 <% if (teacherInfo["hrClass"] != null) { %>
-<%- include("partials/modal",{teacherInfo:teacherInfo["hrClass"],id:"homeroomReport",orderedClasses:orderedHomeroomClasses,orderedClassPeriods:orderedHRPeriods,buttonID:"homeroomDownload",reportBodyID:"homeroomReportFinal"}) -%>
+<%- include("partials/modal",{teacherInfo:teacherInfo["hrClass"],id:"homeroomReport",orderedClasses:orderedHomeroomClasses,orderedClassPeriods:orderedHRPeriods,buttonID:"homeroomDownload",reportBodyID:"homeroomReportFinal",classTag:classTags["orderedHomeroomClasses"]}) -%>
 <%}%>
 
 <% if (teacherInfo["esl"] != null) { %>
-<%- include("partials/modal",{teacherInfo:teacherInfo["esl"],id:"ESLreport", orderedClasses: orderedESLClasses, orderedClassPeriods: orderedESLPeriods,buttonID:"eslDownload",reportBodyID:"eslReportFinal"}) -%>
+<%- include("partials/modal",{teacherInfo:teacherInfo["esl"],id:"ESLreport", orderedClasses: orderedESLClasses, orderedClassPeriods: orderedESLPeriods,buttonID:"eslDownload",reportBodyID:"eslReportFinal", classTag:classTags["orderedESLClasses"]}) -%>
 <%}%>
 
 <% if (teacherInfo["cda"] != null) { %>
-<%- include("partials/modal",{teacherInfo:teacherInfo["cda"],id:"CDAreport", orderedClasses: orderedCDAClasses, orderedClassPeriods: orderedCDAPeriods,buttonID:"cdaDownload",reportBodyID:"cdaReportFinal"}) -%>
+<%- include("partials/modal",{teacherInfo:teacherInfo["cda"],id:"CDAreport", orderedClasses: orderedCDAClasses, orderedClassPeriods: orderedCDAPeriods,buttonID:"cdaDownload",reportBodyID:"cdaReportFinal",classTag:classTags["orderedCDAClasses"]}) -%>
 <%}%>
       <footer class="row mt-5 pt-5 text-secondary">
 

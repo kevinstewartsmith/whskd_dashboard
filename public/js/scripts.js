@@ -210,7 +210,7 @@ for (var i = 1; i < orderedClassesLength + 1; i++) {
   //
   // }
 setInterval(reloadDivs, 6000)
-setInterval(reloadFinalDivs, 6000)
+//setInterval(reloadFinalDivs, 6000)
 //var reloadDivsTimer;//setInterval(reloadDivs, 3000)
 //function startReloadDivsTimer() {
 //  reloadDivsTimer = setInterval(reloadDivs, 3000);
@@ -266,7 +266,18 @@ function reloadDivs() {
               tag.find(textAreaHash).val(req)
               tag.find(homeworkAreaHash).val(reqHomework)
               tag.find(nextClassHash).val(reqNextClass)
+              console.log("Target ID: " + textAreaHash  + "Final");
               console.log(textAreaHash);
+
+              var finalTextArea = $(textAreaHash + "Final");
+              var finalHomeWorkArea = $(homeworkAreaHash + "Final");
+              var finalNextClassArea = $(nextClassHash + "Final");
+              console.log("FINAL TEXT AREA: " + finalTextArea.val());
+
+              finalTextArea.val(req);
+              finalHomeWorkArea.val(reqHomework);
+              finalNextClassArea.val(reqNextClass);
+
         }
         console.log("DIVS RELOADED");
       });
@@ -277,7 +288,7 @@ function reloadDivs() {
 function reloadFinalDivs() {
     var rows = $(".final.download")
     console.log("Final COunt: " + rows.length);
-    reloadFinalDivs()
+    //reloadFinalDivs()
     rows.each(function(i){
       //console.log("i " + $( this ).attr("name"));
       //console.log("i " + $( this ).attr("id"));

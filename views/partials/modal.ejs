@@ -3,6 +3,7 @@
     <div class="modal-content" style= "width:1200px">
     <script type="text/javascript">
       console.log("Model Opened");
+      //reloadFinalDivs()
     </script>
       <!-- Modal Header -->
       <div class="modal-header">
@@ -32,7 +33,7 @@
 
 <% for (let i = 0; i < orderedClasses.length; i++) { %>
 
-<%- include( "download-row", {orderedClasses:orderedClasses, orderedClassPeriods:orderedClassPeriods, classTag:classTags,i:i}) -%>
+<%- include( "download-row", {orderedClasses:orderedClasses, orderedClassPeriods:orderedClassPeriods, classTag:classTag,i:i}) -%>
 
 <% } %>
       </div>
