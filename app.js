@@ -8,7 +8,9 @@ const dates = require(__dirname + "/date")
 const crazy = require(__dirname + "/classesJSON")
 //Makes an express app
 const app = express();
-mongoose.connect('mongodb://localhost:27017/WHSKD-DB');
+//mongoose.connect('mongodb://localhost:27017/WHSKD-DB');
+mongoose.connect('mongodb+srv://kevinstewartsmith:whskd@cluster0.kxmbd.mongodb.net/WHSKD-DB',{useNewUrlParser: true});
+
 
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
@@ -481,3 +483,54 @@ app.listen(4000, function() {
 //           //res.redirect('/teachers/:' + teacherFirstName);
 //   }
 // })
+
+
+// var crazyClassArray = crazy.getCrazyArray();
+//
+// crazyClassArray.forEach(function(foundClass){
+//   console.log(foundClass._id);
+//   console.log(foundClass.class_name);
+//   console.log(foundClass.regular_teacher);
+//   console.log(foundClass.class_type);
+//   console.log(foundClass.current_report);
+//   console.log(foundClass.class_times);
+//   console.log(foundClass.teacher_name);
+//   console.log(foundClass.current_report._id);
+//   const currentReport1 = new DailyReports({
+//     _id: foundClass.current_report._id,
+//     date_in_ms: foundClass.current_report.date_in_ms,
+//     weekDay: foundClass.current_report.weekday,
+//     todays_class: foundClass.current_report.todays_class,
+//     homework: foundClass.current_report.homework,
+//     next_class: foundClass.current_report.next_class
+//   })
+//   currentReport1.save();
+//   //
+//   const classTimes = [];
+//   foundClass.class_times.forEach(function(classTime){
+//     const classSession = new ClassTimes({
+//       day: classTime.day,
+//       period: classTime.period
+//     })
+//     classSession.save();
+//     classTimes.push(classSession)
+//   })
+//   const class1 = new Classes({
+//     _id: foundClass._id,
+//     class_name: foundClass.class_name,
+//     regular_teacher: foundClass.regular_teacher,
+//     class_type: foundClass.class_type,
+//     current_report: currentReport1,
+//     class_times: classTimes
+//   })
+//   class1.save()
+// });
+
+// const currentReport = new DailyReports({
+//   todays_class: classDetails.daily_report.todays_class,
+//   homework: classDetails.daily_report.homework,
+//   next_class: classDetails.daily_report.next_class,
+//   weekday: thisDayCode,
+//   date_in_ms: Date.now()
+// });
+// currentReport.save();

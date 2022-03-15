@@ -8,15 +8,6 @@ console.log("JQUERY ON") //time in ms, 5 seconds for example
 console.log("EJS: date:" + thisWeekDay);
 
 
-// var class1Tags = [$('textarea#todaysClass1'),$('textarea#homework1'),$('textarea#nextClass1')];
-// var class2Tags = [$('textarea#todaysClass2'),$('textarea#homework2'),$('textarea#nextClass2')];
-// var class3Tags = [$('textarea#todaysClass3'),$('textarea#homework3'),$('textarea#nextClass3')];
-// var class4Tags = [$('textarea#todaysClass4'),$('textarea#homework4'),$('textarea#nextClass4')];
-// var class5Tags = [$('textarea#todaysClass5'),$('textarea#homework5'),$('textarea#nextClass5')];
-// var class6Tags = [$('textarea#todaysClass6'),$('textarea#homework6'),$('textarea#nextClass6')];
-// var class7Tags = [$('textarea#todaysClass7'),$('textarea#homework7'),$('textarea#nextClass7')];
-// var class8Tags = [$('textarea#todaysClass8'),$('textarea#homework8'),$('textarea#nextClass8')];
-
 var classTags = [
   [$('textarea#todaysClass1'),$('textarea#homework1'),$('textarea#nextClass1')],
   [$('textarea#todaysClass2'),$('textarea#homework2'),$('textarea#nextClass2')],
@@ -62,9 +53,7 @@ var cdaClassTags = [
 ];
 
 
-// console.log("Next class ID: " + class1Tags[2].attr("id"));
-// console.log("Next class ID: " + classTags[0][0].parent().parent().attr("class"));
-// console.log("Class name: " + classTags[0][0].parent().parent().parent().find("class-name").attr("id"));
+
 
 var classDocument = {
   class1Array : { todaysClass:"ddd",homework:"",nextClass:""},
@@ -77,8 +66,7 @@ var classDocument = {
   class8Array : { todaysClass:"",homework:"",nextClass:""},
 
 }
-// console.log(classDocument["class"+1+"Array"]["todaysClass"]);
-// console.log(classTags[0][0].attr("id"));
+
 
 function typeEvent(tag) {
 
@@ -283,67 +271,6 @@ function reloadDivs() {
       });
     })
 }
-
-
-function reloadFinalDivs() {
-    var rows = $(".final.download")
-    console.log("Final COunt: " + rows.length);
-    //reloadFinalDivs()
-    rows.each(function(i){
-      //console.log("i " + $( this ).attr("name"));
-      //console.log("i " + $( this ).attr("id"));
-      var tag = $( this );
-      var textArea = $( this ).find(".today")
-      var homeworkArea = $( this ).find(".homework")
-      var nextClassArea = $( this ).find(".nextclass")
-      var textAreaID = textArea.attr("id")
-      var homeworkID = homeworkArea.attr("id")
-      var nextClassID = nextClassArea.attr("id")
-      var domToday = $( this ).find(".today").val()
-      var domHomework = $( this ).find(".homework").val()
-      var domNextClass = $( this ).find(".nextclass").val()
-      var name = $( this ).attr("name")
-      var domID = $( this ).attr("id")
-      var dateString = tag.find(".date").text()
-      var dateInt = parseInt(dateString) //$(".row#Grammar:first").find(".date").text()
-      //console.log("DATE STRING: " + dateString);
-      //console.log("DOM ID: " + domID);
-      $.get("/elements/" + name, function(data){
-        // if (data.current_report.todaysClass != tag[0].val()) {
-        //   tag[0].val(data.current_report.todays_class)
-        // }
-        // if (data.current_report.todaysClass != tag[0].val()) {
-        //       tag[0].val(data.current_report.todays_class)
-        // }
-        var req = data.current_report.todays_class;
-        var reqTime = data.current_report.date_in_ms;
-        var reqHomework = data.current_report.homework;
-        var reqNextClass = data.current_report.next_class;
-
-        //console.log("Today's class ID:  " + textAreaID );
-        //console.log("REQ:" + data.current_report.todays_class + "  Type: " + typeof data.current_report.todays_class);
-        //console.log("DOM ID: " + domID + "  Type: " + typeof domID);
-        //console.log("DOM Name: " + name + "  Type: " + typeof name);
-      //  console.log("Dom Today: " + domToday+ "  Type: " + typeof domToday );
-        //$( this ).text("hello")
-
-        if (reqTime > dateInt) {
-              console.log("They're Different!");
-              var textAreaHash = "textarea.today#" + textAreaID
-              var homeworkAreaHash = "textarea.homework#" + homeworkID
-              var nextClassHash = "textarea.nextclass#" + nextClassID
-              tag.find(textAreaHash).val(req)
-              tag.find(homeworkAreaHash).val(reqHomework)
-              tag.find(nextClassHash).val(reqNextClass)
-              console.log(textAreaHash);
-        }
-        console.log("DIVS RELOADED");
-      });
-    })
-}
-
-
-
 
 
 
