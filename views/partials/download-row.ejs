@@ -1,12 +1,12 @@
-<div class="row bg-transparent" name="<%= orderedClasses[i]._id %>" style="height: 12rem" id="<%= orderedClasses[i].class_name %>">
+<div class="row bg-transparent report final download" name="<%= orderedClasses[i]._id %>" style="height: 12rem" id="<%= orderedClasses[i].class_name %>">
   <div class="col-1 m-1  border border border-dark rounded-3 shadow" style="";>
 
     <div class="" style="position: relative" style="width: 100%; height: 12rem; background-color: pink">
 
-      <h1 class="p-0 period" style="font-size: 8.5rem; color:#ECECEC; position: absolute;  padding:0 display:inline-block; margin-top: 40px; margin-left: -10px; " ><strong><%= orderedClassPeriods[i]%></strong></h1>
-      <div class="mt-4 ms-0" style="position: absolute; top: -20px; left: 0.0rem">
-        <h6 class=" class-name" style="display: inline-block; font-size: 1.2rem; color:#2F86A6; overflow-wrap: normal; width: 90px; margin-top: 0px; margin-left: -5px; margin-bottom:0px" id=""><%=  orderedClasses[i].class_name %></h6>
-        <h6 class=" class-type <%=orderedClasses[i].class_type%> " id="" style="display: inline-block; margin-left: -5px; overflow-wrap: normal; width: 85px; overflow-wrap: normal;font-size: 0.8rem; margin-top: 10px"><%= "Group: " + orderedClasses[i].class_type%></h6>
+      <h1 class="p-0 period" style="font-size: 8.5rem; color:#ECECEC; position: absolute;  padding:0 display:inline-block; margin-top: 40px; margin-left: -10px; overflow: hidden " ><strong><%= orderedClassPeriods[i]%></strong></h1>
+      <div class="mt-4 ms-0" style="position: absolute; top: -10px; left: 0.0rem">
+        <h6 class=" class-name" style="display: inline-block; font-size: 0.75rem; color:#2F86A6; overflow-wrap: normal; width: 90px; margin-top: -80px; margin-left: -5px; margin-bottom:0px" id=""><%=  orderedClasses[i].class_name %></h6>
+        <h6 class=" class-type <%= orderedClasses[i].class_type %> " id="" style="display: inline-block; margin-left: -5px; overflow-wrap: normal; width: 85px; overflow-wrap: normal;font-size: 0.6rem; margin-top: 10px"><%= "Group: " + orderedClasses[i].class_type%></h6>
       </div>
 
       </div>
@@ -16,14 +16,14 @@
   <div class="col m-1 border border border-dark rounded-3 shadow">
     <form action="/action_page.php" class="daily-report-form">
 
-      <textarea  name="Today" class="daily-report-textarea today"  id="<%= classTag["todaysClass"] + orderedClassPeriods[i]%>" readonly><%= orderedClasses[i].current_report.todays_class %></textarea>
+      <textarea  name="Today" class="daily-report-textarea today"  id="<%= classTag["todaysClass"] + orderedClassPeriods[i]%>" ><%= orderedClasses[i].current_report.todays_class %></textarea>
 
     </form>
   </div>
   <div class="col-2 m-1 border border-dark rounded-3 shadow">
     <form action="/action_page.php" class="daily-report-form">
 
-      <textarea  name="w3review" class="daily-report-textarea homework" id="<%= classTag["homework"] + orderedClassPeriods[i] %>" readonly><%= orderedClasses[i].current_report.homework %></textarea>
+      <textarea  name="w3review" class="daily-report-textarea homework" id="<%= classTag["homework"] + orderedClassPeriods[i] %>" ><%= orderedClasses[i].current_report.homework %></textarea>
 
     </form>
 
@@ -31,7 +31,7 @@
   <div class="col m-1 border border-dark rounded-3 shadow">
     <form action="/action_page.php" class="daily-report-form">
 
-      <textarea  name="w3review" class="daily-report-textarea nextclass" id="<%= classTag["nextClass"]  + orderedClassPeriods[i]%>" readonly><%= orderedClasses[i].current_report.next_class %></textarea>
+      <textarea  name="w3review" class="daily-report-textarea nextclass" id="<%= classTag["nextClass"]  + orderedClassPeriods[i]%>" ><%= orderedClasses[i].current_report.next_class %></textarea>
 
     </form>
   </div>

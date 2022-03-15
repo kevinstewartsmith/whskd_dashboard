@@ -1,7 +1,7 @@
 
 //setup before functions
 var typingTimer;                //timer identifier
-var doneTypingInterval = 100;
+var doneTypingInterval = 1000;
 var thisWeekDay = $("#weekDay").text();
 var thisDate = $("#thisDate").text();
 console.log("JQUERY ON") //time in ms, 5 seconds for example
@@ -209,17 +209,15 @@ for (var i = 1; i < orderedClassesLength + 1; i++) {
   //
   //
   // }
-setInterval(reloadDivs, 6000)
-setInterval(reloadFinalDivs, 6000)
-//var reloadDivsTimer;//setInterval(reloadDivs, 3000)
+
+var reloadDivsTimer;//setInterval(reloadDivs, 3000)
 //function startReloadDivsTimer() {
-//  reloadDivsTimer = setInterval(reloadDivs, 3000);
+  reloadDivsTimer = setInterval(reloadDivs, 3000);
 //}
 //startReloadDivsTimer();
 
 function reloadDivs() {
     var rows = $(".row.report")
-    console.log("ROWS COunt: " + rows.length);
     rows.each(function(i){
       //console.log("i " + $( this ).attr("name"));
       //console.log("i " + $( this ).attr("id"));
@@ -240,12 +238,12 @@ function reloadDivs() {
       //console.log("DATE STRING: " + dateString);
       //console.log("DOM ID: " + domID);
       $.get("/elements/" + name, function(data){
-        // if (data.current_report.todaysClass != tag[0].val()) {
-        //   tag[0].val(data.current_report.todays_class)
-        // }
-        // if (data.current_report.todaysClass != tag[0].val()) {
-        //       tag[0].val(data.current_report.todays_class)
-        // }
+        if (data.current_report.todaysClass != tag[0].val()) {
+          tag[0].val(data.current_report.todays_class)
+        }
+        if (data.current_report.todaysClass != tag[0].val()) {
+              tag[0].val(data.current_report.todays_class)
+        }
         var req = data.current_report.todays_class;
         var reqTime = data.current_report.date_in_ms;
         var reqHomework = data.current_report.homework;
@@ -272,67 +270,6 @@ function reloadDivs() {
       });
     })
 }
-
-
-function reloadFinalDivs() {
-    var rows = $(".final.download")
-    console.log("Final COunt: " + rows.length);
-    reloadFinalDivs()
-    rows.each(function(i){
-      //console.log("i " + $( this ).attr("name"));
-      //console.log("i " + $( this ).attr("id"));
-      var tag = $( this );
-      var textArea = $( this ).find(".today")
-      var homeworkArea = $( this ).find(".homework")
-      var nextClassArea = $( this ).find(".nextclass")
-      var textAreaID = textArea.attr("id")
-      var homeworkID = homeworkArea.attr("id")
-      var nextClassID = nextClassArea.attr("id")
-      var domToday = $( this ).find(".today").val()
-      var domHomework = $( this ).find(".homework").val()
-      var domNextClass = $( this ).find(".nextclass").val()
-      var name = $( this ).attr("name")
-      var domID = $( this ).attr("id")
-      var dateString = tag.find(".date").text()
-      var dateInt = parseInt(dateString) //$(".row#Grammar:first").find(".date").text()
-      //console.log("DATE STRING: " + dateString);
-      //console.log("DOM ID: " + domID);
-      $.get("/elements/" + name, function(data){
-        // if (data.current_report.todaysClass != tag[0].val()) {
-        //   tag[0].val(data.current_report.todays_class)
-        // }
-        // if (data.current_report.todaysClass != tag[0].val()) {
-        //       tag[0].val(data.current_report.todays_class)
-        // }
-        var req = data.current_report.todays_class;
-        var reqTime = data.current_report.date_in_ms;
-        var reqHomework = data.current_report.homework;
-        var reqNextClass = data.current_report.next_class;
-
-        //console.log("Today's class ID:  " + textAreaID );
-        //console.log("REQ:" + data.current_report.todays_class + "  Type: " + typeof data.current_report.todays_class);
-        //console.log("DOM ID: " + domID + "  Type: " + typeof domID);
-        //console.log("DOM Name: " + name + "  Type: " + typeof name);
-      //  console.log("Dom Today: " + domToday+ "  Type: " + typeof domToday );
-        //$( this ).text("hello")
-
-        if (reqTime > dateInt) {
-              console.log("They're Different!");
-              var textAreaHash = "textarea.today#" + textAreaID
-              var homeworkAreaHash = "textarea.homework#" + homeworkID
-              var nextClassHash = "textarea.nextclass#" + nextClassID
-              tag.find(textAreaHash).val(req)
-              tag.find(homeworkAreaHash).val(reqHomework)
-              tag.find(nextClassHash).val(reqNextClass)
-              console.log(textAreaHash);
-        }
-        console.log("DIVS RELOADED");
-      });
-    })
-}
-
-
-
 
 
 

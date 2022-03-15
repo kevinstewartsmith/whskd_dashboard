@@ -142,15 +142,16 @@ app.get("/teachers/:teacherName", function(req, res) {
   var orderedCDAClasses = [];
   var orderedCDAPeriods = [];
   const classTags = teachers.getClassTags();
-  console.log(teacherCDA);
-  console.log(thisDayCode);
-  console.log(teacherInfo["code"]);
+  //console.log(teacherCDA);
+  //console.log(thisDayCode);
+  //console.log(teacherInfo["code"]);
   Classes.find({class_type: teacherCDA,"class_times.day": thisDayCode, regular_teacher: teacherInfo["code"] },function(err,cdaClasses){
     if (err) {
       console.log(err);
     } else {
       orderedCDAClasses = teachers.sortClassOrder(cdaClasses,thisDayCode);
       orderedCDAPeriods = teachers.getOrderedPeriods(orderedCDAClasses,thisDayCode);
+
     //  console.log("CDA Classes app.js LENGTH:" + orderedCDAClasses[0].class_times);
       Classes.find({class_type: teacherESL,"class_times.day": thisDayCode },function(err,eslClasses){
         if (err) {
@@ -180,6 +181,7 @@ app.get("/teachers/:teacherName", function(req, res) {
                   orderedClasses = teachers.sortClassOrder(classes,thisDayCode);
                   let orderedClassPeriods = teachers.getOrderedPeriods(orderedClasses,thisDayCode);
                   let currentReportArray = teachers.getOrderedCurrentReports(orderedClasses);
+                  //teachers.getOrderedClassDuplications(orderedClasses);
                   //console.log("CR ARR: " + currentReportArray);
                   //console.log("ORDEREDCLASSPERIODS: " + orderedClassPeriods);
                   allTeachers.forEach(function(teacher) {
@@ -201,7 +203,7 @@ app.get("/teachers/:teacherName", function(req, res) {
                         teacherFirstName: requestedTitle,
                         classTags: classTags,
                         allTeacherInfo: allTeacherInfo
-                        
+
                       });
 
                       console.log("Match Found." );
@@ -228,14 +230,14 @@ app.post("/teachers/:teacherName", function(req,res){
 
   const classDetails = req.body.class_details;
 
-  console.log("Class details found in post method: " + classDetails);
+  //console.log("Class details found in post method: " + classDetails);
   const className = classDetails.class_name;
   const classType = classDetails.class_type;
   const period = classDetails.period;
   const weekDay = classDetails.daily_report.weekday;
   const regularTeacher = classDetails.regular_teacher;
   const teacherFirstName = classDetails.teacher_first_name;
-  console.log("TEACHER FIRST NAME APP>JS POST : " + teacherFirstName);
+//  console.log("TEACHER FIRST NAME APP>JS POST : " + teacherFirstName);
   const lowerCaseTeacher = _.lowerCase(teacherFirstName);
   const teacherInfo = teachers.getTeacherInfo(lowerCaseTeacher);
 
@@ -273,7 +275,7 @@ app.post("/teachers/:teacherName", function(req,res){
       });
       currentReport.save();
 
-      console.log("FOUND CLASS ID: " + foundClass);
+      //console.log("FOUND CLASS ID: " + foundClass);
 
       Classes.updateOne({_id:foundClass.id},{current_report:currentReport},function(err,result){
         if (err){
@@ -292,20 +294,23 @@ app.post("/teachers/:teacherName", function(req,res){
 
 });
 app.get("/elements/:element",function(req,res){
-  //const requestedTitle = _.lowerCase(req.params.element);
-  console.log("RESPONSE DATA TYPE: " + typeof req.params.element);
-  var classIDParam = console.log("CLASS ID PARAM " + req.params.element);
+  const requestedTitle = _.lowerCase(req.params.element);
+  //console.log("RESPONSE DATA TYPE: " + typeof req.params.element);
+  var classIDParam = req.params.element;
   var idString = req.params.element;
 
-  var classIDParam = parseInt(idString)
+  var classIDParam = parseInt(idString);
+  console.log("ID in GET: " + classIDParam);
   console.log("classIDParam DATA TYPE: " + typeof classIDParam);
   var foundClass;
   var classInfo;
   Classes.findOne({_id: classIDParam}, function(err,result){
     if(err){
       console.log(err);
+
     } else {
-      console.log("CLASS NAME GET AJAX: " + result.class_name);
+      //console.log("CLASS NAME GET AJAX: " + result.class_name);
+      console.log("ERR Reesult: "  + result);
       classInfo = {
         class_name: result.class_name,
         current_report: result.current_report

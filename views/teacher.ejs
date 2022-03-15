@@ -36,10 +36,10 @@
               <div class="card-body ">
                 <!-- tabs -->
                 <ul class="nav nav-tabs " role="tablist">
-                  <li class="nav-item "><button class="nav-link  text-dark text-uppercase active" data-bs-toggle="tab" data-bs-target="#tab1" role="tab" style="background-color: pink">Report Classes</button></li>
+                  <li class="nav-item "><button class="nav-link  text-dark text-uppercase active" data-bs-toggle="tab" data-bs-target="#tab1" role="tab" style="background-color: white"><%=teacher%>'s Classes</button></li>
 
                   <% if (teacherInfo["hrClass"] != null) { %>
-                  <li class="nav-item"><button class="nav-link bg-transparent text-dark text-uppercase" data-bs-toggle="tab" data-bs-target="#tab2" role="tab"><%=teacherInfo["hrClass"] + " Homeroom Report"%></button></li>
+                  <li class="nav-item"><button class="nav-link bg-transparent text-dark text-uppercase" data-bs-toggle="tab" data-bs-target="#tab2" role="tab" style="background-color: #D6E6F2"><%=teacherInfo["hrClass"] + " Homeroom Report"%></button></li>
                   <%}%>
                   <% if (teacherInfo["esl"] != null) { %>
                   <li class="nav-item"><button class="nav-link bg-transparent text-dark text-uppercase" data-bs-toggle="tab" data-bs-target="#tab3" role="tab"><%=teacherInfo["esl"] + " Report"%></button></li>
@@ -49,8 +49,8 @@
                   <%}%>
 
                 </ul>
-                <div class="tab-content py-2 " style="background-color: transparent">
-                  <div class="tab-pane active show fade" id="tab1" role="tabpanel" >
+                <div class="tab-content pb-2 " >
+                  <div class="tab-pane active show fade" id="tab1" role="tabpanel" style="background-color: white" >
                     <div class="container ps-0">
                         <!-- <h3> "Teacher " + teacher + "'s " + "Friday " + "Classes:</h3> -->
 
@@ -66,14 +66,14 @@
                   </div>
 
                 <!-- new tab pane here -->
-                <div class="tab-pane fade" id="tab2" role="tabpanel">
+                <div class="tab-pane fade" id="tab2" role="tabpanel" style="background-color: white">
                   <div class="container ps-0">
 <%- include("partials/row_header") -%>
                 <% for (let i = 0; i < orderedHomeroomClasses.length; i++) { %>
 <%- include("partials/row",{orderedClasses:orderedHomeroomClasses,classTag:classTags["orderedHomeroomClasses"],orderedClassPeriods:orderedHRPeriods,i:i}) -%>
                 <%} %>
                   </div>
-                  <button type="button" name="button" id="download">Download</button>
+
                   <div class="">
                     <% if (teacherInfo["hrClass"] != null) { %>
                     <%- include("partials/preview-and-download-button",{id:"homeroomReport"}) -%>

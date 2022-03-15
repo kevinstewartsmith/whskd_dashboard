@@ -1,20 +1,21 @@
-<div class="row bg-transparent report" name="<%= orderedClasses[i]._id %>" style="height: 12rem" id="<%= orderedClasses[i].class_name %>">
+<div class="row bg-transparent report ps-3" name="<%= orderedClasses[i]._id %>" style="height: 12rem" id="<%= orderedClasses[i].class_name %>">
   <script type="text/javascript" class="" id="">
     var dateInMS = <%= orderedClasses[i].current_report.date_in_ms %>;
+
   </script>
   <p hidden class="date" id=""><%= orderedClasses[i].current_report.date_in_ms %></p>
-  <div class="col-2 m-1  border border border-dark rounded-3 shadow" style="background-color: white" >
+  <div class="col-1 m-1  border border border-dark rounded-3 shadow" style="background-color: white; width:100px" >
 
-    <div class="" style="position: relative">
+    <div class="" style="position: relative; background-color:transparent; display:block; width:100%; height:100%">
 
-      <h1 class="p-0 period" style="font-size: 8.5rem; color:#ECECEC; position: absolute;  padding:0 display:inline-block; margin-top: -35px; margin-left: 0px" ><strong><%= orderedClassPeriods[i]%></strong></h1>
-      <div class="mt-4 ms-0" style="position: absolute; top: 0px; left: 0.4rem">
-        <h6 class="text-truncate class-name" style="font-size: 1.3rem; color:#2F86A6" id=""><%=  orderedClasses[i].class_name %></h6>
-        <h6 class="m-0 text-truncate class-type <%=orderedClasses[i].class_type%> " id=""><%= "Group: " + orderedClasses[i].class_type%></h6>
+      <h1 class="p-0 period" style="font-size: 800%; color:#ECECEC; position: absolute;  padding:0; display:inline-block; top: 40px;left:-10; right: 0px; background-color:transparent; text-align:center;overflow:hidden" ><strong><%= orderedClassPeriods[i]%></strong></h1>
+      <div class="mt-4 ms-0" style="position: absolute; top: -10px; left: 0.4rem">
+        <h6 class=" class-name" style="display: inline-block; font-size: 0.75rem; color:#2F86A6; overflow-wrap: normal; width: 90px; margin-top: -80px; margin-left: -10px; margin-bottom:0px; color:#2F86A6" id=""><%=  orderedClasses[i].class_name %></h6>
+        <h6 class=" text-truncate class-type <%=orderedClasses[i].class_type%> " style="display: inline-block; margin-left: -10px; font-size: 0.7rem; margin-top: 10px" id=""><%= "Group: " + orderedClasses[i].class_type%></h6>
       </div>
 
 
-      <h6></h6>
+
     </div>
 
 
@@ -42,7 +43,7 @@
     </form>
   </div>
   <div class="col-1 m-1 pt-4   border border border-dark rounded-3 shadow">
-    <p class="m-2 text-truncate teacher"><strong><%= orderedClasses[i].teacher_name %></strong></p>
+    <h10 class=" text-truncate teacher" style="display: inline; font-size: 1vw; font-size:0.75vw"><strong><%= orderedClasses[i].teacher_name %></strong></h10>
 
     <p hidden class="code"><%=orderedClasses[i].regular_teacher%></p>
 

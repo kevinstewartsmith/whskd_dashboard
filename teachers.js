@@ -73,7 +73,7 @@ const teacherInfo = {
   "jonathan" : {
     code: "JON",
     hrClass:"G9",
-    cda: "CDA",
+    cda: null,
     esl: "ESL9",
     name: "Jonathan"
   },
@@ -282,7 +282,21 @@ exports.getClassTags = function() {
   return classTags;
 }
 
-
+// exports.getOrderedClassDuplications = function(orderedClasses) {
+//   var duplicateArray = [null,null,null,null,null,null,null,null];
+//   //if (orderedClasses =! null) {
+//     duplicateArray[0] = orderedClasses[0];
+//
+//     if (orderedClasses.length > 1) {
+//       for (var i = 1; i < orderedClasses.length; i++) {
+//         if (duplicateArray.has(orderedClasses[i]));
+//         duplicateArray[i] = orderedClasses[i];
+//       }
+//     }
+//     duplicateArray[0] = null
+//   //}
+//   console.log("DUPLICATE ARRAY: " +duplicateArray);
+// }
 
 //  console.log(orderedClasses[0].daily_reports[orderedClasses[0].daily_reports.length-2]["todays_class"]);
   //var sorted0 = sortedArray[0].daily_reports;
