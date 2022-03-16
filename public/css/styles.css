@@ -101,7 +101,7 @@ p {
   height:100%;
   width:100%;
   background-color: transparent;
-  overflow: hidden;
+  overflow: visible;
   display: inline;
   resize: none;
   border-color:transparent;
