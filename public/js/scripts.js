@@ -75,7 +75,7 @@ function typeEvent(tag) {
 
     clearTimeout(typingTimer);
     //clearTimeout(reloadDivsTimer);
-    console.log("Reload divs timer cleared");
+    //console.log("Reload divs timer cleared");
     typingTimer = setTimeout(doneTyping, doneTypingInterval);
     //reloadDivsTimer = setTimeout(reloadDivs, 3000);
   });
@@ -103,7 +103,7 @@ function typeEvent(tag) {
   function doneTyping () {
     //typingTimer = setTimeout(reloadDivs, 3000);
     //startReloadDivsTimer()
-    console.log("Reload Divs activated");
+    //console.log("Reload Divs activated");
     var textArea = "textarea#" + tag.attr("id");
     $(textArea).text(tag.val());
     var row = tag.parents().eq(2)
@@ -149,12 +149,7 @@ function typeEvent(tag) {
     //startReloadDivsTimer();
   }
 
-
-
-
 }
-
-
 
 
 for (var i = 0; i < 8; i++) {
@@ -197,7 +192,15 @@ for (var i = 1; i < orderedClassesLength + 1; i++) {
   //
   //
   // }
-setInterval(reloadDivs, 6000)
+
+var reloadTypingTimer = setInterval(reloadDivs, 6000)
+$(window).keyup(function(){
+  console.log("KEYUP WINDOW");
+  clearTimeout(reloadTypingTimer);
+  reloadTypingTimer = setInterval(reloadDivs, 6000)
+});
+
+
 //setInterval(reloadFinalDivs, 6000)
 //var reloadDivsTimer;//setInterval(reloadDivs, 3000)
 //function startReloadDivsTimer() {
