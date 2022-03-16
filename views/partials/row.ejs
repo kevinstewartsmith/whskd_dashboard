@@ -4,30 +4,33 @@
 
   </script>
   <p hidden class="date" id=""><%= orderedClasses[i].current_report.date_in_ms %></p>
-  <div class="col-1 m-1  border  border-dark rounded-3 shadow" style="background-color: white; width:100px" >
+  <div class="col-1 mt-1 mb-1   rounded-3 " style="background-color: white; width:120px" >
 
     <div class="" style="position: relative; background-color:transparent; display:block; width:100%; height:100%">
 
-      <h1 class="p-0 period" style="font-size: 800%; color:#ECECEC; position: absolute;  padding:0; display:inline-block; top: 40px;left:-10; right: 0px; background-color:transparent; text-align:center;overflow:hidden" ><strong><%= orderedClassPeriods[i]%></strong></h1>
-      <div class="mt-4 ms-0" style="position: absolute; top: -10px; left: 0.4rem">
-        <h6 class=" class-name" style="display: inline-block; font-size: 0.75rem; color:#2F86A6; overflow-wrap: normal; width: 90px; margin-top: -80px; margin-left: -10px; margin-bottom:0px; color:#2F86A6" id=""><%=  orderedClasses[i].class_name %></h6>
-        <h6 class=" text-truncate class-type <%=orderedClasses[i].class_type%> " style="display: inline-block; margin-left: -10px; font-size: 0.7rem; margin-top: 10px" id=""><%= "Group: " + orderedClasses[i].class_type%></h6>
+      <h1 class="p-0 period" style="font-size: 550%; color:#F3F3F3; position: absolute;  padding:0; display:inline-block; top: -10px;left:-30px; right: 0px; background-color:transparent; text-align:center;overflow:hidden" ><strong><%= orderedClassPeriods[i]%></strong></h1>
+      <div class="mt-4 ms-0" style="position: absolute; top: 55px; left: 0.0rem">
+        <h6 class=" class-name" style="display: inline-block; font-size: 1.00rem; color:#2F86A6; overflow-wrap: normal; width: 120px; margin-top: -20px; margin-left: -20px; margin-bottom:0px; color:#2F86A6" id=""><%=  orderedClasses[i].class_name %></h6>
+        <h6 class=" text-truncate class-type <%=orderedClasses[i].class_type%> " style="display: block; margin-left: -20px; font-size: 0.7rem; margin-top: 10px" id=""><%= "Group: " + orderedClasses[i].class_type%></h6>
+        <h10 class=" text-truncate teacher" style="display: inline; font-size: 1.1vw; margin-left: -20px;"><strong><%= orderedClasses[i].teacher_name %></strong></h10>
+
       </div>
 
+      <p hidden class="code"><%=orderedClasses[i].regular_teacher%></p>
 
 
     </div>
 
 
   </div>
-  <div class="col m-1 border border border-dark rounded-3 shadow">
+  <div class="col ms-0 mt-1 me-1 mb-1  border border border-dark rounded-3 shadow">
     <form action="/action_page.php" class="daily-report-form">
 
       <textarea  name="Today" class="daily-report-textarea today"  id="<%= classTag["todaysClass"] + orderedClassPeriods[i]%>"><%= orderedClasses[i].current_report.todays_class %></textarea>
 
     </form>
   </div>
-  <div class="col-2 m-1 border border-dark rounded-3 shadow">
+  <div class="col-3 m-1 border border-dark rounded-3 shadow">
     <form action="/action_page.php" class="daily-report-form">
 
       <textarea  name="w3review" class="daily-report-textarea homework" id="<%= classTag["homework"] + orderedClassPeriods[i] %>" ><%= orderedClasses[i].current_report.homework %></textarea>
@@ -42,10 +45,10 @@
 
     </form>
   </div>
-  <div class="col-1 m-1 pt-4   border border border-dark rounded-3 shadow">
+  <!-- <div class="col-1 m-1 pt-4   border border border-dark rounded-3 shadow">
     <h10 class=" text-truncate teacher" style="display: inline; font-size: 1.1vw; font-size:0.75vw"><strong><%= orderedClasses[i].teacher_name %></strong></h10>
 
     <p hidden class="code"><%=orderedClasses[i].regular_teacher%></p>
 
-  </div>
+  </div> -->
 </div>
