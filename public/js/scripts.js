@@ -211,6 +211,21 @@ $(window).keyup(function(){
 //////////////////////////////////////////////////////////////////////////////////////
 /////////REPORT LOADING START ///////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////
+$("#CDAreportButton").click(function(){
+  console.log("CDA report clicked");
+
+  for (var i = 1; i < 9; i++){
+    var todayTag = "#todaysCDAClass" + i + "FinalReadOnly";
+    var homeWorkTag = "#cdaHomework" + i + "FinalReadOnly";
+    var nextClassTag = "#nextCDAClass" + i + "FinalReadOnly";
+    $( todayTag ).text(cdaClassTags[i - 1][0].val());
+    $( homeWorkTag ).text(cdaClassTags[i - 1][1].val());
+    $( nextClassTag ).text(cdaClassTags[i - 1][2].val());
+  }
+
+});
+
+
 $("#ESLreportButton").click(function(){
   console.log("ESL report clicked");
 
