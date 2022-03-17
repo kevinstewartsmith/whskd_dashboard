@@ -332,9 +332,15 @@ app.get("/headmaster", function(req, res) {
 
 })
 
+
+let port = process.env.PORT;
+if (port == null || port = "") {
+  port = 4000;
+}
+
 //Listening to port 3000 locally. Has a callback function to let the user know whent he server is running
 //The console.log message will show up in the terminal
-app.listen(4000, function() {
+app.listen(port, function() {
   console.log("Server is running on port 4000");
 });
 

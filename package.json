@@ -12,6 +12,9 @@
   },
   "author": "Kevin Smith",
   "license": "ISC",
+  "engines": {
+    "node": "16.13.2"
+  },
   "bugs": {
     "url": "https://github.com/kevinstewartsmith/whskd_dashboard/issues"
   },
