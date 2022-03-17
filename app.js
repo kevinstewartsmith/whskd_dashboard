@@ -9,9 +9,9 @@ const crazy = require(__dirname + "/classesJSON")
 //Makes an express app
 const app = express();
 //mongoose.connect('mongodb://localhost:27017/WHSKD-DB');
-mongoose.connect('mongodb+srv://kevinstewartsmith:whskd@cluster0.kxmbd.mongodb.net/WHSKD-DB',{useNewUrlParser: true});
+mongoose.connect('mongodb+srv://kevinstewartsmith:whskd@cluster0.kxmbd.mongodb.net/WHSKD-DB');
 
-
+//,{useNewUrlParser: true}
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({
   extended: true
