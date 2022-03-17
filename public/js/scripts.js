@@ -210,9 +210,21 @@ $(window).keyup(function(){
 
 $("#homeroomReportButton").click(function(){
   console.log("Homeroom report clicked");
-  $(".row.read-row").each(function(row){
-    $( this ).find(".today").html("hello")
-  })
+  // $(".row.read-row").each(function(row){
+  //   $( this ).find(".today").html("hello")
+  // })
+  // homeroomClassTags.forEach(function(tag) {
+  //   console.log(tag[0].val());
+  // })
+  for (var i = 1; i < 9; i++){
+    var todayTag = "#todaysHomeroomClass" + i + "FinalReadOnly";
+    var homeWorkTag = "#homeroomHomework" + i + "FinalReadOnly";
+    var nextClassTag = "#nextHomeroomClass" + i + "FinalReadOnly";
+    $( todayTag ).text(homeroomClassTags[i - 1][0].val());
+    $( homeWorkTag ).text(homeroomClassTags[i - 1][1].val());
+    $( nextClassTag ).text(homeroomClassTags[i - 1][2].val());
+  }
+  $("#todaysHomeroomClass2FinalReadOnly").text(homeroomClassTags[1][0].val());
   console.log($( ".row.read-row").length);
   console.log($(".row.report").length);
 });
