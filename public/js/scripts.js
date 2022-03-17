@@ -208,6 +208,23 @@ $(window).keyup(function(){
 //}
 //startReloadDivsTimer();
 
+//////////////////////////////////////////////////////////////////////////////////////
+/////////REPORT LOADING START ///////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
+$("#ESLreportButton").click(function(){
+  console.log("ESL report clicked");
+
+  for (var i = 1; i < 9; i++){
+    var todayTag = "#todaysESLClass" + i + "FinalReadOnly";
+    var homeWorkTag = "#eslHomework" + i + "FinalReadOnly";
+    var nextClassTag = "#nextESLClass" + i + "FinalReadOnly";
+    $( todayTag ).text(eslClassTags[i - 1][0].val());
+    $( homeWorkTag ).text(eslClassTags[i - 1][1].val());
+    $( nextClassTag ).text(eslClassTags[i - 1][2].val());
+  }
+
+});
+
 $("#homeroomReportButton").click(function(){
   console.log("Homeroom report clicked");
   // $(".row.read-row").each(function(row){
@@ -224,10 +241,14 @@ $("#homeroomReportButton").click(function(){
     $( homeWorkTag ).text(homeroomClassTags[i - 1][1].val());
     $( nextClassTag ).text(homeroomClassTags[i - 1][2].val());
   }
-  $("#todaysHomeroomClass2FinalReadOnly").text(homeroomClassTags[1][0].val());
-  console.log($( ".row.read-row").length);
-  console.log($(".row.report").length);
+  // $("#todaysHomeroomClass2FinalReadOnly").text(homeroomClassTags[1][0].val());
+  // console.log($( ".row.read-row").length);
+  // console.log($(".row.report").length);
 });
+
+//////////////////////////////////////////////////////////////////////////////////////
+/////////REPORT LOADING END /////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////////////
 
 function reloadDivs() {
     var rows = $(".row.report")
