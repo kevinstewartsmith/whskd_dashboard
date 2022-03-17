@@ -113,3 +113,11 @@ p {
   width: 100%;
   display: inline;
 }
+.read-only {
+    inline-size: 340px;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+    width: 340px;
+    height 12rem;
+    background-color:transparent
+}

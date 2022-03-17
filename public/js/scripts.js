@@ -208,6 +208,15 @@ $(window).keyup(function(){
 //}
 //startReloadDivsTimer();
 
+$("#homeroomReportButton").click(function(){
+  console.log("Homeroom report clicked");
+  $(".row.read-row").each(function(row){
+    $( this ).find(".today").html("hello")
+  })
+  console.log($( ".row.read-row").length);
+  console.log($(".row.report").length);
+});
+
 function reloadDivs() {
     var rows = $(".row.report")
     console.log("ROWS COunt: " + rows.length);
@@ -263,11 +272,20 @@ function reloadDivs() {
               var finalTextArea = $(textAreaHash + "Final");
               var finalHomeWorkArea = $(homeworkAreaHash + "Final");
               var finalNextClassArea = $(nextClassHash + "Final");
+
+              var finalTextAreaReadOnly = $(textAreaHash + "FinalReadOnly");
+              var finalHomeWorkAreaReadOnly = $(homeworkAreaHash + "FinalReadOnly");
+              var finalNextClassAreaReadOnly = $(nextClassHash + "FinalReadOnly");
+
               console.log("FINAL TEXT AREA: " + finalTextArea.val());
 
-              finalTextArea.val(req);
-              finalHomeWorkArea.val(reqHomework);
-              finalNextClassArea.val(reqNextClass);
+              finalTextArea.html(req);
+              finalHomeWorkArea.html(reqHomework);
+              finalNextClassArea.html(reqNextClass);
+
+              finalTextAreaReadOnly.html(req);
+              finalHomeWorkAreaReadOnly.html(reqHomework);
+              finalNextClassAreaReadOnly.html(reqNextClass);
 
         }
         console.log("DIVS RELOADED");
