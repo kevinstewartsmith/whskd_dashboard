@@ -120,6 +120,7 @@ function typeEvent(tag) {
     // console.log("next_class: " + row.find(".next-class").text());
     // console.log("teacher: " + row.find(".teacher").text());
     var teacherFirstName = row.find(".teacher").text()
+    
     const classDetails = {
 
       class_name: row.attr("id"),
