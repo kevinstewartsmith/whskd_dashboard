@@ -364,7 +364,9 @@ function reportDownload(classID, buttonID, filename) {
     document.getElementById(id).addEventListener("click", function() {
       html2canvas($(classID)[0]).then(function(canvas) {
         console.log(canvas);
+        console.log("MADE IT THIS FAR - Canvas: " + canvas);
         simulateDownloadImageClick(canvas.toDataURL(), filename);
+
       });
     });
   }
