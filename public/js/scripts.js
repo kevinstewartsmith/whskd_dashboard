@@ -120,7 +120,7 @@ function typeEvent(tag) {
     // console.log("next_class: " + row.find(".next-class").text());
     // console.log("teacher: " + row.find(".teacher").text());
     var teacherFirstName = row.find(".teacher").text()
-    
+
     const classDetails = {
 
       class_name: row.attr("id"),
@@ -351,7 +351,7 @@ var filename = 'homeroom-report.png'
 var eslClassID = "#eslReportFinal";
 var eslDownloadButtonID = "eslDownload";
 var eslFileName = "esl-report.png";
-var cdaClassID = "#cdaReportFinal";
+var cdaClassID = "div#cdaReportFinal";
 var cdaDownloadButtonID = "cdaDownload";
 var cdaFileName = "cda-report.png";
 
@@ -362,7 +362,9 @@ function reportDownload(classID, buttonID, filename) {
   setUpDownloadPageAsImage(buttonID);
 
   function setUpDownloadPageAsImage(id) {
+    //$(id).addEventListener("click", function() {
     document.getElementById(id).addEventListener("click", function() {
+      console.log(id + " Clicked!");
       html2canvas($(classID)[0]).then(function(canvas) {
         console.log(canvas);
         console.log("MADE IT THIS FAR - Canvas: " + canvas);
